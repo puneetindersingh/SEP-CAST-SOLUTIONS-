@@ -24,7 +24,7 @@ padding: 20px;
 border-radius: 5px
 }
 
-.app-title {
+.login-title {
 text-align: center;
 color: #777;
 }
@@ -32,7 +32,7 @@ color: #777;
 .login-form {
 text-align: center;
 }
-.control-group {
+.input-group {
 margin-bottom: 10px;
 }
 

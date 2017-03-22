@@ -9,13 +9,17 @@ box-sizing: border-box;
 body {
 font-family: Courier New;
 background-color: #003366;
-padding-top: 150px;
+/* padding-top: 150px; */
+	
+margin: 0 0 0 0;
 }
 
 .login {
 float: middle;
 margin: 20px auto;
 max-width: 500px;
+
+padding-top: 150px;
 }
 
 .login-screen {
@@ -104,6 +108,45 @@ box-shadow: none;
   .login-form{
     width: 100%;
   }
+}
+
+
+header{
+
+    background-color: rgba(255, 255, 255, 0.5); 
+    float:left;
+    min-width:100%;
+    height: 90px;
+    position:fixed;
+  }
+
+
+
+footer {
+
+  background-color: rgba(255, 255, 255, 0.5); 
+  padding:0 0 0 0;
+    float:left;
+    min-width:100%;
+  position:absolute;
+    bottom:0;
+
+ }
+
+
+ #logo {
+
+  width:210px;
+  height:70px;
+    float:left;
+  padding-left:100px;
+  padding-top:10px;
+
+}
+
+#copy{
+
+  padding-left: 100px;
 }
 
 

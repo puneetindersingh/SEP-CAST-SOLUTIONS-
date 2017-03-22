@@ -136,17 +136,17 @@ footer {
 
  #logo {
 
-  width:210px;
-  height:70px;
-    float:left;
-  padding-left:100px;
-  padding-top:10px;
+  width:202px;
+  height:56px;
+  object-fit: cover;
+  margin-left: 5%;
+  margin-top: 2%;
 
 }
 
 #copy{
 
-  padding-left: 100px;
+  padding-left: 5%;
 }
 
 

@@ -90,7 +90,7 @@ box-shadow: none;
 @media screen and (max-width: 480px) {
 
   body {
-  padding: 0px;
+    padding: 0px;
   }
 
   .login{
@@ -114,11 +114,9 @@ header{
     background-color: rgba(255, 255, 255, 0.8); 
     float:left;
     min-width:100%;
-    height: 90px;
+    height: 12%;
     position:fixed;
   }
-
-
 
 footer {
 

@@ -7,29 +7,43 @@ box-sizing: border-box;
 }
 
 body {
-font-family: Arial;
-background-color: #336699;
-/* padding-top: 150px; */
+font-family: Brandon Grotesque;
+background-color: #ffffff;
 margin: 0 0 0 0;
+}
+
+p {
+  font-family: Brandon Grotesque;
+}
+
+h1,h2,h3 {
+  font-family: Phenomena;
+  font-weight: bold;
 }
 
 .login {
 float: middle;
 margin: 0px auto;
 max-width: 500px;
-
 padding-top: 150px;
 }
 
 .login-screen {
-background-color: #FFF;
-padding: 20px;
-border-radius: 5px
+  border-color: #ccc;
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 }
 
 .login-title {
-text-align: center;
-color: #777;
+  text-align: center;
+  padding: 2px 3px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
 }
 
 .login-form {
@@ -59,10 +73,10 @@ box-shadow: none;
 
 .btn {
   border: 2px solid transparent;
-  background: #3498DB;
+  background: #24427b;
   color: #ffffff;
-  font-size: 16px;
-  line-height: 25px;
+  font-size: 15px;
+  line-height: 20px;
   padding: 10px 0;
   text-decoration: none;
   text-shadow: none;
@@ -76,7 +90,7 @@ box-shadow: none;
 }
 
 .btn:hover {
-  background-color: #2980B9;
+  background-color: #3e61a5;
 }
 
 .resetPassword-link {

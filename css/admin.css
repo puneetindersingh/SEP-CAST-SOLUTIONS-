@@ -11,6 +11,10 @@ html {
     font-family: "Lucida Sans", sans-serif;
 }
 
+body {
+  background: #ffffff;
+}
+
 input {
 text-align: center;
 background-color: #ECF0F1;
@@ -33,6 +37,8 @@ box-shadow: none;
     list-style-type: none;
     margin: 0;
     padding: 0;
+    top: 0;
+    left: 0;
 }
 .menu li {
     padding: 8px;
@@ -47,7 +53,7 @@ box-shadow: none;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .menu li:hover {
-    background-color: #555;
+    background-color: #5f6f81;
     color: white;
 }
 .header ul {
@@ -55,12 +61,17 @@ box-shadow: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #f5f5f5;
+    top: 0;
+    left: 0;
 }
 
 .header li {
+    display: block;
     float: left;
-    border-right:1px solid #bbb;
+    height: 100%;
+    border-right: 1px solid #c6d0da;
+    text-align: center;
 }
 
 li:last-child {
@@ -69,27 +80,28 @@ li:last-child {
 
 .header li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
 
 .header li a:hover:not(.active) {
-    background-color: #111;
+    background-color: #5f6f81;
+    color: white;
 }
 
-.active {
-    background-color: #4CAF50;
+.logout {
+    background-color: #24427b;
+    color: #fff;
 }
 
  #logo {
   width:150px;
   height:40px;
-  object-fit: cover;
-  margin-left: 5%;
-  margin-top: 1%;
-
 }
 
 #headerSpan {

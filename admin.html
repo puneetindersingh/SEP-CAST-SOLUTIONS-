@@ -10,21 +10,21 @@
 <div class="col-12 header">
 <ul>
   <li><img id="logo" src="LOGO-01.png"/></li>
-  <li><a href="#contact">Contact</a></li>
+  <li><a href="#contact">Admin</a></li>
   <li><a href="#contact">Contact2</a></li>
-  <li style="float:right"><a class="active" href="#about">Login out</a></li>
+  <li style="float:right"><a class="logout" href="#about">Login out</a></li>
 </ul>
 </div>
 <div class="col-2 menu">
   <ul>
-    <li onclick="myFunction1()">Add new user</li>
-    <li onclick="myFunction2()">Modify user</li>
-    <li onclick="myFunction3()">Add Company</li>
-    <li onclick="myFunction4()">Modify Company</li>
+    <li class="tablinks" onclick="openCity(event, 'addNewUser')">Add new user</li>
+    <li class="tablinks" onclick="openCity(event, 'modifyUser')">Modify user</li>
+    <li class="tablinks" onclick="openCity(event, 'addCompany')">Add Company</li>
+    <li class="tablinks" onclick="openCity(event, 'modifyCompany')">Modify Company</li>
   </ul>
 </div>
 
-<div class="col-10 divAddUser allForm" id="myDIV">
+<div class="col-10 divAddUser allForm tabcontent" id="addNewUser">
 <form class="formAddUser" action="???.php">
   <fieldset align="center">
     <legend>User information:</legend>
@@ -55,7 +55,7 @@
 </form>
 </div>
 
-<div class="col-10 divAddUser allForm" id="myDIV2">
+<div class="col-10 divAddUser allForm tabcontent" id="modifyUser">
 <form class="formAddUser" action="???.php">
   <fieldset align="center">
     <legend>User information:</legend>
@@ -86,7 +86,7 @@
 </form>
 </div>
 
-<div class="col-10 divAddUser allForm" id="myDIV3">
+<div class="col-10 divAddUser allForm tabcontent" id="addCompany">
 <form class="formAddUser" action="???.php">
   <fieldset align="center">
     <legend>Company information:</legend>
@@ -108,7 +108,7 @@
 </form>
 </div>
 
-<div class="col-10 divAddUser allForm" id="myDIV4">
+<div class="col-10 divAddUser allForm tabcontent" id="modifyCompany">
 <form class="formAddUser" action="???.php">
   <fieldset align="center">
     <legend>Company information:</legend>
@@ -146,96 +146,27 @@
 <!-- <div class="footer">
   <p>Resize the browser window to see how the content respond to the resizing.</p>
 </div> -->
-<script>
-function myFunction1() {
-    var c = document.querySelectorAll(".allForm");
-    if(c[0].style.display = "block"){
-        c[0].style.display = "none";
-    }
-    if(c[1].style.display = "block"){
-        c[1].style.display = "none";
-    }
-    if(c[2].style.display = "block"){
-        c[2].style.display = "none";
-    }
-    if(c[3].style.display = "block"){
-        c[3].style.display = "none";
-    }
 
-    var x = document.getElementById('myDIV');
-    if (x.style.display === 'block') {
-        x.style.display = 'none';
-    } else {
-        x.style.display = 'block';
-    }
-}
-
-function myFunction2() {
-    var c = document.querySelectorAll(".allForm");
-    if(c[0].style.display = "block"){
-        c[0].style.display = "none";
-    }
-    if(c[1].style.display = "block"){
-        c[1].style.display = "none";
-    }
-    if(c[2].style.display = "block"){
-        c[2].style.display = "none";
-    }
-    if(c[3].style.display = "block"){
-        c[3].style.display = "none";
-    }
-
-    var x = document.getElementById('myDIV2');
-    if (x.style.display === 'block') {
-        x.style.display = 'none';
-    } else {
-        x.style.display = 'block';
-    }
-}
-function myFunction3() {
-    var c = document.querySelectorAll(".allForm");
-    if(c[0].style.display = "block"){
-        c[0].style.display = "none";
-    }
-    if(c[1].style.display = "block"){
-        c[1].style.display = "none";
-    }
-    if(c[2].style.display = "block"){
-        c[2].style.display = "none";
-    }
-    if(c[3].style.display = "block"){
-        c[3].style.display = "none";
-    }
-
-    var x = document.getElementById('myDIV3');
-    if (x.style.display === 'block') {
-        x.style.display = 'none';
-    } else {
-        x.style.display = 'block';
-    }
-}
-function myFunction4() {
-    var c = document.querySelectorAll(".allForm");
-    if(c[0].style.display = "block"){
-        c[0].style.display = "none";
-    }
-    if(c[1].style.display = "block"){
-        c[1].style.display = "none";
-    }
-    if(c[2].style.display = "block"){
-        c[2].style.display = "none";
-    }
-    if(c[3].style.display = "block"){
-        c[3].style.display = "none";
-    }
-
-    var x = document.getElementById('myDIV4');
-    if (x.style.display === 'block') {
-        x.style.display = 'none';
-    } else {
-        x.style.display = 'block';
-    }
-}
-</script>
 </body>
+
+<script>
+
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+</script>
 </html>

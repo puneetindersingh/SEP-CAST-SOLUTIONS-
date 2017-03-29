@@ -28,7 +28,7 @@
 				<div class="input-group">
 				<input type="email" class="reset-email" name="email" placeholder="Email" id="email-name" required><br><br>
 				<input type="text" class="reset-user" name="username" placeholder="Username" id="reset-username" required><br><br>
-				 <input class="btn"  type="submit" value="Forget" name="forget" />
+				 <input class="btn"  type="submit" value="Submit" name="forget" />
 				<!-- <label class="label-reset-email" for="reset-pass"></label> -->
 				</div>
 				

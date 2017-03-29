@@ -11,8 +11,9 @@
 </head>
 
 <header> 
+<img id="logo" src="LOGO-01.png" style='width:100%;' border="0" alt="Null"/>
 
-<img id="logo" src="LOGO-01.png"/></header>
+<!--<img id="logo" src="LOGO-01.png"/></header>-->
   <body>
 	<div class="login">
 		<div class="login-screen">

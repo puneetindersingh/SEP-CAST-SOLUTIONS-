@@ -22,10 +22,18 @@ h1,h2,h3 {
 }
 
 .login {
-float: middle;
-margin: 0px auto;
-max-width: 500px;
-padding-top: 150px;
+  float: middle;
+  margin: 0px auto;
+  max-width: 500px;
+  padding-top: 150px;
+  display: block;
+}
+.reset {
+  float: middle;
+  margin: 0px auto;
+  max-width: 500px;
+  padding-top: 150px;
+  display: none;
 }
 
 .login-screen {
@@ -45,9 +53,23 @@ padding-top: 150px;
   border-color: #ddd;
 }
 
+
 #loginImg {
   height: 50px;
   width: 50px;
+}
+
+#resetKey {
+  height: 50px;
+  width: 50px;
+}
+
+#forgotPass:hover {
+  color: #ED8B00;
+}
+
+.reset-form {
+text-align: center;
 }
 
 .login-form {
@@ -111,20 +133,10 @@ box-shadow: none;
     padding: 0px;
   }
 
-  .login{
+  .login .login-screen .login-link .login-form{
     width: 100%;
   }
 
-  .login-screen{
-    width: 100%;
-  }
-
-  .login-link{
-    width: 100%;
-  }
-  .login-form{
-    width: 100%;
-  }
   .col-12 {width: 100%;}
 }
 
@@ -164,6 +176,10 @@ header{
   padding-left: 5%;
 }
 
+.alartWords {
+  font-size: 12px;
+  text-align: center;
+}
 
 
 

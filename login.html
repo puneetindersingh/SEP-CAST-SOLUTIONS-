@@ -32,16 +32,53 @@
 				 <input class="btn"  type="submit" value="Login" name="login" />
 				</div>
 				
-				<a class="resetPassword-link" href="resetpassword.html">Forgot your password?</a><br>
+				<!-- <a class="resetPassword-link" href="resetpassword.html">Forgot your password?</a> -->
+				<a id="forgotPass" onclick="myFunction1()" class="resetPassword-link">Forgot your password?</a>
+				<br>
         </div></form>
 		</div>
 	</div>
+
+		<div class="reset">
+		<div class="login-screen">
+			<div class="login-title">
+				<!-- <h4 style="margin-top: 10px; margin-bottom: 10px;">Password Reset</h4> -->
+				<img id="resetKey" src="images/key.png"/>
+			</div><br>
+				<p class="alartWords">Enter your email, and we'll send you instructions on how to reset your password.</p>
+			<div class="reset-form">
+				<form action="" method="post">
+				<div class="input-group">
+				<input type="email" class="reset-email" value="" placeholder="Email" id="email-name" required></p>
+				<input type="text" class="reset-user" value="" placeholder="Username" id="reset-username" required></p>
+				<button type="submit" class="btn" href=""/>Send me reset instructions</button><br>
+				<!-- <label class="label-reset-email" for="reset-pass"></label> -->
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
 	<div class="col-12 right">
 	  <div class="footer">
 	    <p>&copy; 2017 Cast Solutions </p>
 	  </div>
 	</div>
 </body>
+
+<script>
+function myFunction1() {
+    var c = document.querySelectorAll(".login");
+    if(c[0].style.display = "block"){
+        c[0].style.display = "none";
+    }
+    var c2 = document.querySelectorAll(".reset");
+    if(c2[0].style.display = "none"){
+        c2[0].style.display = "block";
+    }
+}
+</script>
   
 <!--   footer -->
 <!-- <footer> <P id="copy"> &copy; 2017 Cast Solutions   </P> </footer> -->

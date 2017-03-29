@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="row">
+<div class="col-12 header"><img id="logo" src="LOGO-01.png" height="30px"/>
+    <span id="headerSpan">Admin page</span>
+</div>
+<div class="col-2 menu">
+  <ul>
+    <li onclick="myFunction1()">Add new user</li>
+    <li onclick="myFunction2()">Modify user</li>
+    <li onclick="myFunction3()">Add Company</li>
+    <li onclick="myFunction4()">Modify Company</li>
+  </ul>
+</div>
+
+<div class="col-10 divAddUser allForm" id="myDIV">
+<form class="formAddUser" action="???.php">
+  <fieldset align="center">
+    <legend>User information:</legend>
+    <br>
+    <input placeholder="First name">
+    <br>
+    <br>
+    <input placeholder="Last name">
+    <br>
+    <br>
+    <input placeholder="Email address">
+    <br>
+    <br>
+    <input placeholder="Phone number">
+    <br>
+    <br>
+    <input placeholder="Company">
+    <br>
+    <br>
+    <input placeholder="Company Site Name">
+    <br>
+    <br>
+    <input placeholder="Company Job Title">
+    <br>
+    <br>
+    <input class="formAddBtn" type="submit" value="Add User">
+  </fieldset>
+</form>
+</div>
+
+<div class="col-10 divAddUser allForm" id="myDIV2">
+<form class="formAddUser" action="???.php">
+  <fieldset align="center">
+    <legend>User information:</legend>
+    <br>
+    <input placeholder="First name">
+    <br>
+    <br>
+    <input placeholder="Last name">
+    <br>
+    <br>
+    <input placeholder="Email address">
+    <br>
+    <br>
+    <input placeholder="Phone number">
+    <br>
+    <br>
+    <input placeholder="Company">
+    <br>
+    <br>
+    <input placeholder="Company Site Name">
+    <br>
+    <br>
+    <input placeholder="Company Job Title">
+    <br>
+    <br>
+    <input class="formAddBtn" type="submit" value="Modify">
+  </fieldset>
+</form>
+</div>
+
+<div class="col-10 divAddUser allForm" id="myDIV3">
+<form class="formAddUser" action="???.php">
+  <fieldset align="center">
+    <legend>Company information:</legend>
+    <br>
+    <input placeholder="Company name">
+    <br>
+    <br>
+    <input placeholder="Company address">
+    <br>
+    <br>
+    <input placeholder="Company phone">
+    <br>
+    <br>
+    <input placeholder="Company URL">
+    <br>
+    <br>
+    <input class="formAddBtn" type="submit" value="Add Company">
+  </fieldset>
+</form>
+</div>
+
+<div class="col-10 divAddUser allForm" id="myDIV4">
+<form class="formAddUser" action="???.php">
+  <fieldset align="center">
+    <legend>Company information:</legend>
+    <br>
+    <input placeholder="Company name">
+    <br>
+    <br>
+    <input placeholder="Company address">
+    <br>
+    <br>
+    <input placeholder="Company phone">
+    <br>
+    <br>
+    <input placeholder="Company URL">
+    <br>
+    <br>
+    <input class="formAddBtn" type="submit" value="Modify">
+  </fieldset>
+</form>
+</div>
+
+<!-- <div class="col-12 right">
+  <div class="aside">
+    <h2>Space 1</h2>
+    <p>These space for something use future</p>
+    <h2>Space 2</h2>
+    <p>These space for something use future</p>
+    <h2>Space 3</h2>
+    <p>These space for something use future</p>
+  </div>
+</div> -->
+
+</div>
+
+<!-- <div class="footer">
+  <p>Resize the browser window to see how the content respond to the resizing.</p>
+</div> -->
+<script>
+function myFunction1() {
+    var c = document.querySelectorAll(".allForm");
+    if(c[0].style.display = "block"){
+        c[0].style.display = "none";
+    }
+    if(c[1].style.display = "block"){
+        c[1].style.display = "none";
+    }
+    if(c[2].style.display = "block"){
+        c[2].style.display = "none";
+    }
+    if(c[3].style.display = "block"){
+        c[3].style.display = "none";
+    }
+
+    var x = document.getElementById('myDIV');
+    if (x.style.display === 'block') {
+        x.style.display = 'none';
+    } else {
+        x.style.display = 'block';
+    }
+}
+
+function myFunction2() {
+    var c = document.querySelectorAll(".allForm");
+    if(c[0].style.display = "block"){
+        c[0].style.display = "none";
+    }
+    if(c[1].style.display = "block"){
+        c[1].style.display = "none";
+    }
+    if(c[2].style.display = "block"){
+        c[2].style.display = "none";
+    }
+    if(c[3].style.display = "block"){
+        c[3].style.display = "none";
+    }
+
+    var x = document.getElementById('myDIV2');
+    if (x.style.display === 'block') {
+        x.style.display = 'none';
+    } else {
+        x.style.display = 'block';
+    }
+}
+function myFunction3() {
+    var c = document.querySelectorAll(".allForm");
+    if(c[0].style.display = "block"){
+        c[0].style.display = "none";
+    }
+    if(c[1].style.display = "block"){
+        c[1].style.display = "none";
+    }
+    if(c[2].style.display = "block"){
+        c[2].style.display = "none";
+    }
+    if(c[3].style.display = "block"){
+        c[3].style.display = "none";
+    }
+
+    var x = document.getElementById('myDIV3');
+    if (x.style.display === 'block') {
+        x.style.display = 'none';
+    } else {
+        x.style.display = 'block';
+    }
+}
+function myFunction4() {
+    var c = document.querySelectorAll(".allForm");
+    if(c[0].style.display = "block"){
+        c[0].style.display = "none";
+    }
+    if(c[1].style.display = "block"){
+        c[1].style.display = "none";
+    }
+    if(c[2].style.display = "block"){
+        c[2].style.display = "none";
+    }
+    if(c[3].style.display = "block"){
+        c[3].style.display = "none";
+    }
+
+    var x = document.getElementById('myDIV4');
+    if (x.style.display === 'block') {
+        x.style.display = 'none';
+    } else {
+        x.style.display = 'block';
+    }
+}
+</script>
+</body>
+</html>

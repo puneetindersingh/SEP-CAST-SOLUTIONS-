@@ -3,7 +3,6 @@
 }
 
 .row::after {
-    content: "";
     clear: both;
     display: table;
 }
@@ -61,6 +60,11 @@ box-shadow: none;
 
 .header li {
     float: left;
+    border-right:1px solid #bbb;
+}
+
+li:last-child {
+    border-right: none;
 }
 
 .header li a {
@@ -79,6 +83,14 @@ box-shadow: none;
     background-color: #4CAF50;
 }
 
+ #logo {
+  width:150px;
+  height:40px;
+  object-fit: cover;
+  margin-left: 5%;
+  margin-top: 1%;
+
+}
 
 #headerSpan {
     font-size: 30px;

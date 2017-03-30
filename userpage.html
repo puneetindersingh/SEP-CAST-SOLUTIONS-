@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Admin | Cast Solution</title>
+ <title>User | Cast Solution</title>
  <link rel="stylesheet" href="css/mainPage.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
 <div class="col-12 topnav" id="myTopnav">
 
   <a id="logoleftTop"><img id="logo" src="LOGO-01.png"/></a>
-  <a onclick="myFunction()" href="" class="dropbtn">Admin</a>
+  <a onclick="myFunction()" href="" class="dropbtn">User Name</a>
   <a href="#Qlik">Link to Qlik</a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a>
@@ -24,10 +24,9 @@
 <!-- side bar -->
 <div class="col-2 menu">
   <ul>
-    <li class="tablinks" onclick="openCity(event, 'addNewUser')">Add new user</li>
-    <li class="tablinks" onclick="openCity(event, 'modifyUser')">Modify user</li>
     <li class="tablinks" onclick="openCity(event, 'addCompany')">Add Company</li>
     <li class="tablinks" onclick="openCity(event, 'modifyCompany')">Modify Company</li>
+    <li class="tablinks" onclick="openCity(event, 'modifyProfile')">Modify Profile</li>
     <li>Help</li>
     <li>Logout</li>
     <li class="dropdown">
@@ -41,7 +40,7 @@
   </ul>
 </div>
 
-<div class="col-10 divAddUser allForm tabcontent" id="addNewUser">
+<div class="col-10 divAddUser allForm tabcontent" id="modifyProfile">
 <form class="formAddUser" action="???.php">
   <fieldset align="center">
     <legend>User information:</legend>
@@ -67,27 +66,9 @@
     <input placeholder="Company Job Title">
     <br>
     <br>
-    <input class="formAddBtn" type="submit" value="Add User">
+    <input class="formAddBtn" type="submit" value="OK">
   </fieldset>
 </form>
-</div>
-
-<div class="col-13 divAddUser allForm tabcontent" id="modifyUser" style="overflow-x:auto;">
-
- <table>
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email address</th>
-    <th>Phone</th>
-    <th>Company</th>
-    <th>Company Site Name</th>
-    <th>Company Job Title</th>
-  </tr>
-  </table>
- 
- 
- 
 </div>
 
 <div class="col-10 divAddUser allForm tabcontent" id="addCompany">

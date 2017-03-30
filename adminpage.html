@@ -13,6 +13,7 @@
 <div class="col-12 topnav" id="myTopnav">
 
   <a id="logoleftTop"><img id="logo" src="LOGO-01.png"/></a>
+  <a onclick="myFunction()" class="dropbtn">Admin</a>
   <a href="#Qlik">Link to Qlik</a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a>
@@ -20,7 +21,7 @@
 </div>
 
 <!-- side bar -->
-<div class="col-2 menu">
+<div class="col-b menu">
   <ul>
     <li class="tablinks" onclick="openCity(event, 'addNewUser')">Add new user</li>
     <li class="tablinks" onclick="openCity(event, 'modifyUser')">Modify user</li>
@@ -176,9 +177,9 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
 
 </script>
 </html>

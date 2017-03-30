@@ -7,20 +7,27 @@
 <body>
 
 <div class="row">
-<div class="col-12 header">
-<ul>
-  <li><img id="logo" src="LOGO-01.png"/></li>
-  <li><a href="#contact">Admin</a></li>
-  <li><a href="#contact">Contact2</a></li>
-  <li style="float:right"><a class="logout" href="#about">Login out</a></li>
-</ul>
+
+<!-- top nav -->
+
+<div class="col-12 topnav" id="myTopnav">
+
+  <a id="logoleftTop"><img id="logo" src="LOGO-01.png"/></a>
+  <a href="#Qlik">Link to Qlik</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="topnav()">&#9776;</a>
 </div>
+
+<!-- side bar -->
 <div class="col-2 menu">
   <ul>
     <li class="tablinks" onclick="openCity(event, 'addNewUser')">Add new user</li>
     <li class="tablinks" onclick="openCity(event, 'modifyUser')">Modify user</li>
     <li class="tablinks" onclick="openCity(event, 'addCompany')">Add Company</li>
     <li class="tablinks" onclick="openCity(event, 'modifyCompany')">Modify Company</li>
+    <li>Help</li>
+    <li>Logout</li>
   </ul>
 </div>
 
@@ -143,13 +150,18 @@
 
 </div>
 
-<!-- <div class="footer">
-  <p>Resize the browser window to see how the content respond to the resizing.</p>
-</div> -->
-
 </body>
 
 <script>
+
+function topnav() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
 
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;

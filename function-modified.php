@@ -14,14 +14,16 @@ $sql = "SELECT * FROM user WHERE username='$username' AND password='$password' "
 $result = $conn->query($sql);
 if($row=$result->fetch_assoc()){
     if($row['admin_status'] == 'Y'){
-      echo "<script>alert('Welcome Admin' ); window.location = './login.php';</script>";
+      echo "<script> window.location = './admin.html';</script>";
     }else{
-      echo "<script>alert('Welcome User' ); window.location = './login.php';</script>";
+      echo "<script> window.location = './userpage.html';</script>";
     }
 }else{
-  echo "<script>alert('Username or Password is Wrong,Please try again'); window.location = './login.php';</script>";
+  echo "<script>alert('Username or Password is Wrong,Please try again'); window.location = './login.html';</script>";
 }
 }
+
+
 function signin(){
 include 'connect.php';
 $username = $_POST['username'];
@@ -31,6 +33,8 @@ $sql = "INSERT INTO user(username,password,email) VALUES('$username','$password'
 $result = $conn->query($sql);
     echo "record inserted";
 }
+
+
 function forget(){
     include 'connect.php';
     $username = $_POST['username'];
@@ -79,7 +83,7 @@ if($check==1){
          echo 'Message could not be sent.';
         //  echo 'Mailer Error: ' . $mail->ErrorInfo;
        } else {
-          echo "<script>alert('Record Updated And Please check your email to get the password'); window.location = './login.php';</script>";
+          echo "<script>alert('Record Updated And Please check your email to get the password'); window.location = './login.html';</script>";
        }
 
 //         $to = $username;
@@ -91,8 +95,12 @@ if($check==1){
 
 
 }
-}else{
-  echo "<script>alert('Record Not Found'); window.location = './resetpassword.php';</script>";
 }
+else{
+  echo "<script>alert('Record Not Found'); window.location = './login.html';</script>";
 }
+
+}
+
+
 ?>

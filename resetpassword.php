@@ -1,44 +1,104 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Password Reset | Cast Solution</title>
-  
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-  <link rel="stylesheet" href="css/reset_password.css">
+<?php
+if(isset($_POST['login'])){
+    login();
+}else if(isset($_POST['signin'])){
+    signin();
+}else if (isset($_POST['forget'])){
+    forget();
+}
+function login(){
+    include 'connect.php';
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+$sql = "SELECT * FROM user WHERE username='$username' AND password='$password' ";
+$result = $conn->query($sql);
+if($row=$result->fetch_assoc()){
+    if($row['admin_status'] == 'Y'){
+      echo "<script>alert('Welcome Admin' ); window.location = './login.php';</script>";
+    }else{
+      echo "<script>alert('Welcome User' ); window.location = './login.php';</script>";
+    }
+}else{
+  echo "<script>alert('Username or Password is Wrong,Please try again'); window.location = './login.php';</script>";
+}
+}
+function signin(){
+include 'connect.php';
+$username = $_POST['username'];
+$password = $_POST['password'];
+$email = $_POST['email'];
+$sql = "INSERT INTO user(username,password,email) VALUES('$username','$password','$email')";
+$result = $conn->query($sql);
+    echo "record inserted";
+}
+function forget(){
+    include 'connect.php';
+    $username = $_POST['username'];
+    $email = $_POST['email'];
 
-  
-</head>
+    $findme   = '@';
+    $pos = strpos($email, $findme);
+if($pos===false){
+    echo "<script>alert('Invalid Email$pos'); window.location = './resetpassword.php';</script>";
+}
 
-<header> 
-<img id="logo" src="LOGO-01.png" style='width:100%;' border="0" alt="Null"/>
+    $sql = "SELECT username,email FROM user WHERE email= '$email' AND username = '$username'";
 
-<!--<img id="logo" src="LOGO-01.png"/></header>-->
-  <body>
-	<div class="login">
-		<div class="login-screen">
-			<div class="login-title">
-				<h1>Password Reset</h1>
-				<p>Enter your email, and we'll send you instructions on how to reset your password.</p>
-			</div>
+$result = mysqli_query($conn,$sql);
+$check = mysqli_num_rows($result);
+if($check==1){
 
-            <form action="function-modified.php" method="POST">
-			<div class="reset-form">
-				
-				<div class="input-group">
-				<input type="email" class="reset-email" name="email" placeholder="Email" id="email-name" required><br><br>
-				<input type="text" class="reset-user" name="username" placeholder="Username" id="reset-username" required><br><br>
-				 <input class="btn"  type="submit" value="Submit" name="forget" />
-				<!-- <label class="label-reset-email" for="reset-pass"></label> -->
-				</div>
-				
-                </div></form>
-		</div>
-	</div>
-	  
-	  <footer> <P id="copy"> &copy; 2017 Cast Solutions   </P> </footer>
-</body>
-  
-  
+    $character = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    $random=substr(str_shuffle($character),0,8);
+    echo $random;
+     $sql1 = "UPDATE user SET password='$random' WHERE email= '$email' AND username = '$username'";
+     if ($conn->query($sql1) === TRUE) {
+       require 'class.smtp.php';
+       require 'class.phpmailer.php';
 
-</html>
+       $mail = new PHPMailer;
+
+       $mail->isSMTP();                                   // Set mailer to use SMTP
+       $mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
+       $mail->SMTPAuth = true;                            // Enable SMTP authentication
+       $mail->Username = 'pengzhang1925@gmail.com';          // SMTP username
+       $mail->Password = 'Your password'; // SMTP password
+       $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
+       $mail->Port = 587;// TCP port to connect to
+      //  $mail->SMTPDebug  = 4;       //For debug the server connection
+
+       $mail->setFrom('pengzhang1925@gmail.com', 'PengZhang');
+       $mail->addAddress('pengzhang1925@gmail.com');   // Add a recipient
+       //$mail->addCC('cc@example.com');
+       //$mail->addBCC('bcc@example.com');
+
+       $mail->isHTML(true);  // Set email format to HTML
+
+       $bodyContent = '<h4>This is a test email!</h4>';
+       $bodyContent .= '<p>This is the HTML email sent from localhost using PHP script by <b>PengZhang</b></br>
+                           Your new Password is '.$random.'</p>';
+
+       $mail->Subject = 'Email from Localhost by PengZhang';
+       $mail->Body    = $bodyContent;
+
+       if(!$mail->send()) {
+         echo 'Message could not be sent.';
+        //  echo 'Mailer Error: ' . $mail->ErrorInfo;
+       } else {
+          echo "<script>alert('Record Updated And Please check your email to get the password'); window.location = './login.php';</script>";
+       }
+
+//         $to = $username;
+//         $subject = 'Password Reset';
+//         $message = 'Your New Password is-- '.$random;
+//         $header = "From :- aman2gill29@gmail.com";
+//
+//         mail($to,$subject,$message,$header);
+
+
+}
+}else{
+ echo "<script>alert('Record Not Found'); window.location = './resetpassword.php';</script>";
+}
+}
+?>

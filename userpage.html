@@ -32,7 +32,7 @@
     <li class="dropdown">
     <a class="dropbtn">Settings</a>
     <div class="dropdown-content">
-      <a href="#">Function 1</a>
+      <a class="tablinks" onclick="openCity(event, 'passReset')">Password Reset</a>
       <a href="#">Function 2</a>
       <a href="#">Function 3</a>
     </div>
@@ -67,6 +67,11 @@
     <br>
     <br>
     <input class="formAddBtn" type="submit" value="OK">
+    <br>
+    <br>
+    <input class="formAddBtn" type="button" value="Cancel">
+    <br>
+    <br>
   </fieldset>
 </form>
 </div>
@@ -89,6 +94,11 @@
     <br>
     <br>
     <input class="formAddBtn" type="submit" value="Add Company">
+    <br>
+    <br>
+    <input class="formAddBtn" type="button" value="Cancel">
+    <br>
+    <br>
   </fieldset>
 </form>
 </div>
@@ -104,8 +114,29 @@
   </tr>
   </table>
  
- 
 </div>
+
+ <div class="col-10 divAddUser allForm tabcontent" id="passReset">
+<form class="formAddUser" action="???.php">
+  <fieldset align="center">
+    <legend>Company information:</legend>
+    <br>
+    <input placeholder="Old Password">
+    <br>
+    <br>
+    <input placeholder="New Password">
+    <br>
+    <br>
+    <input class="formAddBtn" type="submit" value="OK">
+    <br>
+    <br>
+    <input class="formAddBtn" type="button" value="Cancel">
+    <br>
+    <br>
+  </fieldset>
+</form>
+</div>
+
 
 <!-- <div class="col-12 right">
   <div class="aside">

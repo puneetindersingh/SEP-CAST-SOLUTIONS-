@@ -33,7 +33,7 @@
     <li class="dropdown">
     <a class="dropbtn">Settings</a>
     <div class="dropdown-content">
-      <a href="#">Function 1</a>
+      <a class="tablinks" href="#" onclick="openCity(event, 'passReset')">Password Reset</a>
       <a href="#">Function 2</a>
       <a href="#">Function 3</a>
     </div>
@@ -41,43 +41,30 @@
   </ul>
 </div>
 
-<div class="col-10 divAddUser allForm tabcontent" id="addNewUser">
-<form class="formAddUser" action="???.php">
-  <fieldset align="center">
-    <legend>User information:</legend>
-    <br>
-    <input placeholder="First name">
-    <br>
-    <br>
-    <input placeholder="Last name">
-    <br>
-    <br>
-    <input placeholder="Email address">
-    <br>
-    <br>
-    <input placeholder="Phone number">
-    <br>
-    <br>
-    <input placeholder="Company">
-    <br>
-    <br>
-    <input placeholder="Company Site Name">
-    <br>
-    <br>
-    <input placeholder="Company Job Title">
-    <br>
-    <br>
-    <input class="formAddBtn" type="submit" value="Add User">
-    <br>
-    <br>
-    <input class="formAddBtn" type="button" value="Cancel">
-    <br>
-    <br>
-  </fieldset>
-</form>
+<!-- new form -->
+
+<div class="col-14 divAddUser allform tabcontent" id="addNewUser">
+  <form action="/action_page.php">
+    <h4>User information</h4>
+    <label for="fname">First Name</label>
+    <input type="text" placeholder="Your name..">
+    <label for="lname">Last Name</label>
+    <input type="text" placeholder="Your last name..">
+    <label for="lname">Email address</label>
+    <input type="text" placeholder="Your email address..">
+    <label for="lname">Phone number</label>
+    <input type="text" placeholder="Your phone number..">
+    <label for="lname">Company Name</label>
+    <input type="text" placeholder="Your company name..">
+    <label for="lname">Company Site Name</label>
+    <input type="text" placeholder="Your company site name..">
+    <label for="lname">Company Job Title</label>
+    <input type="text" placeholder="Your company job title..">
+    <input type="submit" value="Submit">
+  </form>
 </div>
 
-<div class="col-13 divAddUser allForm tabcontent" id="modifyUser" style="overflow-x:auto;">
+<div class="col-13 alltable divAddUser tabcontent" id="modifyUser" style="overflow-x:auto;">
 
  <table>
   <tr>
@@ -91,38 +78,24 @@
   </tr>
   </table>
 
-
-
 </div>
 
-<div class="col-10 divAddUser allForm tabcontent" id="addCompany">
-<form class="formAddUser" action="???.php">
-  <fieldset align="center">
-    <legend>Company information:</legend>
-    <br>
-    <input placeholder="Company name">
-    <br>
-    <br>
-    <input placeholder="Company address">
-    <br>
-    <br>
-    <input placeholder="Company phone">
-    <br>
-    <br>
-    <input placeholder="Company URL">
-    <br>
-    <br>
-    <input class="formAddBtn" type="submit" value="Add Company">
-    <br>
-    <br>
-    <input class="formAddBtn" type="button" value="Cancel">
-    <br>
-    <br>
-  </fieldset>
-</form>
+<div class="col-14 divAddUser allform tabcontent" id="addCompany">
+  <form action="/action_page.php">
+    <h4>Company information</h4>
+    <label for="fname">Company Name</label>
+    <input type="text" placeholder="Company name..">
+    <label for="lname">Company Address</label>
+    <input type="text" placeholder="Company address..">
+    <label for="lname">Company Phone</label>
+    <input type="text" placeholder="Company phone..">
+    <label for="lname">Company URL</label>
+    <input type="text" placeholder="Company URL..">
+    <input type="submit" value="Submit">
+  </form>
 </div>
 
-<div class="col-13 divAddUser allForm tabcontent" id="modifyCompany" style="overflow-x:auto;">
+<div class="col-13 alltable divAddUser tabcontent" id="modifyCompany" style="overflow-x:auto;">
 
  <table>
   <tr>
@@ -133,7 +106,17 @@
   </tr>
   </table>
 
+</div>
 
+<div class="col-14 divAddUser allform tabcontent" id="passReset">
+  <form action="/action_page.php">
+    <h4>User information</h4>
+    <label for="fname">Old Password</label>
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password..">
+    <label for="fname">New Password</label>
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password..">
+    <input type="submit" value="Submit">
+  </form>
 </div>
 
 <!-- <div class="col-12 right">

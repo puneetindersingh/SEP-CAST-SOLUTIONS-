@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Admin | Cast Solution</title>
+ <link rel="stylesheet" href="css/mainPage.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+   
+<script type="text/javascript">
+$(document).ready(function(){
+
+     $("#addNewUser").hide();
+      $("#modifyUser").hide();
+      $("#addCompany").hide();
+      $("#modifyCompany").hide();
+  
+    $("#add1").click(function(){
+
+      $("#addNewUser").show();
+      $("#modifyUser").hide();
+      $("#addCompany").hide();
+      $("#modifyCompany").hide();
+    });
+    
+     $("#modify1").click(function(){
+
+        $("#addNewUser").hide();
+      $("#modifyUser").show();
+      $("#addCompany").hide();
+      $("#modifyCompany").hide();
+    });
+
+      $("#add2").click(function(){
+
+        $("#addNewUser").hide();
+      $("#modifyUser").hide();
+      $("#addCompany").show();
+      $("#modifyCompany").hide();
+    });
+
+      $("#modify2").click(function(){
+
+        $("#addNewUser").hide();
+      $("#modifyUser").hide();
+      $("#addCompany").hide();
+      $("#modifyCompany").show();
+    });
+    
+});
+
+
+
+
+ </script>
+</head>
+<body>
+
+<div class="row">
+
+<!-- top nav -->
+
+<div class="col-12 topnav" id="myTopnav">
+
+  <a id="logoleftTop"><img id="logo" src="LOGO-01.png"/></a>
+  <a href="#Admin" class="dropbtn">Admin</a>
+  <a href="#Qlik">Link to Qlik</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="topnav()">&#9776;</a>
+</div>
+
+<!-- side bar -->
+<div class="col-2 menu">
+  <ul>
+    <li class="tablinks" onclick="openCity(event, 'addNewUser')" id="add1">Add new user</li>
+    <li class="tablinks" onclick="openCity(event, 'modifyUser')" id="modify1">Modify user</li>
+    <li class="tablinks" onclick="openCity(event, 'addCompany')" id="add2">Add Company</li>
+    <li class="tablinks" onclick="openCity(event, 'modifyCompany')" id= "modify2">Modify Company</li>
+    <li>Help</li>
+    <li>Logout</li>
+    <li class="dropdown">
+    <a class="dropbtn">Settings</a>
+    <div class="dropdown-content">
+      <a class="tablinks" href="#" onclick="openCity(event, 'passReset')">Password Reset</a>
+      <a href="#">Function 2</a>
+      <a href="#">Function 3</a>
+    </div>
+  </li>
+  </ul>
+</div>
+
+<!-- new form -->
+
+<div class="col-14 divAddUser allform tabcontent" id="addNewUser">
+  <form action="/action_page.php">
+    <input id="searchBar" type="text" placeholder="Search user..">
+    <h4>User information</h4>
+    <label for="fname">First Name</label>
+    <input type="text" placeholder="Your name..">
+    <label for="lname">Last Name</label>
+    <input type="text" placeholder="Your last name..">
+    <label for="lname">Email address</label>
+    <input type="text" placeholder="Your email address..">
+    <label for="lname">Phone number</label>
+    <input type="text" placeholder="Your phone number..">
+    <label for="lname">Company Name</label>
+    <input type="text" placeholder="Your company name..">
+    <label for="lname">Company Site Name</label>
+    <input type="text" placeholder="Your company site name..">
+    <label for="lname">Company Job Title</label>
+    <input type="text" placeholder="Your company job title..">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<div class="col-13 alltable divAddUser tabcontent" id="modifyUser" style="overflow-x:auto;">
+
+ <table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email address</th>
+    <th>Phone</th>
+    <th>Company</th>
+    <th>Company Site Name</th>
+    <th>Company Job Title</th>
+  </tr>
+  </table>
+
+</div>
+
+<div class="col-14 divAddUser allform tabcontent" id="addCompany">
+  <form action="/action_page.php">
+    <input id="searchBar" type="text" placeholder="Search company..">
+    <h4>Company information</h4>
+    <label for="fname">Company Name</label>
+    <input type="text" placeholder="Company name..">
+    <label for="lname">Company Address</label>
+    <input type="text" placeholder="Company address..">
+    <label for="lname">Company Phone</label>
+    <input type="text" placeholder="Company phone..">
+    <label for="lname">Company URL</label>
+    <input type="text" placeholder="Company URL..">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<div class="col-13 alltable divAddUser tabcontent" id="modifyCompany" style="overflow-x:auto;">
+
+ <table>
+  <tr>
+    <th>Company Name</th>
+    <th>Company Address</th>
+    <th>Company Phone</th>
+    <th>PCompany URL</th>
+  </tr>
+  </table>
+
+</div>
+
+<div class="col-14 divAddUser allform tabcontent" id="passReset">
+  <form action="/action_page.php">
+    <h4>Password Reset</h4>
+    <label for="fname">Old Password</label>
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password..">
+    <label for="fname">New Password</label>
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password..">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+</div>
+
+</body>
+
+
+</html>

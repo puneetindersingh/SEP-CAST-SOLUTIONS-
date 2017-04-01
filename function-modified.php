@@ -5,7 +5,10 @@ if(isset($_POST['login'])){
     signin();
 }else if (isset($_POST['forget'])){
     forget();
+}else if (isset($_POST['display'])){
+    display();
 }
+
 function login(){
     include 'connect.php';
     $username = $_POST['username'];
@@ -102,5 +105,36 @@ else{
 
 }
 
+function display(){
+  include 'connect.php';
+  $username = $_POST['username'];
+
+  $sql = "";
+  $result = mysqli_query($conn,$sql);
+  echo "<table id='editable'>
+   <tr>
+     <th>First Name</th>
+     <th>Last Name</th>
+     <th>Email address</th>
+     <th>Phone</th>
+     <th>Company</th>
+     <th>Company Site Name</th>
+     <th>Company Job Title</th>
+   </tr>";
+   while($row=$result->fetch_assoc()){
+     echo "<tr>";
+     echo "<td contentEditable='true'>" . $row['Firstname'] . "</td>";
+     echo "<td contentEditable='true'>" . $row['Lastname'] . "</td>";
+     echo "<td contentEditable='true'>" . $row['Email'] . "</td>";
+     echo "<td contentEditable='true'>" . $row['Phone_Number'] . "</td>";
+     echo "<td contentEditable='true'>" . $row['Company'] . "</td>";
+     echo "<td contentEditable='true'>" . $row['Address_1'] . "</td>";
+     echo "<td contentEditable='true'>" . $row['Address_2'] . "</td>";
+     echo "</tr>";
+   }
+    echo "</table>";
+    echo "<input class='btn'  type='submit' value='modifyU' name='modifyU'/>";
+    mysqli_close($conn);
+}
 
 ?>

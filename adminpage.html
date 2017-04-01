@@ -6,7 +6,7 @@
  <link rel="stylesheet" href="css/mainPage.css">
  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
+<body onload="checkCookie()">
 
 <div class="row">
 
@@ -68,7 +68,7 @@
 
 <div class="col-13 alltable divAddUser tabcontent" id="modifyUser" style="overflow-x:auto;">
 
- <table>
+ <!-- <table>
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
@@ -78,7 +78,7 @@
     <th>Company Site Name</th>
     <th>Company Job Title</th>
   </tr>
-  </table>
+  </table> -->
 
 </div>
 
@@ -159,10 +159,74 @@ function openCity(evt, cityName) {
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+    if(cityName == "modifyUser"){
+      showTable();
+    }
 }
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 
+function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+	return "";
+}
+
+function checkCookie(){
+	var user=getCookie("username");
+	if (user!=""){
+		document.getElementById('admin').innerHTML = user;
+	}
+	else {
+    alert('no exist cookie!');
+	}
+}
+
+var xmlHttp;
+function showTable(){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "display=1&username="+document.getElementById('admin').value;
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChanged;
+ xmlHttp.send(params);
+}
+
+function stateChanged(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  document.getElementById('modifyUser').innerHTML=xmlHttp.responseText;
+ }
+}
+
+function GetXmlHttpObject(){
+var xmlHttp=null;
+try{
+ // Firefox, Opera 8.0+, Safari
+ xmlHttp=new XMLHttpRequest();
+ }
+catch (e){
+ //Internet Explorer
+ try{
+  xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+  }
+ catch (e){
+  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+ }
+return xmlHttp;
+}
 
 </script>
 </html>

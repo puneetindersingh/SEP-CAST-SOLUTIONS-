@@ -68,6 +68,7 @@ box-shadow: none;
 
 .menu {
    margin-top: 2px;
+   cursor: pointer;
 }
 .menu ul {
     list-style-type: none;
@@ -276,6 +277,3 @@ th {
     color: black;
 }
 
-.menu {
-    cursor: pointer;
-}

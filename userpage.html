@@ -196,6 +196,13 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
+ var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+ var myreg1 = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
+ if(!myreg.test(document.getElementById('emailAddress').value)){
+   alert("Please enter the correct email with '@' format!");
+ }else if(!myreg1.test(document.getElementById('phoneNo').value)){
+   alert("Please enter the Phone Number with '+61' at the front and 9 following numbers!");
+ }else{
  var url='function-modified.php';
  var params = "";
  params += "updateprofile=1&username="+document.getElementById('user').innerHTML+"&firstname="+document.getElementById('firstN').value
@@ -207,6 +214,7 @@ if (xmlHttp==null)
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforProfie;
  xmlHttp.send(params);
+}
 }
 
 function stateChangedforProfie(){

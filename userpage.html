@@ -6,8 +6,7 @@
  <link rel="stylesheet" href="css/mainPage.css">
  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
-
+<body onload="checkCookie()">
 <div class="row">
 
 <!-- top nav -->
@@ -15,7 +14,7 @@
 <div class="col-12 topnav" id="myTopnav">
 
   <a id="logoleftTop"><img id="logo" src="img/LOGO-01.png"/></a>
-  <a href="#User"><i class="material-icons md-18 blue">face</i> USER</a>
+  <a href="#User"><i class="material-icons md-18 blue">face</i> <b id="user">USER</b></a>
   <a href="#Qlik"> Qlik</a>
   <a href="#contact"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
   <a href="#about"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
@@ -49,19 +48,19 @@
   <form action="add_useree.php" method="post">
     <h4>User information</h4>
     <label for="fname">First Name</label>
-    <input type="text" placeholder="Your name.." required>
+    <input type="text" placeholder="Your name.." >
     <label for="lname">Last Name</label>
-    <input type="text" placeholder="Your last name.." required>
+    <input type="text" placeholder="Your last name..">
     <label for="lname">Email address</label>
-    <input type="email" placeholder="Your email address.." required>
+    <input type="text" placeholder="Your email address..">
     <label for="lname">Phone number</label>
-    <input type="text" placeholder="Your phone number.." required>
+    <input type="text" placeholder="Your phone number..">
     <label for="lname">Company Name</label>
-    <input type="text" placeholder="Your company name.." required>
+    <input type="text" placeholder="Your company name..">
     <label for="lname">Company Site Name</label>
-    <input type="text" placeholder="Your company site name.." required>
+    <input type="text" placeholder="Your company site name..">
     <label for="lname">Company Job Title</label>
-    <input type="text" placeholder="Your company job title.." required>
+    <input type="text" placeholder="Your company job title..">
     <input type="submit" name="edituser"value="Submit">
   </form>
 </div>
@@ -70,9 +69,9 @@
   <form action="add_user.php" method="post">
     <h4>Password Reset</h4>
     <label for="fname">Old Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password.." required>
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password..">
     <label for="fname">New Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password.." required>
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password..">
     <input type="submit" name="resetpassword" value="Submit">
   </form>
 </div>
@@ -119,6 +118,25 @@ function openCity(evt, cityName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 
+function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+	return "";
+}
+
+function checkCookie(){
+	var user=getCookie("username");
+	if (user!=""){
+		document.getElementById('user').innerHTML = user;
+	}
+	else {
+    alert('no exist cookie!');
+	}
+}
 
 </script>
 </html>

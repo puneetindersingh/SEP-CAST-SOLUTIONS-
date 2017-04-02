@@ -24,18 +24,18 @@
 				<!-- <h4 style="margin-top: 10px; margin-bottom: 10px;">Login</h4> -->
 				<img id="loginImg" src="img/login.png"/>
 			</div><br>
-            <form action="function-modified.php" method="POST">
 			<div class="login-form">
 				<div class="input-group">
 				<input type="text" class="login-field" name="username" placeholder="username" id="login-name" required><br><br>
 				<input type="password" class="login-field" name="password" placeholder="password" id="login-pass" required><br><br>
-				 <input class="btn"  type="submit" value="Login" name="login" />
+        <p id="test"></p>
+				 <input class="btn"  type="submit" value="Login" name="login" onclick="showHint()"/>
 				</div>
 
 				<!-- <a class="resetPassword-link" href="resetpassword.html">Forgot your password?</a> -->
 				<a id="forgotPass" onclick="myFunction1()" class="resetPassword-link">Forgot your password?</a>
 				<br>
-        </div></form>
+        </div>
 		</div>
 	</div>
 
@@ -151,9 +151,9 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     document.getElementById('test').innerHTML="Username or Password is Wrong,Please try again!";
     document.getElementById('login-pass').value="";
   }else if(xmlHttp.responseText=="admin"){
-    window.location = "./adminpage.php";
+    window.location = "./adminpage.html";
   }else if (xmlHttp.responseText=="user") {
-    window.location = "./userpage.php";
+    window.location = "./userpage.html";
   }
  }
 }

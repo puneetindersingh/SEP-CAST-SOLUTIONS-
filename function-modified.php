@@ -17,12 +17,12 @@ $sql = "SELECT * FROM user_details WHERE username='$username' AND password='$pas
 $result = $conn->query($sql);
 if($row=$result->fetch_assoc()){
     if($row['admin_status'] == 'Y'){
-      echo "<script> window.location = './adminpage.html';</script>";
+      echo "admin";
     }else{
-      echo "<script> window.location = './userpage.html';</script>";
+      echo "user";
     }
 }else{
-  echo "<script>alert('Username or Password is Wrong,Please try again'); window.location = './login.html';</script>";
+  echo "no";
 }
 }
 
@@ -110,7 +110,7 @@ function display(){
   include 'connect.php';
   $username = $_POST['username'];
 
-  $sql = "";
+  $sql = "SELECT * from customer";
   $result = mysqli_query($conn,$sql);
   echo "<table id='editable'>
    <tr>
@@ -131,6 +131,8 @@ function display(){
      echo "<td contentEditable='true'>" . $row['Company'] . "</td>";
      echo "<td contentEditable='true'>" . $row['Address_1'] . "</td>";
      echo "<td contentEditable='true'>" . $row['Address_2'] . "</td>";
+     echo "<td><i class='material-icons md-18 blue'> edit</i></td>";
+     echo "<td><i class='material-icons md-18 blue'> delete</i></td>";
      echo "</tr>";
    }
     echo "</table>";

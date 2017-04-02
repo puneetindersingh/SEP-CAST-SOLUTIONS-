@@ -137,7 +137,7 @@ box-shadow: none;
     font-size: 16px;
     background-color: white;
     /*background-image: url('images/key.png');*/
-    background-position: 10px 10px;
+    background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
@@ -276,3 +276,4 @@ th {
     background-color: #f5f5f5;
     color: black;
 }
+

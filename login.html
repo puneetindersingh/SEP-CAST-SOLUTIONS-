@@ -124,6 +124,57 @@ var hide = document.getElementById('login-pass');
 hide.addEventListener("click",function(){
   document.getElementById('test').innerHTML = "";
 });
+
+var xmlHttp;
+function showHint(){
+  setUsername();
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "login=1&username="+document.getElementById('login-name').value;
+ params += "&password="+document.getElementById('login-pass').value
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChanged;
+ xmlHttp.send(params);
+}
+
+function stateChanged(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  if(xmlHttp.responseText=="no"){
+    document.getElementById('test').innerHTML="Username or Password is Wrong,Please try again!";
+    document.getElementById('login-pass').value="";
+  }else if(xmlHttp.responseText=="admin"){
+    window.location = "./adminpage.php";
+  }else if (xmlHttp.responseText=="user") {
+    window.location = "./userpage.php";
+  }
+ }
+}
+
+function GetXmlHttpObject(){
+var xmlHttp=null;
+try{
+ // Firefox, Opera 8.0+, Safari
+ xmlHttp=new XMLHttpRequest();
+ }
+catch (e){
+ //Internet Explorer
+ try{
+  xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+  }
+ catch (e){
+  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+ }
+return xmlHttp;
+}
 </script>
 
 <!--   footer -->

@@ -17,7 +17,7 @@ $sql = "SELECT * FROM user_details WHERE username='$username' AND password='$pas
 $result = $conn->query($sql);
 if($row=$result->fetch_assoc()){
     if($row['admin_status'] == 'Y'){
-      echo "<script> window.location = './admin.html';</script>";
+      echo "<script> window.location = './adminpage.html';</script>";
     }else{
       echo "<script> window.location = './userpage.html';</script>";
     }

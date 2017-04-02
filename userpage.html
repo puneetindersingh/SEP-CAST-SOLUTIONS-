@@ -49,19 +49,19 @@
   <form action="add_useree.php" method="post">
     <h4>User information</h4>
     <label for="fname">First Name</label>
-    <input type="text" placeholder="Your name..">
+    <input type="text" placeholder="Your name.." required>
     <label for="lname">Last Name</label>
-    <input type="text" placeholder="Your last name..">
+    <input type="text" placeholder="Your last name.." required>
     <label for="lname">Email address</label>
-    <input type="text" placeholder="Your email address..">
+    <input type="email" placeholder="Your email address.." required>
     <label for="lname">Phone number</label>
-    <input type="text" placeholder="Your phone number..">
+    <input type="text" placeholder="Your phone number.." required>
     <label for="lname">Company Name</label>
-    <input type="text" placeholder="Your company name..">
+    <input type="text" placeholder="Your company name.." required>
     <label for="lname">Company Site Name</label>
-    <input type="text" placeholder="Your company site name..">
+    <input type="text" placeholder="Your company site name.." required>
     <label for="lname">Company Job Title</label>
-    <input type="text" placeholder="Your company job title..">
+    <input type="text" placeholder="Your company job title.." required>
     <input type="submit" name="edituser"value="Submit">
   </form>
 </div>
@@ -70,9 +70,9 @@
   <form action="add_user.php" method="post">
     <h4>Password Reset</h4>
     <label for="fname">Old Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password..">
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password.." required>
     <label for="fname">New Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password..">
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password.." required>
     <input type="submit" name="resetpassword" value="Submit">
   </form>
 </div>

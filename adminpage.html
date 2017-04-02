@@ -49,23 +49,23 @@
     <input id="searchBar" type="text" placeholder="Search user">
     <h4>User information</h4>
     <label for="fname">Username</label>
-    <input type="text" name="username" placeholder="User name" >
+    <input type="text" name="username" placeholder="User name" required>
     <label for="fname">Password</label>
-    <input type="text" name="password" placeholder="Password" >
+    <input type="text" name="password" placeholder="Password" required>
     <label for="fname">First Name</label>
-    <input type="text" name="fname" placeholder="Your name" >
+    <input type="text" name="fname" placeholder="Your name" required>
     <label for="lname">Last Name</label>
-    <input type="text" name="lname" placeholder="Your last name" >
+    <input type="text" name="lname" placeholder="Your last name" required>
     <label for="lname">Email address</label>
-    <input type="email" name="email" placeholder="Your email address" >
+    <input type="email" name="email" placeholder="Your email address" required>
     <label for="lname">Phone number</label>
-    <input type="text" name="phone" placeholder="Your phone number" >
+    <input type="text" name="phone" placeholder="Your phone number" required>
     <label for="lname">Company Name</label>
-    <input type="text" name="company" placeholder="Your company name" >
+    <input type="text" name="company" placeholder="Your company name" required>
     <label for="lname">Company WebSite</label>
-    <input type="text" name="url" placeholder="Your company site name" >
+    <input type="text" name="url" placeholder="Your company site name" required>
     <label for="lname">Company Job Title</label>
-    <input type="text"  name ="jobtitle" placeholder="Your company job title" >
+    <input type="text"  name ="jobtitle" placeholder="Your company job title" required>
     <input type="submit"  name="add_user" value="Add user">
   </form>
 </div>
@@ -93,13 +93,13 @@
     <input id="searchBar" type="text" placeholder="Search company..">
     <h4>Company information</h4>
     <label for="fname">Company Name</label>
-    <input type="text" name="name" placeholder="Company name">
+    <input type="text" name="name" placeholder="Company name" required>
     <label for="lname">Company Address</label>
-    <input type="text" name="address" placeholder="Company address">
+    <input type="text" name="address" placeholder="Company address" required>
     <label for="lname">Company Phone</label>
-    <input type="text" name="phone" placeholder="Company phone">
+    <input type="text" name="phone" placeholder="Company phone" required>
     <label for="lname">Company URL</label>
-    <input type="text" name="site" placeholder="Company URL">
+    <input type="text" name="site" placeholder="Company URL" required>
     <input type="submit" value="Add Company" name="add_company">
   </form>
 </div>
@@ -121,9 +121,9 @@
   <form action="/action_page.php">
     <h4>Password Reset</h4>
     <label for="fname">Old Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password..">
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password.."required>
     <label for="fname">New Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password..">
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password.."required>
     <input type="submit" value="Submit">
   </form>
 </div>

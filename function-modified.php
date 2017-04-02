@@ -47,6 +47,7 @@ function forget(){
 
 $result = mysqli_query($conn,$sql);
 $check = mysqli_num_rows($result);
+
 if($check==1){
 
     $character = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
@@ -62,8 +63,8 @@ if($check==1){
        $mail->isSMTP();                                   // Set mailer to use SMTP
        $mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
        $mail->SMTPAuth = true;                            // Enable SMTP authentication
-       $mail->Username = 'pengzhang1925@gmail.com';          // SMTP username
-       $mail->Password = 'Your password'; // SMTP password
+       $mail->Username = 'puneetindersingh@gmail.com';          // SMTP username
+       $mail->Password = 'your password'; // SMTP password
        $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
        $mail->Port = 587;// TCP port to connect to
       //  $mail->SMTPDebug  = 4;       //For debug the server connection

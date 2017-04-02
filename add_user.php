@@ -12,9 +12,8 @@ if(isset($_POST['add_user'])){
       $jobtitle=$_POST['jobtitle'];
       $admin_status='N';
       $sql = "INSERT INTO user_details(username,firstname,lastname,email,phone,companysite,jobtitle,company,password,admin_status)
-       VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', ''$password, '$admin_status')";
-      $result = $conn->query($sql);
-      if ($conn->query($sql) === TRUE) {
+       VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', '$password', '$admin_status')";
+    if ($conn->query($sql) === TRUE) {
 
     echo "<script>alert('New user added $result'); window.location = './adminpage.html';</script>";
 } else {

@@ -14,7 +14,7 @@
 <div class="col-12 topnav" id="myTopnav">
 
   <a id="logoleftTop"><img id="logo" src="img/LOGO-01.png"/></a>
-  <a href="#User"><i class="material-icons md-18 blue">face</i> <b id="user">USER</b></a>
+  <a href="#User"><i class="material-icons md-18 blue">face</i> <text id="user">USER</text></a>
   <a href="#Qlik"> Qlik</a>
   <a href="#contact"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
   <a href="#about"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
@@ -45,24 +45,22 @@
 
 
 <div class="col-14 divAddUser allform tabcontent" id="modifyProfile">
-  <form action="add_useree.php" method="post">
     <h4>User information</h4>
     <label for="fname">First Name</label>
-    <input type="text" placeholder="Your name.." >
+    <input type="text" placeholder="Your name.." id="firstN">
     <label for="lname">Last Name</label>
-    <input type="text" placeholder="Your last name..">
+    <input type="text" placeholder="Your last name.." id="lastN">
     <label for="lname">Email address</label>
-    <input type="text" placeholder="Your email address..">
+    <input type="text" placeholder="Your email address.." id="emailAddress">
     <label for="lname">Phone number</label>
-    <input type="text" placeholder="Your phone number..">
+    <input type="text" placeholder="Your phone number.." id="phoneNo">
     <label for="lname">Company Name</label>
-    <input type="text" placeholder="Your company name..">
+    <input type="text" placeholder="Your company name.." id="companyN">
     <label for="lname">Company Site Name</label>
-    <input type="text" placeholder="Your company site name..">
+    <input type="text" placeholder="Your company site name.." id="companySite">
     <label for="lname">Company Job Title</label>
-    <input type="text" placeholder="Your company job title..">
-    <input type="submit" name="edituser"value="Submit">
-  </form>
+    <input type="text" placeholder="Your company job title.." id="jobTitle">
+    <input type="submit" name="edituser"value="Submit" onclick="updateProfile()">
 </div>
 
 <div class="col-14 divAddUser allform tabcontent" id="passReset">
@@ -114,6 +112,9 @@ function openCity(evt, cityName) {
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+    if(cityName == "modifyProfile"){
+      showProfile();
+    }
 }
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
@@ -136,6 +137,82 @@ function checkCookie(){
 	else {
     alert('no exist cookie!');
 	}
+}
+
+var xmlHttp;
+function showProfile(){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "profile=1&username="+document.getElementById('user').innerHTML;
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChanged;
+ xmlHttp.send(params);
+}
+
+function stateChanged(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  var str=xmlHttp.responseText;
+  var obj = eval('(' + str + ')');
+  document.getElementById('firstN').value = obj.firstname;
+  document.getElementById('lastN').value = obj.lastname;
+  document.getElementById('emailAddress').value = obj.email;
+  document.getElementById('phoneNo').value = obj.phone;
+  document.getElementById('companyN').value = obj.company;
+  document.getElementById('companySite').value = obj.companysite;
+  document.getElementById('jobTitle').value = obj.jobtitle;
+ }
+}
+
+function GetXmlHttpObject(){
+var xmlHttp=null;
+try{
+ // Firefox, Opera 8.0+, Safari
+ xmlHttp=new XMLHttpRequest();
+ }
+catch (e){
+ //Internet Explorer
+ try{
+  xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+  }
+ catch (e){
+  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+ }
+return xmlHttp;
+}
+
+function updateProfile(){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "updateprofile=1&username="+document.getElementById('user').innerHTML+"&firstname="+document.getElementById('firstN').value
+ +"&lastname="+document.getElementById('lastN').value+"&email="+document.getElementById('emailAddress').value
+ +"&phone="+document.getElementById('phoneNo').value+"&companyname="+document.getElementById('companyN').value
+ +"&companysite="+document.getElementById('companySite').value+"&jobtitle="+document.getElementById('jobTitle').value;
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforProfie;
+ xmlHttp.send(params);
+}
+
+function stateChangedforProfie(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  alert(xmlHttp.responseText);
+ }
 }
 
 </script>

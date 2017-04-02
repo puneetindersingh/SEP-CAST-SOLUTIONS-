@@ -45,11 +45,12 @@
 <!-- new form -->
 
 <div class="col-14 divAddUser allform tabcontent" id="addNewUser">
-  <form action="add_user.php" method="POST">
+  <form action="add_user.php" onsubmit="return validateForm() " method="POST">
     <input id="searchBar" type="text" placeholder="Search user">
     <h4>User information</h4>
     <label for="fname">Username</label>
     <input type="text" name="username" placeholder="User name" required>
+<<<<<<< Updated upstream
     <label for="fname">Password</label>
     <input type="text" name="password" placeholder="Password" required>
     <label for="fname">First Name</label>
@@ -64,6 +65,30 @@
     <input type="text" name="company" placeholder="Your company name" required>
     <label for="lname">Company WebSite</label>
     <input type="text" name="url" placeholder="Your company site name" required>
+=======
+
+    <label for="fname">Password</label>
+    <input type="text" name="password" placeholder="Password" required>
+
+    <label for="fname">First Name</label>
+    <input type="text" name="fname" placeholder="Your name" required>
+
+    <label for="lname">Last Name</label>
+    <input type="text" name="lname" placeholder="Your last name" required>
+
+    <label for="lname">Email address</label>
+    <input type="email" name="email" placeholder="Your email address" required>
+
+    <label for="lname">Phone number</label>
+    <input type="text" name="phone" placeholder="Your phone number" required>
+
+    <label for="lname">Company Name</label>
+    <input type="text" name="company" placeholder="Your company name" required>
+
+    <label for="lname">Company WebSite</label>
+    <input type="text" name="url" placeholder="Your company site name" required>
+
+>>>>>>> Stashed changes
     <label for="lname">Company Job Title</label>
     <input type="text"  name ="jobtitle" placeholder="Your company job title" required>
     <input type="submit"  name="add_user" value="Add user">

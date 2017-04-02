@@ -12,6 +12,7 @@ add();
       $site = $_POST['site'];
      $sql = "INSERT INTO company(name,address,phone,site) VALUES('$name','$address','$phone','$site')";
       $result = $conn->query($sql);
+      
       echo "<script>alert('Company added'); window.location = './userpage.html';</script>";
       }
 

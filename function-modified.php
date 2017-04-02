@@ -9,6 +9,8 @@ if(isset($_POST['login'])){
     display();
 }
 
+
+
 function login(){
     include 'connect.php';
     $username = $_POST['username'];

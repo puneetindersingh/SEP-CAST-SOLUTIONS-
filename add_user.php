@@ -1,4 +1,13 @@
 <?php
+function validateForm() {
+    var x = document.forms["add_user.php"]["username"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+}
+
+
 if(isset($_POST['add_user'])){
   include 'connect.php';
       $username=$_POST['username'];
@@ -11,6 +20,7 @@ if(isset($_POST['add_user'])){
       $url=$_POST['url'];
       $jobtitle=$_POST['jobtitle'];
       $admin_status='N';
+
       $sql = "INSERT INTO user_details(username,firstname,lastname,email,phone,companysite,jobtitle,company,password,admin_status)
        VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', '$password', '$admin_status')";
     if ($conn->query($sql) === TRUE) {
@@ -27,6 +37,7 @@ if(isset($_POST['add_user'])){
 include 'connect.php';
     $oldpassword=$_POST['oldpassword'];
     $newpassword=$_POST['newpassword'];
+
 
 
   }

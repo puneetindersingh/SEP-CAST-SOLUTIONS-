@@ -22,10 +22,19 @@ if(isset($_POST['add_user'])){
 }
 
   }
+  if(isset($_POST['resetpassword']))
+  {
+include 'connect.php';
+    $oldpassword=$_POST['oldpassword'];
+    $newpassword=$_POST['newpassword'];
+
+
+  }
   else{
   echo "<script>alert('No data Found'); window.location = './adminpage.html';</script>";
 
   }
+
 
 
     ?>

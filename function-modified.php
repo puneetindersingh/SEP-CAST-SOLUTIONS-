@@ -13,7 +13,7 @@ function login(){
     include 'connect.php';
     $username = $_POST['username'];
     $password = $_POST['password'];
-$sql = "SELECT * FROM user WHERE username='$username' AND password='$password' ";
+$sql = "SELECT * FROM user_details WHERE username='$username' AND password='$password' ";
 $result = $conn->query($sql);
 if($row=$result->fetch_assoc()){
     if($row['admin_status'] == 'Y'){
@@ -32,7 +32,7 @@ include 'connect.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 $email = $_POST['email'];
-$sql = "INSERT INTO user(username,password,email) VALUES('$username','$password','$email')";
+$sql = "INSERT INTO user_details(username,password,email) VALUES('$username','$password','$email')";
 $result = $conn->query($sql);
     echo "record inserted";
 }
@@ -43,7 +43,7 @@ function forget(){
     $username = $_POST['username'];
     $email = $_POST['email'];
 
-    $sql = "SELECT username,email FROM user WHERE email= '$email' AND username = '$username'";
+    $sql = "SELECT username,email FROM user_details WHERE email= '$email' AND username = '$username'";
 
 $result = mysqli_query($conn,$sql);
 $check = mysqli_num_rows($result);
@@ -52,7 +52,7 @@ if($check==1){
     $character = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
     $random=substr(str_shuffle($character),0,8);
     echo $random;
-     $sql1 = "UPDATE user SET password='$random' WHERE email= '$email' AND username = '$username'";
+     $sql1 = "UPDATE user_details SET password='$random' WHERE email= '$email' AND username = '$username'";
      if ($conn->query($sql1) === TRUE) {
        require 'class.smtp.php';
        require 'class.phpmailer.php';

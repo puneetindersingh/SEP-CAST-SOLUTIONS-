@@ -66,12 +66,12 @@
 </div>
 
 <div class="col-14 divAddUser allform tabcontent" id="passReset">
-  <form action="add_user.php" method="post">
+  <form action="add_user.php" method="POST">
     <h4>Password Reset</h4>
     <label for="fname">Old Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password..">
+    <input type="password"  name="oldpassword" placeholder="Your old password">
     <label for="fname">New Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password..">
+    <input type="password"  name="newpassword" placeholder="Your new password">
     <input type="submit" name="resetpassword" value="Submit">
   </form>
 </div>

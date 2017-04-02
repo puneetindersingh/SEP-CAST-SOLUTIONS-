@@ -30,7 +30,7 @@
     <li class="tablinks" onclick="openCity(event, 'addCompany')"><i class="material-icons md-18 blue">note_add</i> Add Company</li>
     <li class="tablinks" onclick="openCity(event, 'modifyCompany')"><i class="material-icons md-18 blue">assignment</i> Modify Company</li>
     <li><i class="material-icons md-18 blue">help</i> Help</li>
-    <li><i class="material-icons md-18 blue">power_settings_new</i> Logout</li>
+<li> <i class="material-icons md-18 blue">power_settings_new</i><a href="login.html" style="text-decoration: none;  color: black; "> Log Out</a></li>
     <li class="dropdown">
     <a class="dropbtn"><i class="material-icons md-18 blue">settings_applications</i> Settings</a>
     <div class="dropdown-content">
@@ -45,26 +45,31 @@
 <!-- new form -->
 
 <div class="col-14 divAddUser allform tabcontent" id="addNewUser">
-  <form action="/action_page.php">
-    <input id="searchBar" type="text" placeholder="Search user..">
+  <form action="add_user.php" method="POST">
+    <input id="searchBar" type="text" placeholder="Search user">
     <h4>User information</h4>
+    <label for="fname">Username</label>
+    <input type="text" name="username" placeholder="User name" >
+    <label for="fname">Password</label>
+    <input type="text" name="password" placeholder="Password" >
     <label for="fname">First Name</label>
-    <input type="text" placeholder="Your name..">
+    <input type="text" name="fname" placeholder="Your name" >
     <label for="lname">Last Name</label>
-    <input type="text" placeholder="Your last name..">
+    <input type="text" name="lname" placeholder="Your last name" >
     <label for="lname">Email address</label>
-    <input type="text" placeholder="Your email address..">
+    <input type="text" name="email" placeholder="Your email address" >
     <label for="lname">Phone number</label>
-    <input type="text" placeholder="Your phone number..">
+    <input type="text" name="phone" placeholder="Your phone number" >
     <label for="lname">Company Name</label>
-    <input type="text" placeholder="Your company name..">
-    <label for="lname">Company Site Name</label>
-    <input type="text" placeholder="Your company site name..">
+    <input type="text" name="company" placeholder="Your company name" >
+    <label for="lname">Company WebSite</label>
+    <input type="text" name="url" placeholder="Your company site name" >
     <label for="lname">Company Job Title</label>
-    <input type="text" placeholder="Your company job title..">
-    <input type="submit" value="Submit">
+    <input type="text"  name ="jobtitle" placeholder="Your company job title" >
+    <input type="submit"  name="add_user" value="Add user">
   </form>
 </div>
+
 
 <div class="col-13 alltable divAddUser tabcontent" id="modifyUser" style="overflow-x:auto;">
 
@@ -82,19 +87,20 @@
 
 </div>
 
+
 <div class="col-14 divAddUser allform tabcontent" id="addCompany">
-  <form action="/action_page.php">
+  <form action="add_company.php" method="POST">
     <input id="searchBar" type="text" placeholder="Search company..">
     <h4>Company information</h4>
     <label for="fname">Company Name</label>
-    <input type="text" placeholder="Company name..">
+    <input type="text" name="name" placeholder="Company name">
     <label for="lname">Company Address</label>
-    <input type="text" placeholder="Company address..">
+    <input type="text" name="address" placeholder="Company address">
     <label for="lname">Company Phone</label>
-    <input type="text" placeholder="Company phone..">
+    <input type="text" name="phone" placeholder="Company phone">
     <label for="lname">Company URL</label>
-    <input type="text" placeholder="Company URL..">
-    <input type="submit" value="Submit">
+    <input type="text" name="site" placeholder="Company URL">
+    <input type="submit" value="Add Company" name="add_company">
   </form>
 </div>
 

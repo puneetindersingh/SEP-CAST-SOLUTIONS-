@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $('input[type="radio"]').click(function(){
+
+
+ if($(this).attr('value') == 'admin') {
+
+   $('#userRadio').hide();
+
+ }else
+ {
+
+  $('#userRadio').show();
+ }
+    });
+
+
+});
+
+
+
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Admin | Cast Solution</title>
  <link rel="stylesheet" href="css/mainPage.css">
@@ -48,6 +73,12 @@
   <form action="add_user.php" method="POST">
     <input id="searchBar" type="text" placeholder="Search user">
     <h4>User information</h4>
+	  
+	    	<label for="fname">Member Type</label> <br>
+    <input type="radio"  id= "admin" name="member" value="admin"> <label><b>Admin</b></label>
+    <input type="radio"  id="user" name="member" value="user"> <label><b>User</b></label><br><br>
+	  
+	  
     <label for="fname">Username</label>
     <input type="text" name="username" placeholder="User name" required>
     <label for="fname">Password</label>
@@ -60,12 +91,15 @@
     <input type="text" name="email" placeholder="Your email address" required>
     <label for="lname">Phone number</label>
     <input type="text" name="phone" placeholder="Your phone number" required>
+	  
+	  <div id="userRadio">
     <label for="lname">Company Name</label>
     <input type="text" name="company" placeholder="Your company name" required>
     <label for="lname">Company WebSite</label>
     <input type="text" name="url" placeholder="Your company site name" required>
     <label for="lname">Company Job Title</label>
     <input type="text"  name ="jobtitle" placeholder="Your company job title" required>
+	  </div>
     <input type="submit"  name="add_user" value="Add user">
   </form>
 </div>
@@ -92,6 +126,8 @@
   <form action="add_company.php" method="POST">
     <input id="searchBar" type="text" placeholder="Search company..">
     <h4>Company information</h4>
+  
+	  
     <label for="fname">Company Name</label>
     <input type="text" name="name" placeholder="Company name" required>
     <label for="lname">Company Address</label>

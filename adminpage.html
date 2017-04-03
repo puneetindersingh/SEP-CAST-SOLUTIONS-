@@ -15,7 +15,7 @@
 <div class="col-12 topnav" id="myTopnav">
 
   <a id="logoleftTop"><img id="logo" src="img/LOGO-01.png"/></a>
-  <a href="#Admin"><i class="material-icons md-18 blue">account_box</i> ADMIN</a>
+  <a href="#Admin"><i class="material-icons md-18 blue">account_box</i><text id="admin"> ADMIN</text></a>
   <a href="#Qlik">Qlik</a>
   <a href="#contact"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
   <a href="#about"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
@@ -152,7 +152,6 @@ function topnav() {
         x.className = "col-12 topnav";
     }
 }
-
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -171,7 +170,6 @@ function openCity(evt, cityName) {
 }
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
-
 function getCookie(cname){
 	var name = cname + "=";
 	var ca = document.cookie.split(';');
@@ -181,7 +179,6 @@ function getCookie(cname){
 	}
 	return "";
 }
-
 function checkCookie(){
 	var user=getCookie("username");
 	if (user!=""){
@@ -190,7 +187,6 @@ function checkCookie(){
 	else {
   }
 }
-
 var xmlHttp;
 function showTable(){
   xmlHttp = GetXmlHttpObject();
@@ -208,13 +204,11 @@ if (xmlHttp==null)
  xmlHttp.onreadystatechange=stateChanged;
  xmlHttp.send(params);
 }
-
 function stateChanged(){
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   document.getElementById('modifyUser').innerHTML=xmlHttp.responseText;
  }
 }
-
 function GetXmlHttpObject(){
 var xmlHttp=null;
 try{
@@ -233,5 +227,79 @@ catch (e){
 return xmlHttp;
 }
 
+var row = 0 ;
+var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+var myreg1 = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
+function getRow(r){
+  var i = r.parentNode.rowIndex;
+  return i;
+}
+
+function InfobyRow(r){
+  var arr = new Array();
+ for(var m=0 ; m<7;m++){
+  arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
+ }
+ return arr ;
+}
+
+function delRow(r){
+  row = getRow(r);
+  var arr = new Array();
+  // arr = InfobyRow(row);
+  if(confirm("Are you sure to delete this user?")){
+    document.getElementById('editable').deleteRow(row);
+  }
+}
+
+function updateRow(r){
+  var row = getRow(r);
+}
+
+function deleteUser(username){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "delete=1&username="+username;
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforDel;
+ xmlHttp.send(params);
+}
+
+function stateChangedforDel(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  alert(xmlHttp.responseText);
+ }
+}
+
+function editUser(username){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "delete=1&username="+username;
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforEdit;
+ xmlHttp.send(params);
+}
+
+function stateChangedforEdit(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  alert(xmlHttp.responseText);
+ }
+}
 </script>
 </html>

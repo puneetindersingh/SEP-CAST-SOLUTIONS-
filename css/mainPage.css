@@ -288,3 +288,26 @@ input[type="radio"] + label{
     
 }
 
+.filterCompany {
+display: inline-block;
+
+}
+
+
+.filterCompany input[type=submit] {
+    background-color: #24427b;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height:35px;
+}
+
+
+select,option{
+
+width:50px;
+
+}
+

@@ -11,6 +11,12 @@ if(isset($_POST['login'])){
     profile();
 }else if(isset($_POST['updateprofile'])){
     updateprofile();
+}else if(isset($_POST['delete'])){
+    deleteUser();
+}else if(isset($_POST['edit'])){
+    editUser();
+}else if(isset($_POST['getCompany'])){
+    getCompany();
 }
 
 function login(){
@@ -47,7 +53,7 @@ function forget(){
     $username = $_POST['username'];
     $email = $_POST['email'];
 
-    $sql = "SELECT username,email FROM user_details WHERE email= '$email' AND username = '$username'";
+    $sql = "SELECT username,email FROM customer WHERE email= '$email' AND username = '$username'";
 
 $result = mysqli_query($conn,$sql);
 $check = mysqli_num_rows($result);
@@ -57,7 +63,7 @@ if($check==1){
     $character = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
     $random=substr(str_shuffle($character),0,8);
     echo $random;
-     $sql1 = "UPDATE user_details SET password='$random' WHERE email= '$email' AND username = '$username'";
+     $sql1 = "UPDATE user SET password='$random' WHERE  username = '$username'";
      if ($conn->query($sql1) === TRUE) {
        require 'class.smtp.php';
        require 'class.phpmailer.php';
@@ -67,8 +73,8 @@ if($check==1){
        $mail->isSMTP();                                   // Set mailer to use SMTP
        $mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
        $mail->SMTPAuth = true;                            // Enable SMTP authentication
-       $mail->Username = 'puneetindersingh@gmail.com';          // SMTP username
-       $mail->Password = 'your password'; // SMTP password
+       $mail->Username = 'pengzhang1925@gmail.com';          // SMTP username
+       $mail->Password = 'QQ0819xy'; // SMTP password
        $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
        $mail->Port = 587;// TCP port to connect to
       //  $mail->SMTPDebug  = 4;       //For debug the server connection
@@ -110,14 +116,26 @@ else{
 
 }
 
+function getCompany(){
+  include 'connect.php';
+  $sql = "SELECT DISTINCT Company FROM customer";
+  $result = mysqli_query($conn,$sql);
+  while($row = $result -> fetch_assoc()){
+      echo $row['Company'].",";
+  }
+}
+
 function display(){
   include 'connect.php';
-  $username = $_POST['username'];
+  $companyN = $_POST['companyN'];
 
-  $sql = "SELECT * from customer";
+  $sql = "SELECT * from customer WHERE Company='$companyN'";
   $result = mysqli_query($conn,$sql);
-  echo "<table id='editable'>
+  echo "
+
+  <table id='editable'>
    <tr>
+     <th>Username</th>
      <th>First Name</th>
      <th>Last Name</th>
      <th>Email address</th>
@@ -125,9 +143,12 @@ function display(){
      <th>Company</th>
      <th>Company Site Name</th>
      <th>Company Job Title</th>
+     <th></th>
+     <th></th>
    </tr>";
    while($row=$result->fetch_assoc()){
      echo "<tr>";
+     echo "<td contentEditable='true'>" . $row['Username'] . "</td>";
      echo "<td contentEditable='true'>" . $row['Firstname'] . "</td>";
      echo "<td contentEditable='true'>" . $row['Lastname'] . "</td>";
      echo "<td contentEditable='true'>" . $row['Email'] . "</td>";
@@ -135,12 +156,11 @@ function display(){
      echo "<td contentEditable='true'>" . $row['Company'] . "</td>";
      echo "<td contentEditable='true'>" . $row['Address_1'] . "</td>";
      echo "<td contentEditable='true'>" . $row['Address_2'] . "</td>";
-     echo "<td><i class='material-icons md-18 blue'> edit</i></td>";
-     echo "<td><i class='material-icons md-18 blue'> delete</i></td>";
+     echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> edit</i></td>";
+     echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
      echo "</tr>";
    }
     echo "</table>";
-    echo "<input class='btn'  type='submit' value='modifyU' name='modifyU'/>";
     mysqli_close($conn);
 }
 
@@ -166,13 +186,50 @@ function updateprofile(){
   $companyS = $_POST['companysite'];
   $jobtitle = $_POST['jobtitle'];
 
-  $sql = "UPDATE user_details SET firstname='$firstN' ,lastname='$lastN' ,email='$email' ,phone='$phone' ,company='$companyN' ,companysite='$companyS' ,jobtitle='$jobtitle' where username='$username'";
+  $sql = "UPDATE user_details SET firstname='$firstN' ,lastname='$lastN' ,Email='$email' ,phone='$phone' ,company='$companyN' ,companysite='$companyS' ,jobtitle='$jobtitle' where username='$username'";
   $result = mysqli_query($conn,$sql);
   if($result){
     echo "Profile Updated!!";
   }else{
     echo "Failed to Update Profile!!";
   }
+  mysqli_close($conn);
+}
+
+function deleteUser(){
+  include 'connect.php';
+  $username = $_POST['username'];
+
+  $sql = "DELETE from customer WHERE Username='$username' ";
+  $result = mysqli_query($conn,$sql);
+  if($result){
+    echo "Delete Successfully!!";
+  }else{
+    echo "Delete Failed, Please check your database setting!";
+  }
+  mysqli_close($conn);
+}
+
+function editUser(){
+  include 'connect.php';
+  $username = $_POST['username'];
+  $firstN = $_POST['firstname'];
+  $lastN = $_POST['lastname'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $companyN = $_POST['companyname'];
+  $companyS = $_POST['companysite'];
+  $jobtitle = $_POST['jobtitle'];
+
+  $sql = "UPDATE customer SET Firstname='$firstN' ,Lastname='$lastN' ,Email='$email' ,Phone_Number='$phone' ,Company='$companyN' ,Address_1='$companyS' ,Address_2='$jobtitle' where username='$username'";
+  $result = mysqli_query($conn,$sql);
+  if($result){
+    echo "User Modified!!";
+  }else{
+    echo "Failed to modify User!!";
+  }
+  mysqli_close($conn);
+
 }
 
 ?>

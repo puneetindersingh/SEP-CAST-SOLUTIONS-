@@ -45,7 +45,7 @@ $(document).ready(function(){
   <a href="#Admin"><i class="material-icons md-18 blue">account_box</i><text id="admin"> ADMIN</text></a>
   <a href="#Qlik">Qlik</a>
   <a class="tablinks" onclick="openCity(event, 'contact')"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
-  <a href="#about"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
+  <a class="tablinks" onclick="openCity(event, 'aboutform')"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="topnav()">&#9776;</a>
 </div>
 
@@ -70,7 +70,6 @@ $(document).ready(function(){
 </div>
 
 <!-- new form -->
-
 <div class="col-14 divAddUser allform tabcontent" id="addNewUser">
   <form action="add_user.php" method="POST">
     <input id="searchBar" type="text" placeholder="Search user">
@@ -82,25 +81,25 @@ $(document).ready(function(){
 	  
 	  
     <label for="fname">Username</label>
-    <input type="text" name="username" placeholder="User name" required>
+    <input type="text" name="username" placeholder="User name.." required>
     <label for="fname">Password</label>
-    <input type="text" name="password" placeholder="Password" required>
+    <input type="text" name="password" placeholder="Password.." required>
     <label for="fname">First Name</label>
-    <input type="text" name="fname" placeholder="Your name" required>
+    <input type="text" name="fname" placeholder="Your name.." required>
     <label for="lname">Last Name</label>
-    <input type="text" name="lname" placeholder="Your last name" required>
+    <input type="text" name="lname" placeholder="Your last name.." required>
     <label for="lname">Email address</label>
-    <input type="text" name="email" placeholder="Your email address" required>
+    <input type="text" name="email" placeholder="Your email address.." required>
     <label for="lname">Phone number</label>
-    <input type="text" name="phone" placeholder="Your phone number" required>
+    <input type="text" name="phone" placeholder="Your phone number.." required>
 	  
 	  <div id="userRadio">
     <label for="lname">Company Name</label>
-    <input type="text" name="company" placeholder="Your company name" required>
+    <input type="text" name="company" placeholder="Your company name.." required>
     <label for="lname">Company WebSite</label>
-    <input type="text" name="url" placeholder="Your company site name" required>
+    <input type="text" name="url" placeholder="Your company site name.." required>
     <label for="lname">Company Job Title</label>
-    <input type="text"  name ="jobtitle" placeholder="Your company job title" required>
+    <input type="text"  name ="jobtitle" placeholder="Your company job title.." required>
 	  </div>
     <input type="submit"  name="add_user" value="Add user">
   </form>
@@ -131,13 +130,13 @@ $(document).ready(function(){
   
 	  
     <label for="fname">Company Name</label>
-    <input type="text" name="name" placeholder="Company name" required>
+    <input type="text" name="name" placeholder="Company name.." required>
     <label for="lname">Company Address</label>
-    <input type="text" name="address" placeholder="Company address" required>
+    <input type="text" name="address" placeholder="Company address.." required>
     <label for="lname">Company Phone</label>
-    <input type="text" name="phone" placeholder="Company phone" required>
+    <input type="text" name="phone" placeholder="Company phone.." required>
     <label for="lname">Company URL</label>
-    <input type="text" name="site" placeholder="Company URL" required>
+    <input type="text" name="site" placeholder="Company URL.." required>
     <input type="submit" value="Add Company" name="add_company">
   </form>
 </div>
@@ -195,6 +194,50 @@ $(document).ready(function(){
     <textarea rows="10" type="text" placeholder="..."required></textarea>
     <input type="submit" value="Submit">
   </form>
+</div>
+
+<!-- About form -->
+<div class="col-14 divAddUser allform tabcontent" id="aboutform">
+
+  <div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Jane Doe</h2>
+        <p class="title">CEO & Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+      <div class="container">
+        <h2>Mike Ross</h2>
+        <p class="title">Art Director</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team3.jpg" alt="John" style="width:100%">
+      <div class="container">
+        <h2>John Doe</h2>
+        <p class="title">Designer</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 <!-- <div class="col-12 right">

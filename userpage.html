@@ -16,7 +16,7 @@
   <a id="logoleftTop"><img id="logo" src="img/LOGO-01.png"/></a>
   <a href="#User"><i class="material-icons md-18 blue">face</i> <text id="user">USER</text></a>
   <a href="#Qlik"> Qlik</a>
-  <a href="#contact"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
+  <a class="tablinks" onclick="openCity(event, 'contact')"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
   <a href="#about"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="topnav()">&#9776;</a>
 </div>
@@ -71,6 +71,23 @@
     <label for="fname">New Password</label>
     <input type="password"  name="newpassword" placeholder="Your new password">
     <input type="submit" name="resetpassword" value="Submit">
+  </form>
+</div>
+
+
+ <!-- contact form -->
+<div class="col-14 divAddUser allform tabcontent" id="contact">
+  <form action="/action_page.php">
+    <h4>Contact Us</h4>
+    <label for="fname">Name</label>
+    <input type="text" placeholder="Your name"required>
+    <label for="fname">Email</label>
+    <input type="email" placeholder="Your email"required>
+    <label for="fname">Subject</label>
+    <input type="text" placeholder="Subject"required>
+    <label for="fname">Message</label>
+    <textarea rows="10" type="text" placeholder="..."required></textarea>
+    <input type="submit" value="Submit">
   </form>
 </div>
 

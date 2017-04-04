@@ -44,7 +44,7 @@ $(document).ready(function(){
   <a id="logoleftTop"><img id="logo" src="img/LOGO-01.png"/></a>
   <a href="#Admin"><i class="material-icons md-18 blue">account_box</i><text id="admin"> ADMIN</text></a>
   <a href="#Qlik">Qlik</a>
-  <a href="#contact"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
+  <a class="tablinks" onclick="openCity(event, 'contact')"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
   <a href="#about"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="topnav()">&#9776;</a>
 </div>
@@ -78,7 +78,7 @@ $(document).ready(function(){
 	  
 	    	<label for="fname">Member Type</label> <br>
     <input type="radio"  id= "admin" name="member" value="admin" checked> <label><b>Admin</b></label>
-    <input type="radio"  id="user" name="member" value="user"> <label><b>User</b></label><br><br>
+    <input type="radio"  id="user" name="member" value="user"><label><b>User</b></label><br><br>
 	  
 	  
     <label for="fname">Username</label>
@@ -159,9 +159,25 @@ $(document).ready(function(){
   <form action="/action_page.php">
     <h4>Password Reset</h4>
     <label for="fname">Old Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password.."required>
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your old password"required>
     <label for="fname">New Password</label>
-    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password.."required>
+    <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password"required>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+ <!-- contact form -->
+<div class="col-14 divAddUser allform tabcontent" id="contact">
+  <form action="/action_page.php">
+    <h4>Contact Us</h4>
+    <label for="fname">Name</label>
+    <input type="text" placeholder="Your name"required>
+    <label for="fname">Email</label>
+    <input type="email" placeholder="Your email"required>
+    <label for="fname">Subject</label>
+    <input type="text" placeholder="Subject"required>
+    <label for="fname">Message</label>
+    <textarea rows="10" type="text" placeholder="..."required></textarea>
     <input type="submit" value="Submit">
   </form>
 </div>

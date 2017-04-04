@@ -1,32 +1,241 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
-	
 	$('#userRadio').hide();
   $('input[type="radio"]').click(function(){
-
-
  if($(this).attr('value') == 'admin') {
-
    $('#userRadio').hide();
-
  }else
  {
-
   $('#userRadio').show();
  }
     });
-
-
 });
 
+window.onload=checkCookie();
 
+function topnav() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "col-12 topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "col-12 topnav";
+    }
+}
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+    if(cityName == "modifyUser"){
+      getcompany();
+    }
+}
+var company = new Array();
+function selectOp(array){
+    var s = document.getElementById("companyselect");
+    var op = document.createElement("option");
+    op.setAttribute("value",0);
+    op.appendChild(document.createTextNode("Please Select a company..."));
+    s.appendChild(op);
+    for(var a=1; a<array.length;a++){
+        var op = document.createElement("option");
+        op.setAttribute("value",array[a-1]);
+        op.appendChild(document.createTextNode(array[a-1]));
+        s.appendChild(op);
+  }
+}
 
+var d = new Date();
+var exdays = 30;
+d.setTime(d.getTime()+(exdays*24*60*60*1000));
+var expires = "expires="+d.toGMTString();
+
+function logOut(){
+  document.cookie = "loginstatus=no; "+expires;
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+	return "";
+}
+function checkCookie(){
+	var user=getCookie("username");
+  var status=getCookie("loginstatus");
+  if(status!="" && status =="yes"){
+    	if (user!=""){
+    		document.getElementById('admin').innerHTML = user;
+    	}
+    	else {
+        alert('no exist Cookie!');
+      }
+    }else{
+      window.location = "./login.html";
+    }
+}
+var xmlHttp;
+
+function getcompany(){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url="function-modified.php";
+ var params = "";
+ params += "getCompany=1";
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforC;
+ xmlHttp.send(params);
+}
+function stateChangedforC(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+    company = xmlHttp.responseText.split(",");
+    selectOp(company);
+ }
+}
+
+function showTable(companyN){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url="function-modified.php";
+ var params = "";
+ params += "display=1&companyN="+companyN;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChanged;
+ xmlHttp.send(params);
+}
+function stateChanged(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  document.getElementById('modifyUserTable').innerHTML=xmlHttp.responseText;
+ }
+}
+function GetXmlHttpObject(){
+var xmlHttp=null;
+try{
+ // Firefox, Opera 8.0+, Safari
+ xmlHttp=new XMLHttpRequest();
+ }
+catch (e){
+ //Internet Explorer
+ try{
+  xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+  }
+ catch (e){
+  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+ }
+return xmlHttp;
+}
+
+var row = 0 ;
+var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+var myreg1 = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
+function getRow(r){
+  var i = r.parentNode.rowIndex;
+  return i;
+}
+
+function InfobyRow(r){
+  var arr = new Array();
+ for(var m=0 ; m<8;m++){
+  arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
+ }
+ return arr ;
+}
+
+function delRow(r){
+  row = getRow(r);
+  var arr = new Array();
+  arr = InfobyRow(row);
+  if(confirm("Are you sure to delete this user?")){
+    document.getElementById('editable').deleteRow(row);
+    deleteUser(arr[0]);
+  }
+}
+
+function updateRow(r){
+  row = getRow(r);
+  var array = new Array();
+  array = InfobyRow(row);
+  editUser(array);
+}
+
+function deleteUser(username){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "delete=1&username="+username;
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforDel;
+ xmlHttp.send(params);
+}
+
+function stateChangedforDel(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  alert(xmlHttp.responseText);
+ }
+}
+
+function editUser(array){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ var phone = array[4];
+ phone = phone.replace(/\+/g, "%2B");
+ params += "edit=1&username="+array[0]+"&firstname="+array[1]
+ +"&lastname="+array[2]+"&email="+array[3]
+ +"&phone="+phone+"&companyname="+array[5]
+ +"&companysite="+array[6]+"&jobtitle="+array[7];
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforEditU;
+ xmlHttp.send(params);
+}
+
+function stateChangedforEditU(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  alert(xmlHttp.responseText);
+ }
+}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Admin | Cast Solution</title>
@@ -74,12 +283,12 @@ $(document).ready(function(){
   <form action="add_user.php" method="POST">
     <input id="searchBar" type="text" placeholder="Search user">
     <h4>User information</h4>
-	  
+
 	    	<label for="fname">Member Type</label> <br>
     <input type="radio"  id= "admin" name="member" value="admin" checked> <label><b>Admin</b></label>
     <input type="radio"  id="user" name="member" value="user"><label><b>User</b></label><br><br>
-	  
-	  
+
+
     <label for="fname">Username</label>
     <input type="text" name="username" placeholder="User name.." required>
     <label for="fname">Password</label>
@@ -92,7 +301,7 @@ $(document).ready(function(){
     <input type="text" name="email" placeholder="Your email address.." required>
     <label for="lname">Phone number</label>
     <input type="text" name="phone" placeholder="Your phone number.." required>
-	  
+
 	  <div id="userRadio">
     <label for="lname">Company Name</label>
     <input type="text" name="company" placeholder="Your company name.." required>
@@ -107,7 +316,17 @@ $(document).ready(function(){
 
 
 <div class="col-13 alltable divAddUser tabcontent" id="modifyUser" style="overflow-x:auto;">
-
+  <div class="filterCompany">
+  <text>Company Name:</text></div>
+  <div class="filterCompany">
+  <select id="companyselect" onchange="showTable(this.value)">
+    <!-- <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option> -->
+  </select>
+  </div>
+  <div id="modifyUserTable">
  <!-- <table>
   <tr>
     <th>First Name</th>
@@ -119,7 +338,7 @@ $(document).ready(function(){
     <th>Company Job Title</th>
   </tr>
   </table> -->
-
+</div>
 </div>
 
 
@@ -127,8 +346,8 @@ $(document).ready(function(){
   <form action="add_company.php" method="POST">
     <input id="searchBar" type="text" placeholder="Search company..">
     <h4>Company information</h4>
-  
-	  
+
+
     <label for="fname">Company Name</label>
     <input type="text" name="name" placeholder="Company name.." required>
     <label for="lname">Company Address</label>
@@ -142,22 +361,6 @@ $(document).ready(function(){
 </div>
 
 <div class="col-13 divAddUser all tabcontent" id="modifyCompany" style="overflow-x:auto;">
-
-	
-<div class="filterCompany">
-<text>Company Name:</text></div>
-<div class="filterCompany">
-<select>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-</select>
-</div>
-<div class="filterCompany">
-
-<input type="submit" value="filter">
-</div>
  <table>
   <tr>
     <th>Company Name</th>
@@ -254,164 +457,4 @@ $(document).ready(function(){
 </div>
 
 </body>
-
-<script>
-function topnav() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "col-12 topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "col-12 topnav";
-    }
-}
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-    if(cityName == "modifyUser"){
-      showTable();
-    }
-}
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-function getCookie(cname){
-	var name = cname + "=";
-	var ca = document.cookie.split(';');
-	for(var i=0; i<ca.length; i++) {
-		var c = ca[i].trim();
-		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-	}
-	return "";
-}
-function checkCookie(){
-	var user=getCookie("username");
-	if (user!=""){
-		document.getElementById('admin').innerHTML = user;
-	}
-	else {
-  }
-}
-var xmlHttp;
-function showTable(){
-  xmlHttp = GetXmlHttpObject();
-if (xmlHttp==null)
- {
- alert ("Browser does not support HTTP Request");
- return 0;
- }
- var url='function-modified.php';
- var params = "";
- params += "display=1&username="+document.getElementById('admin').value;
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
- xmlHttp.open("POST",url,true);
- xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
- xmlHttp.onreadystatechange=stateChanged;
- xmlHttp.send(params);
-}
-function stateChanged(){
-if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
-  document.getElementById('modifyUser').innerHTML=xmlHttp.responseText;
- }
-}
-function GetXmlHttpObject(){
-var xmlHttp=null;
-try{
- // Firefox, Opera 8.0+, Safari
- xmlHttp=new XMLHttpRequest();
- }
-catch (e){
- //Internet Explorer
- try{
-  xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
-  }
- catch (e){
-  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
- }
-return xmlHttp;
-}
-
-var row = 0 ;
-var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-var myreg1 = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
-function getRow(r){
-  var i = r.parentNode.rowIndex;
-  return i;
-}
-
-function InfobyRow(r){
-  var arr = new Array();
- for(var m=0 ; m<7;m++){
-  arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
- }
- return arr ;
-}
-
-function delRow(r){
-  row = getRow(r);
-  var arr = new Array();
-  // arr = InfobyRow(row);
-  if(confirm("Are you sure to delete this user?")){
-    document.getElementById('editable').deleteRow(row);
-  }
-}
-
-function updateRow(r){
-  var row = getRow(r);
-}
-
-function deleteUser(username){
-  xmlHttp = GetXmlHttpObject();
-if (xmlHttp==null)
- {
- alert ("Browser does not support HTTP Request");
- return 0;
- }
- var url='function-modified.php';
- var params = "";
- params += "delete=1&username="+username;
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
- xmlHttp.open("POST",url,true);
- xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
- xmlHttp.onreadystatechange=stateChangedforDel;
- xmlHttp.send(params);
-}
-
-function stateChangedforDel(){
-if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
-  alert(xmlHttp.responseText);
- }
-}
-
-function editUser(username){
-  xmlHttp = GetXmlHttpObject();
-if (xmlHttp==null)
- {
- alert ("Browser does not support HTTP Request");
- return 0;
- }
- var url='function-modified.php';
- var params = "";
- params += "delete=1&username="+username;
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
- xmlHttp.open("POST",url,true);
- xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
- xmlHttp.onreadystatechange=stateChangedforEdit;
- xmlHttp.send(params);
-}
-
-function stateChangedforEdit(){
-if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
-  alert(xmlHttp.responseText);
- }
-}
-</script>
 </html>

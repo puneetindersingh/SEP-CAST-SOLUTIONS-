@@ -42,19 +42,26 @@ function openCity(evt, cityName) {
     if(cityName == "modifyUser"){
       getcompany();
     }
+		if(cityName == "modifyCompany"){
+			showTableforC();
+		}
 }
 var company = new Array();
 function selectOp(array){
     var s = document.getElementById("companyselect");
-    var op = document.createElement("option");
-    op.setAttribute("value",0);
-    op.appendChild(document.createTextNode("Please Select a company..."));
-    s.appendChild(op);
-    for(var a=1; a<array.length;a++){
+		s.options.length=0;
+    for(var a=0; a<array.length;a++){
         var op = document.createElement("option");
-        op.setAttribute("value",array[a-1]);
-        op.appendChild(document.createTextNode(array[a-1]));
-        s.appendChild(op);
+				if(a==0){
+					op.setAttribute("value",0);
+			    op.appendChild(document.createTextNode("Please Select a company..."));
+			    s.appendChild(op);
+				}else{
+					op.setAttribute("value",array[a-1]);
+	        op.appendChild(document.createTextNode(array[a-1]));
+	        s.appendChild(op);
+				}
+
   }
 }
 
@@ -77,7 +84,6 @@ function getCookie(cname){
 	}
 	return "";
 }
-
 function checkCookie(){
 	var user=getCookie("username");
   var status=getCookie("loginstatus");
@@ -92,7 +98,6 @@ function checkCookie(){
       window.location = "./login.html";
     }
 }
-
 var xmlHttp;
 
 function getcompany(){
@@ -117,7 +122,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
  }
 }
 
-function showTable(companyN){
+function showTableforU(companyN){
   xmlHttp = GetXmlHttpObject();
 if (xmlHttp==null)
  {
@@ -126,17 +131,19 @@ if (xmlHttp==null)
  }
  var url="function-modified.php";
  var params = "";
- params += "display=1&companyN="+companyN;
+ params += "displayU=1&companyN="+companyN;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
- xmlHttp.onreadystatechange=stateChanged;
+ xmlHttp.onreadystatechange=stateChangedforshowU;
  xmlHttp.send(params);
 }
-function stateChanged(){
+
+function stateChangedforshowU(){
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   document.getElementById('modifyUserTable').innerHTML=xmlHttp.responseText;
  }
 }
+
 function GetXmlHttpObject(){
 var xmlHttp=null;
 try{
@@ -197,7 +204,7 @@ if (xmlHttp==null)
  }
  var url='function-modified.php';
  var params = "";
- params += "delete=1&username="+username;
+ params += "deleteU=1&username="+username;
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -222,7 +229,7 @@ if (xmlHttp==null)
  var params = "";
  var phone = array[4];
  phone = phone.replace(/\+/g, "%2B");
- params += "edit=1&username="+array[0]+"&firstname="+array[1]
+ params += "editU=1&username="+array[0]+"&firstname="+array[1]
  +"&lastname="+array[2]+"&email="+array[3]
  +"&phone="+phone+"&companyname="+array[5]
  +"&companysite="+array[6]+"&jobtitle="+array[7];
@@ -236,6 +243,102 @@ if (xmlHttp==null)
 function stateChangedforEditU(){
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   alert(xmlHttp.responseText);
+ }
+}
+
+function companyInfobyRow(r){
+  var arr = new Array();
+ for(var m=0 ; m<4;m++){
+  arr[m] = document.getElementById('tableForC').rows[row].cells[m].innerText;
+ }
+ return arr ;
+}
+
+function delCompany(r){
+  row = getRow(r);
+  var array = new Array();
+  array = companyInfobyRow(row);
+  if(confirm("Are you sure to delete this user?")){
+    document.getElementById('editable').deleteRow(row);
+    deleteCompany(array[0]);
+  }
+}
+
+function updateCompany(r){
+  row = getRow(r);
+  var array1 = new Array();
+  array1 = companyInfobyRow(row);
+  editCompany(array1);
+}
+
+
+function deleteCompany(companyN){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "deleteC=1&companyName="+companyN;
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforDelC;
+ xmlHttp.send(params);
+}
+
+function stateChangedforDelC(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  alert(xmlHttp.responseText);
+ }
+}
+
+function editCompany(array){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ var phone = array[2];
+ phone = phone.replace(/\+/g, "%2B");
+ params += "editC=1&companyName="+array[0]+"&companyAddress="+array[1]
+ +"&companyPhone="+phone+"&companySite="+array[3];
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforEditC;
+ xmlHttp.send(params);
+}
+
+function stateChangedforEditC(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  alert(xmlHttp.responseText);
+ }
+}
+
+function showTableforC(){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url="function-modified.php";
+ var params = "";
+ params += "displayC=1";
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforshowC;
+ xmlHttp.send(params);
+}
+function stateChangedforshowC(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  document.getElementById('modifyCompany').innerHTML=xmlHttp.responseText;
  }
 }
 </script>
@@ -321,7 +424,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   <div class="filterCompany">
   <text>Company Name:</text></div>
   <div class="filterCompany">
-  <select id="companyselect" onchange="showTable(this.value)">
+  <select id="companyselect" onchange="showTableforU(this.value)">
     <!-- <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -363,14 +466,14 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 </div>
 
 <div class="col-13 divAddUser all tabcontent" id="modifyCompany" style="overflow-x:auto;">
- <table>
+ <!-- <table>
   <tr>
     <th>Company Name</th>
     <th>Company Address</th>
     <th>Company Phone</th>
     <th>PCompany URL</th>
   </tr>
-  </table>
+  </table> -->
 
 </div>
 
@@ -403,131 +506,42 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 <!-- About form -->
 <div class="col-14 divAddUser allform tabcontent" id="aboutform">
-    <h4>About Us</h4>
-    <p>Cast Solutions provides consulting services and product solutions for companies seeking to enhance their performance and strategy, and looking to achieve sustainable growth. 
-    We thrive from being involved with businesses seeking to grow or improve. The common element is the need for a fresh approach, a process, tools and access to people who have done this successfully across diverse markets.</p>
-<div class="rowTeam">
-  <div class="columnTeamMain">
-    <div class="teamCard">
-      <img src="img/castTeam/Claire.png" alt="Claire Lange" style="width:100%">
-      <div class="teamContainer">
-        <h3>Claire Lange</h3>
-        <p class="teamTitle">Client Relationship Lead</p>
-        <p>Claire has more than 25 years' experience in various business sectors including industrial, utilities, construction and infrastructure. Founding Cast in 2004, she has a passion for working with companies to enable growth and collaborative partnerships. At Cast Solutions, Claire leads the Strategic Services team. </p>
-        <p>claire@castsolutions.com.au</p>
-        <p><button class="teamBtn">Contact</button></p>
+
+  <div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Jane Doe</h2>
+        <p class="title">CEO & Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
       </div>
     </div>
   </div>
 
-  <div class="columnTeamMain">
-    <div class="teamCard">
-      <img src="img/castTeam/Rob.png" alt="Rob Lange" style="width:100%">
-      <div class="teamContainer">
-        <h3>Rob Lange</h3>
-        <p class="teamTitle">Business Operations Lead</p>
-        <p>Rob brings 30 years' experience in the engineering; oil and gas trading in Australia, Japan, South East Asia and Europe.  He has been responsible for the expansion into Data analytics solutions working closely with end clients. At Cast Solutions, Rob leads the Product Solutions, Data Analytics  and business operations.</p>
-        <p>rob@castsolutions.com.au</p>
-        <p><button class="teamBtn">Contact</button></p>
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+      <div class="container">
+        <h2>Mike Ross</h2>
+        <p class="title">Art Director</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
       </div>
     </div>
   </div>
-  <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/DavidKirby.png" alt="David Kirby" style="width:100%">
-      <div class="teamContainer">
-        <h3>David Kirby</h3>
-        <p class="teamTitle">Strategic Consultant</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/JanineHoey.png" alt="Janine Hoey" style="width:100%">
-      <div class="teamContainer">
-        <h3>Janine Hoey</h3>
-        <p class="teamTitle">Strategic Consultant</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/MarkusZ.png" alt="Markus Z" style="width:100%">
-      <div class="teamContainer">
-        <h3>Markus Z</h3>
-        <p class="teamTitle">Strategic Consultant</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/LachlanWells.png" alt="LachlanWells" style="width:100%">
-      <div class="teamContainer">
-        <h3>Lachlan Wells</h3>
-        <p class="teamTitle">IT Lead Consultant</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/ShirleyZhang.png" alt="Shirley Zhang" style="width:100%">
-      <div class="teamContainer">
-        <h3>Shirley Zhang</h3>
-        <p class="teamTitle">Technical Support</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/MarcieKlocker.png" alt="Marcie Klocker" style="width:100%">
-      <div class="teamContainer">
-        <h3>Marcie Klocker</h3>
-        <p class="teamTitle">Technical Support</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/NoraManandi.png" alt="Nora Manandi" style="width:100%">
-      <div class="teamContainer">
-        <h3>Nora Manandi</h3>
-        <p class="teamTitle">Marketing Support</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/DamienCleary.png" alt="Damien Cleary" style="width:100%">
-      <div class="teamContainer">
-        <h3>Damien Cleary</h3>
-        <p class="teamTitle">Analytics Support</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/JamesTomlinson.png" alt="James Tomlinson" style="width:100%">
-      <div class="teamContainer">
-        <h3>James Tomlinson</h3>
-        <p class="teamTitle">Analytics Support</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/MattLeahy.png" alt="Matt Leahy" style="width:100%">
-      <div class="teamContainer">
-        <h3>Matt Leahy</h3>
-        <p class="teamTitle">Business Support</p>
-      </div>
-    </div>
-  </div>
-    <div class="columnTeam">
-    <div class="teamCard">
-      <img src="img/castTeam/DanielHarz.png" alt="Daniel Harz" style="width:100%">
-      <div class="teamContainer">
-        <h3>Daniel Harz</h3>
-        <p class="teamTitle">Analytics Intern</p>
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team3.jpg" alt="John" style="width:100%">
+      <div class="container">
+        <h2>John Doe</h2>
+        <p class="title">Designer</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
       </div>
     </div>
   </div>

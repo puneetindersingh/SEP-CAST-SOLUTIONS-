@@ -5,18 +5,24 @@ if(isset($_POST['login'])){
     signin();
 }else if (isset($_POST['forget'])){
     forget();
-}else if (isset($_POST['display'])){
-    display();
+}else if (isset($_POST['displayU'])){
+    displayU();
 }else if(isset($_POST['profile'])){
     profile();
 }else if(isset($_POST['updateprofile'])){
     updateprofile();
-}else if(isset($_POST['delete'])){
+}else if(isset($_POST['deleteU'])){
     deleteUser();
-}else if(isset($_POST['edit'])){
+}else if(isset($_POST['editU'])){
     editUser();
 }else if(isset($_POST['getCompany'])){
     getCompany();
+}else if(isset($_POST['deleteC'])){
+    deleteCompany();
+}else if(isset($_POST['editC'])){
+    editCompany();
+}else if(isset($_POST['displayC'])){
+    displayC();
 }
 
 function login(){
@@ -74,7 +80,7 @@ if($check==1){
        $mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
        $mail->SMTPAuth = true;                            // Enable SMTP authentication
        $mail->Username = 'pengzhang1925@gmail.com';          // SMTP username
-       $mail->Password = 'your password'; // SMTP password
+       $mail->Password = 'QQ0819xy'; // SMTP password
        $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
        $mail->Port = 587;// TCP port to connect to
       //  $mail->SMTPDebug  = 4;       //For debug the server connection
@@ -100,6 +106,13 @@ if($check==1){
           echo "<script>alert('Record Updated And Please check your email to get the password'); window.location = './login.html';</script>";
        }
 
+//         $to = $username;
+//         $subject = 'Password Reset';
+//         $message = 'Your New Password is-- '.$random;
+//         $header = "From :- aman2gill29@gmail.com";
+//
+//         mail($to,$subject,$message,$header);
+
 
 }
 }
@@ -118,7 +131,7 @@ function getCompany(){
   }
 }
 
-function display(){
+function displayU(){
   include 'connect.php';
   $companyN = $_POST['companyN'];
 
@@ -225,4 +238,65 @@ function editUser(){
 
 }
 
+function deleteCompany(){
+  include 'connect.php';
+  $companyName = $_POST['companyName'];
+
+  $sql = "DELETE from company WHERE name='$companyName' ";
+  $result = mysqli_query($conn,$sql);
+  if($result){
+    echo "Delete Successfully!!";
+  }else{
+    echo "Delete Failed, Please check your database setting!";
+  }
+  mysqli_close($conn);
+}
+
+function editCompany(){
+  include 'connect.php';
+  $companyName = $_POST['companyName'];
+  $companyAddress = $_POST['companyAddress'];
+  $companyPhone = $_POST['companyPhone'];
+  $companySite = $_POST['companySite'];
+
+  $sql = "UPDATE company SET address='$companyAddress' ,phone='$companyPhone' ,site='$companySite' where name='$companyName'";
+  $result = mysqli_query($conn,$sql);
+  if($result){
+    echo "Company Modified!!";
+  }else{
+    echo "Failed to modify Company!!";
+  }
+  mysqli_close($conn);
+
+}
+
+function displayC(){
+  include 'connect.php';
+
+  $sql = "SELECT * from company";
+  $result = mysqli_query($conn,$sql);
+  echo "
+
+  <table id='tableForC'>
+   <tr>
+     <th>Company Name</th>
+     <th>Company Address</th>
+     <th>Company Phone</th>
+     <th>PCompany URL</th>
+     <th></th>
+     <th></th>
+   </tr>";
+   while($row=$result->fetch_assoc()){
+     echo "<tr>";
+     echo "<td contentEditable='true'>" . $row['name'] . "</td>";
+     echo "<td contentEditable='true'>" . $row['address'] . "</td>";
+     echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
+     echo "<td contentEditable='true'>" . $row['site'] . "</td>";
+     echo "<td onclick='updateCompany(this)'><i class='material-icons md-18 blue'> edit</i></td>";
+     echo "<td onclick='delCompany(this)'><i class='material-icons md-18 blue'> delete</i></td>";
+     echo "</tr>";
+   }
+    echo "</table>";
+    mysqli_close($conn);
+}
 ?>

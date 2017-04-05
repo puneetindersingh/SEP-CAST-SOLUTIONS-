@@ -195,6 +195,13 @@ box-shadow: none;
   padding: 0 8px;
 }
 
+.columnTeamMain {
+  float: left;
+  width: 50%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
 .teamCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -300,7 +307,7 @@ box-shadow: none;
     text-align: left;
   }
   /*for team contact deatil in about page*/
-  .columnTeam {
+  .columnTeam .columnTeamMain {
     width: 100%;
     display: block;
   }

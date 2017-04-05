@@ -84,11 +84,12 @@ function myFunction1() {
         c2[0].style.display = "block";
     }
 }
-
+var d = new Date();
+var exdays = 30;
+d.setTime(d.getTime()+(exdays*24*60*60*1000));
+var expires = "expires="+d.toGMTString();
 function setCookie(cname,cvalue,exdays){
-	var d = new Date();
-	d.setTime(d.getTime()+(exdays*24*60*60*1000));
-	var expires = "expires="+d.toGMTString();
+
 	document.cookie = cname+"="+cvalue+"; "+expires;
 }
 
@@ -148,11 +149,14 @@ if (xmlHttp==null)
 function stateChanged(){
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   if(xmlHttp.responseText=="no"){
+    document.cookie = "loginstatus=no; "+expires;
     document.getElementById('test').innerHTML="Username or Password is Wrong,Please try again!";
     document.getElementById('login-pass').value="";
   }else if(xmlHttp.responseText=="admin"){
+    document.cookie = "loginstatus=yes; "+expires;
     window.location = "./adminpage.html";
   }else if (xmlHttp.responseText=="user") {
+    document.cookie = "loginstatus=yes; "+expires;
     window.location = "./userpage.html";
   }
  }

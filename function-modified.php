@@ -100,13 +100,6 @@ if($check==1){
           echo "<script>alert('Record Updated And Please check your email to get the password'); window.location = './login.html';</script>";
        }
 
-//         $to = $username;
-//         $subject = 'Password Reset';
-//         $message = 'Your New Password is-- '.$random;
-//         $header = "From :- aman2gill29@gmail.com";
-//
-//         mail($to,$subject,$message,$header);
-
 
 }
 }

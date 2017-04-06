@@ -7,30 +7,13 @@
 $(document).ready(function(){
 
 	$('#userRadio').hide();
-	$('#UserRadio1').hide();
-	$('#UserRadio2').hide();
   $('input[type="radio"]').click(function(){
  if($(this).attr('value') == 'admin') {
    $('#userRadio').hide();
-<<<<<<< HEAD
 
  }else
  {
-=======
- }
- if($(this).attr('value') == 'user'){
->>>>>>> origin/Web-pages
   $('#userRadio').show();
- }
- if($(this).attr('value') == 'admin1'){
-	 $('#UserRadio1').hide();
-	 $('#UserRadio2').hide();
-	 showTableforU("admin");
- }
- if($(this).attr('value') == 'user1'){
-	 $('#modifyUserTable').empty();
-	 $('#UserRadio1').show();
-	 $('#UserRadio2').show();
  }
     });
 });
@@ -190,16 +173,9 @@ function getRow(r){
 
 function InfobyRow(r){
   var arr = new Array();
-	var user=document.getElementById('user1');
-	if(user.checked){
-		for(var m=0 ; m<8;m++){
-	   arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
-	  }
-	}else{
-		for(var m=0 ; m<5;m++){
-	   arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
-	  }
-	}
+ for(var m=0 ; m<8;m++){
+  arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
+ }
  return arr ;
 }
 
@@ -245,7 +221,6 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 function editUser(array){
   xmlHttp = GetXmlHttpObject();
-	var user=document.getElementById('user1');
 if (xmlHttp==null)
  {
  alert ("Browser does not support HTTP Request");
@@ -255,16 +230,10 @@ if (xmlHttp==null)
  var params = "";
  var phone = array[4];
  phone = phone.replace(/\+/g, "%2B");
- if(user.checked){
-	 params += "editU=1&username="+array[0]+"&firstname="+array[1]
-	 +"&lastname="+array[2]+"&email="+array[3]
-	 +"&phone="+phone+"&companyname="+array[5]
-	 +"&companysite="+array[6]+"&jobtitle="+array[7]+"&admin_status=N";
- }else{
-	 params += "editU=1&username="+array[0]+"&firstname="+array[1]
-	 +"&lastname="+array[2]+"&email="+array[3]
-	 +"&phone="+phone+"&admin_status=Y";
- }
+ params += "editU=1&username="+array[0]+"&firstname="+array[1]
+ +"&lastname="+array[2]+"&email="+array[3]
+ +"&phone="+phone+"&companyname="+array[5]
+ +"&companysite="+array[6]+"&jobtitle="+array[7];
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -451,13 +420,10 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 
 <div class="col-13 alltable divAddUser tabcontent" id="modifyUser" style="overflow-x:auto;">
-<label for="fname">Member Type</label>
-	<input type="radio"  id="admin1" name="member" value="admin1"> <label><b>Admin</b></label>
-	<input type="radio"  id="user1" name="member" value="user1"><label><b>User</b></label><br><br>		
-<div class="filterCompany" id="UserRadio1">
+  <div class="filterCompany">
   <text>Company Name:</text></div>
-  <div class="filterCompany" id="UserRadio2">
-  <select id="companyselect" onclick="showTableforU(this.value)">
+  <div class="filterCompany">
+  <select id="companyselect" onchange="showTableforU(this.value)">
     <!-- <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>

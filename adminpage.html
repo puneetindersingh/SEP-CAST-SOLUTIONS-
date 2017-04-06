@@ -10,6 +10,7 @@ $(document).ready(function(){
   $('input[type="radio"]').click(function(){
  if($(this).attr('value') == 'admin') {
    $('#userRadio').hide();
+
  }else
  {
   $('#userRadio').show();
@@ -386,7 +387,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 <!-- new form -->
 <div class="col-14 divAddUser allform tabcontent" id="addNewUser">
   <form action="add_user.php" method="POST">
-    
+
 
 	    	<label for="fname">Member Type</label> <br>
     <input type="radio"  id= "admin" name="member" value="admin" checked> <label><b>Admin</b></label>
@@ -405,8 +406,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     <input type="text" name="email" placeholder="Your email address.." required>
     <label for="lname">Phone number</label>
     <input type="text" name="phone" placeholder="Your phone number.." required>
-
-	  <div id="userRadio">
+ 		<div id="userRadio">
     <label for="lname">Company Name</label>
     <input type="text" name="company" placeholder="Your company name.." required>
     <label for="lname">Company WebSite</label>
@@ -508,7 +508,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 <div class="rowTeam">
   <div class="columnTeamMain">
     <div class="teamCard">
-      <img src="img/castTeam/Claire.png" alt="Claire Lange" style="width:100%">
+      <img src="img/castTeam/Claire.png" alt="Claire Lange" style="width:50%">
       <div class="teamContainer">
         <h3>Claire Lange</h3>
         <p class="teamTitle">Client Relationship Lead</p>
@@ -521,7 +521,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
   <div class="columnTeamMain">
     <div class="teamCard">
-      <img src="img/castTeam/Rob.png" alt="Rob Lange" style="width:100%">
+      <img src="img/castTeam/Rob.png" alt="Rob Lange" style="width:50%">
       <div class="teamContainer">
         <h3>Rob Lange</h3>
         <p class="teamTitle">Business Operations Lead</p>

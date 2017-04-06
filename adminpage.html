@@ -84,20 +84,20 @@ function getCookie(cname){
 	}
 	return "";
 }
-function checkCookie(){
-	var user=getCookie("username");
-  var status=getCookie("loginstatus");
-  if(status!="" && status =="yes"){
-    	if (user!=""){
-    		document.getElementById('admin').innerHTML = user;
-    	}
-    	else {
-        alert('no exist Cookie!');
-      }
-    }else{
-      window.location = "./login.html";
-    }
-}
+// function checkCookie(){
+// 	var user=getCookie("username");
+//   var status=getCookie("loginstatus");
+//   if(status!="" && status =="yes"){
+//     	if (user!=""){
+//     		document.getElementById('admin').innerHTML = user;
+//     	}
+//     	else {
+//         alert('no exist Cookie!');
+//       }
+//     }else{
+//       window.location = "./login.html";
+//     }
+// }
 var xmlHttp;
 
 function getcompany(){
@@ -504,49 +504,140 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   </form>
 </div>
 
+
 <!-- About form -->
 <div class="col-14 divAddUser allform tabcontent" id="aboutform">
-
-  <div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
-      <div class="container">
-        <h2>Jane Doe</h2>
-        <p class="title">CEO & Founder</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
+    <h4>About Us</h4>
+    <p>Cast Solutions provides consulting services and product solutions for companies seeking to enhance their performance and strategy, and looking to achieve sustainable growth. 
+    We thrive from being involved with businesses seeking to grow or improve. The common element is the need for a fresh approach, a process, tools and access to people who have done this successfully across diverse markets.</p>
+<div class="rowTeam">
+  <div class="columnTeamMain">
+    <div class="teamCard">
+      <img src="img/castTeam/Claire.png" alt="Claire Lange" style="width:100%">
+      <div class="teamContainer">
+        <h3>Claire Lange</h3>
+        <p class="teamTitle">Client Relationship Lead</p>
+        <p>Claire has more than 25 years' experience in various business sectors including industrial, utilities, construction and infrastructure. Founding Cast in 2004, she has a passion for working with companies to enable growth and collaborative partnerships. At Cast Solutions, Claire leads the Strategic Services team. </p>
+        <p>claire@castsolutions.com.au</p>
+        <p><button class="teamBtn">Contact</button></p>
       </div>
     </div>
   </div>
 
-  <div class="column">
-    <div class="card">
-      <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
-      <div class="container">
-        <h2>Mike Ross</h2>
-        <p class="title">Art Director</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
+  <div class="columnTeamMain">
+    <div class="teamCard">
+      <img src="img/castTeam/Rob.png" alt="Rob Lange" style="width:100%">
+      <div class="teamContainer">
+        <h3>Rob Lange</h3>
+        <p class="teamTitle">Business Operations Lead</p>
+        <p>Rob brings 30 years' experience in the engineering; oil and gas trading in Australia, Japan, South East Asia and Europe.  He has been responsible for the expansion into Data analytics solutions working closely with end clients. At Cast Solutions, Rob leads the Product Solutions, Data Analytics  and business operations.</p>
+        <p>rob@castsolutions.com.au</p>
+        <p><button class="teamBtn">Contact</button></p>
       </div>
     </div>
   </div>
-  <div class="column">
-    <div class="card">
-      <img src="/w3images/team3.jpg" alt="John" style="width:100%">
-      <div class="container">
-        <h2>John Doe</h2>
-        <p class="title">Designer</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
+  <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/DavidKirby.png" alt="David Kirby" style="width:100%">
+      <div class="teamContainer">
+        <h3>David Kirby</h3>
+        <p class="teamTitle">Strategic Consultant</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/JanineHoey.png" alt="Janine Hoey" style="width:100%">
+      <div class="teamContainer">
+        <h3>Janine Hoey</h3>
+        <p class="teamTitle">Strategic Consultant</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/MarkusZ.png" alt="Markus Z" style="width:100%">
+      <div class="teamContainer">
+        <h3>Markus Z</h3>
+        <p class="teamTitle">Strategic Consultant</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/LachlanWells.png" alt="LachlanWells" style="width:100%">
+      <div class="teamContainer">
+        <h3>Lachlan Wells</h3>
+        <p class="teamTitle">IT Lead Consultant</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/ShirleyZhang.png" alt="Shirley Zhang" style="width:100%">
+      <div class="teamContainer">
+        <h3>Shirley Zhang</h3>
+        <p class="teamTitle">Technical Support</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/MarcieKlocker.png" alt="Marcie Klocker" style="width:100%">
+      <div class="teamContainer">
+        <h3>Marcie Klocker</h3>
+        <p class="teamTitle">Technical Support</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/NoraManandi.png" alt="Nora Manandi" style="width:100%">
+      <div class="teamContainer">
+        <h3>Nora Manandi</h3>
+        <p class="teamTitle">Marketing Support</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/DamienCleary.png" alt="Damien Cleary" style="width:100%">
+      <div class="teamContainer">
+        <h3>Damien Cleary</h3>
+        <p class="teamTitle">Analytics Support</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/JamesTomlinson.png" alt="James Tomlinson" style="width:100%">
+      <div class="teamContainer">
+        <h3>James Tomlinson</h3>
+        <p class="teamTitle">Analytics Support</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/MattLeahy.png" alt="Matt Leahy" style="width:100%">
+      <div class="teamContainer">
+        <h3>Matt Leahy</h3>
+        <p class="teamTitle">Business Support</p>
+      </div>
+    </div>
+  </div>
+    <div class="columnTeam">
+    <div class="teamCard">
+      <img src="img/castTeam/DanielHarz.png" alt="Daniel Harz" style="width:100%">
+      <div class="teamContainer">
+        <h3>Daniel Harz</h3>
+        <p class="teamTitle">Analytics Intern</p>
       </div>
     </div>
   </div>
 </div>
 </div>
+
 
 <!-- <div class="col-12 right">
   <div class="aside">

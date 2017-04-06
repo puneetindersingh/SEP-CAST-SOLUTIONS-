@@ -46,20 +46,20 @@ function getCookie(cname){
  return "";
 }
 
-function checkCookie(){
- var user=getCookie("username");
-  var status=getCookie("loginstatus");
-  if(status!="" && status =="yes"){
-     if (user!=""){
-       document.getElementById('user').innerHTML = user;
-     }
-     else {
-        alert('no exist Cookie!');
-      }
-    }else{
-      window.location = "./login.html";
-    }
-}
+// function checkCookie(){
+//  var user=getCookie("username");
+//   var status=getCookie("loginstatus");
+//   if(status!="" && status =="yes"){
+//      if (user!=""){
+//        document.getElementById('user').innerHTML = user;
+//      }
+//      else {
+//         alert('no exist Cookie!');
+//       }
+//     }else{
+//       window.location = "./login.html";
+//     }
+// }
 
 var d = new Date();
 var exdays = 30;

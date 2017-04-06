@@ -1,9 +1,11 @@
 html {
     box-sizing: border-box;
 }
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
 .row::after {
     clear: both;
     display: table;

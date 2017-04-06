@@ -141,7 +141,7 @@ box-shadow: none;
     font-size: 16px;
     background-color: white;
     /*background-image: url('images/key.png');*/
-    background-position: 10px 10px; 
+    background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
@@ -192,7 +192,7 @@ box-shadow: none;
 /*About page*/
 .columnTeam {
   float: left;
-  width: 33.3%;
+  width: 20%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
@@ -339,11 +339,11 @@ input[type="radio"] + label{
     display:inline-block;
     width:19px;
     height:19px;
-  
+
     vertical-align:middle;
     cursor:pointer;
     margin: 0 30px 0 10px;
-    
+
 }
 
 .filterCompany {
@@ -370,9 +370,8 @@ width:50px;
 }
 
 .all{
-    
-    
- display:none;   
-    
-}
 
+
+ display:none;
+
+}

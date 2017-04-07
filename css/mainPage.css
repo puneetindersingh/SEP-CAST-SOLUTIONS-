@@ -54,6 +54,7 @@ box-shadow: none;
 .topnav a:hover {
   background-color: #ddd;
   color: white;
+  cursor: pointer;
 }
 
 .topnav .icon {
@@ -208,8 +209,21 @@ box-shadow: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.teamCard img {
+  width: 100%;
+}
+
+#imgRob, #imgClaire {
+  width: 50%;
+  margin-left: 25%;
+}
+
 .teamContainer {
   padding: 0 16px;
+}
+
+.teamContainer h3 {
+  text-align: center;
 }
 
 .teamContainer::after, .rowTeam::after {

@@ -23,7 +23,7 @@ add();
       else {
           $sql1 = "INSERT INTO company(name,address,phone,site) VALUES('$name','$address','$phone','$site')";
       $result = $conn->query($sql1);
-      echo "<script>alert('Company added'); window.location = './admin.html';</script>";
+      echo "<script>alert('Company added'); window.location = './adminpage.html';</script>";
           
       }
      

@@ -7,13 +7,24 @@
 $(document).ready(function(){
 
 	$('#userRadio').hide();
+	$('#UserRadio1').hide();
+	$('#UserRadio2').hide();
   $('input[type="radio"]').click(function(){
  if($(this).attr('value') == 'admin') {
    $('#userRadio').hide();
-
- }else
- {
+ }
+ if($(this).attr('value') == 'user'){
   $('#userRadio').show();
+ }
+ if($(this).attr('value') == 'admin1'){
+	 $('#UserRadio1').hide();
+	 $('#UserRadio2').hide();
+	 showTableforU("admin");
+ }
+ if($(this).attr('value') == 'user1'){
+	 $('#modifyUserTable').empty();
+	 $('#UserRadio1').show();
+	 $('#UserRadio2').show();
  }
     });
 });
@@ -173,9 +184,16 @@ function getRow(r){
 
 function InfobyRow(r){
   var arr = new Array();
- for(var m=0 ; m<8;m++){
-  arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
- }
+	var user=document.getElementById('user1');
+	if(user.checked){
+		for(var m=0 ; m<8;m++){
+	   arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
+	  }
+	}else{
+		for(var m=0 ; m<5;m++){
+	   arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
+	  }
+	}
  return arr ;
 }
 
@@ -221,6 +239,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 function editUser(array){
   xmlHttp = GetXmlHttpObject();
+	var user=document.getElementById('user1');
 if (xmlHttp==null)
  {
  alert ("Browser does not support HTTP Request");
@@ -230,10 +249,16 @@ if (xmlHttp==null)
  var params = "";
  var phone = array[4];
  phone = phone.replace(/\+/g, "%2B");
- params += "editU=1&username="+array[0]+"&firstname="+array[1]
- +"&lastname="+array[2]+"&email="+array[3]
- +"&phone="+phone+"&companyname="+array[5]
- +"&companysite="+array[6]+"&jobtitle="+array[7];
+ if(user.checked){
+	 params += "editU=1&username="+array[0]+"&firstname="+array[1]
+	 +"&lastname="+array[2]+"&email="+array[3]
+	 +"&phone="+phone+"&companyname="+array[5]
+	 +"&companysite="+array[6]+"&jobtitle="+array[7]+"&admin_status=N";
+ }else{
+	 params += "editU=1&username="+array[0]+"&firstname="+array[1]
+	 +"&lastname="+array[2]+"&email="+array[3]
+	 +"&phone="+phone+"&admin_status=Y";
+ }
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -387,7 +412,8 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 <!-- new form -->
 <div class="col-14 divAddUser allform tabcontent" id="addNewUser">
   <form action="add_user.php" method="POST">
-
+    <input id="searchBar" type="text" placeholder="Search user">
+    <h4>User information</h4>
 
 	    	<label for="fname">Member Type</label> <br>
     <input type="radio"  id= "admin" name="member" value="admin" checked> <label><b>Admin</b></label>
@@ -406,7 +432,8 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     <input type="text" name="email" placeholder="Your email address.." required>
     <label for="lname">Phone number</label>
     <input type="text" name="phone" placeholder="Your phone number.." required>
- 		<div id="userRadio">
+
+	  <div id="userRadio">
     <label for="lname">Company Name</label>
     <input type="text" name="company" placeholder="Your company name.." required>
     <label for="lname">Company WebSite</label>
@@ -420,10 +447,13 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 
 <div class="col-13 alltable divAddUser tabcontent" id="modifyUser" style="overflow-x:auto;">
-  <div class="filterCompany">
+<label for="fname">Member Type</label>
+	<input type="radio"  id="admin1" name="member" value="admin1"> <label><b>Admin</b></label>
+	<input type="radio"  id="user1" name="member" value="user1"><label><b>User</b></label><br><br>
+<div class="filterCompany" id="UserRadio1">
   <text>Company Name:</text></div>
-  <div class="filterCompany">
-  <select id="companyselect" onchange="showTableforU(this.value)">
+  <div class="filterCompany" id="UserRadio2">
+  <select id="companyselect" onclick="showTableforU(this.value)">
     <!-- <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -448,6 +478,10 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 <div class="col-14 divAddUser allform tabcontent" id="addCompany">
   <form action="add_company.php" method="POST">
+    <input id="searchBar" type="text" placeholder="Search company..">
+    <h4>Company information</h4>
+
+
     <label for="fname">Company Name</label>
     <input type="text" name="name" placeholder="Company name.." required>
     <label for="lname">Company Address</label>

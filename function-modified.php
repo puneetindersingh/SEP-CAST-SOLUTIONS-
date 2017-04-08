@@ -124,7 +124,7 @@ else{
 
 function getCompany(){
   include 'connect.php';
-  $sql = "SELECT DISTINCT Company FROM customer";
+  $sql = "SELECT DISTINCT Company FROM customer order by Company";
   $result = mysqli_query($conn,$sql);
   while($row = $result -> fetch_assoc()){
       echo $row['Company'].",";
@@ -134,39 +134,68 @@ function getCompany(){
 function displayU(){
   include 'connect.php';
   $companyN = $_POST['companyN'];
+  if($companyN == "admin"){
+      $sql = "SELECT * FROM user_details WHERE admin_status='Y'";
+      $result = mysqli_query($conn,$sql);
+      echo"
 
-  $sql = "SELECT * from customer WHERE Company='$companyN'";
-  $result = mysqli_query($conn,$sql);
-  echo "
+      <table id='editable'>
+       <tr>
+         <th>Username</th>
+         <th>First Name</th>
+         <th>Last Name</th>
+         <th>Email address</th>
+         <th>Phone</th>
+         <th></th>
+         <th></th>
+         </tr>";
+         while($row = $result -> fetch_assoc()){
+           echo "<tr>";
+           echo "<td contentEditable='true'>" . $row['username'] . "</td>";
+           echo "<td contentEditable='true'>" . $row['firstname'] . "</td>";
+           echo "<td contentEditable='true'>" . $row['lastname'] . "</td>";
+           echo "<td contentEditable='true'>" . $row['email'] . "</td>";
+           echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
+           echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> edit</i></td>";
+           echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
+           echo "</tr>";
+         }
+           echo "</table>";
+  }else{
 
-  <table id='editable'>
-   <tr>
-     <th>Username</th>
-     <th>First Name</th>
-     <th>Last Name</th>
-     <th>Email address</th>
-     <th>Phone</th>
-     <th>Company</th>
-     <th>Company Site Name</th>
-     <th>Company Job Title</th>
-     <th></th>
-     <th></th>
-   </tr>";
-   while($row=$result->fetch_assoc()){
-     echo "<tr>";
-     echo "<td contentEditable='true'>" . $row['Username'] . "</td>";
-     echo "<td contentEditable='true'>" . $row['Firstname'] . "</td>";
-     echo "<td contentEditable='true'>" . $row['Lastname'] . "</td>";
-     echo "<td contentEditable='true'>" . $row['Email'] . "</td>";
-     echo "<td contentEditable='true'>" . $row['Phone_Number'] . "</td>";
-     echo "<td contentEditable='true'>" . $row['Company'] . "</td>";
-     echo "<td contentEditable='true'>" . $row['Address_1'] . "</td>";
-     echo "<td contentEditable='true'>" . $row['Address_2'] . "</td>";
-     echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> edit</i></td>";
-     echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
-     echo "</tr>";
-   }
-    echo "</table>";
+      $sql = "SELECT * from customer WHERE Company='$companyN'";
+      $result = mysqli_query($conn,$sql);
+      echo "
+
+      <table id='editable'>
+       <tr>
+         <th>Username</th>
+         <th>First Name</th>
+         <th>Last Name</th>
+         <th>Email address</th>
+         <th>Phone</th>
+         <th>Company</th>
+         <th>Company Site Name</th>
+         <th>Company Job Title</th>
+         <th></th>
+         <th></th>
+       </tr>";
+       while($row=$result->fetch_assoc()){
+         echo "<tr>";
+         echo "<td contentEditable='true'>" . $row['Username'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['Firstname'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['Lastname'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['Email'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['Phone_Number'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['Company'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['Address_1'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['Address_2'] . "</td>";
+         echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> edit</i></td>";
+         echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
+         echo "</tr>";
+       }
+        echo "</table>";
+  }
     mysqli_close($conn);
 }
 
@@ -218,22 +247,40 @@ function deleteUser(){
 
 function editUser(){
   include 'connect.php';
-  $username = $_POST['username'];
-  $firstN = $_POST['firstname'];
-  $lastN = $_POST['lastname'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $companyN = $_POST['companyname'];
-  $companyS = $_POST['companysite'];
-  $jobtitle = $_POST['jobtitle'];
+  $status = $_POST['admin_status'];
+  if($status == "Y"){
+    $username = $_POST['username'];
+    $firstN = $_POST['firstname'];
+    $lastN = $_POST['lastname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
 
-  $sql = "UPDATE customer SET Firstname='$firstN' ,Lastname='$lastN' ,Email='$email' ,Phone_Number='$phone' ,Company='$companyN' ,Address_1='$companyS' ,Address_2='$jobtitle' where username='$username'";
-  $result = mysqli_query($conn,$sql);
-  if($result){
-    echo "User Modified!!";
+    $sql = "UPDATE user_details SET firstname='$firstN', lastname='$lastN', email='$email', phone='$phone'  WHERE username='$username'";
+    $result = mysqli_query($conn,$sql);
+    if($result){
+      echo "Admin Modified!!";
+    }else{
+      echo "Failed to modify Admin!!";
+    }
   }else{
-    echo "Failed to modify User!!";
+    $username = $_POST['username'];
+    $firstN = $_POST['firstname'];
+    $lastN = $_POST['lastname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $companyN = $_POST['companyname'];
+    $companyS = $_POST['companysite'];
+    $jobtitle = $_POST['jobtitle'];
+
+    $sql = "UPDATE customer SET Firstname='$firstN' ,Lastname='$lastN' ,Email='$email' ,Phone_Number='$phone' ,Company='$companyN' ,Address_1='$companyS' ,Address_2='$jobtitle' where username='$username'";
+    $result = mysqli_query($conn,$sql);
+    if($result){
+      echo "User Modified!!";
+    }else{
+      echo "Failed to modify User!!";
+    }
   }
+
   mysqli_close($conn);
 
 }

@@ -401,7 +401,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     <li class="tablinks" onclick="openCity(event, 'addCompany')"><i class="material-icons md-18 blue">note_add</i> Add Company</li>
     <li class="tablinks" onclick="openCity(event, 'modifyCompany')"><i class="material-icons md-18 blue">assignment</i> Modify Company</li>
     <li><i class="material-icons md-18 blue">help</i> Help</li>
-<li> <i class="material-icons md-18 blue">power_settings_new</i><a href="login.html" style="text-decoration: none;  color: black; "> Log Out</a></li>
+<li> <i class="material-icons md-18 blue">power_settings_new</i><a href="login.html" style="text-decoration: none;  color: black; " onclick="logOut()"> Log Out</a></li>
     <li class="dropdown">
     <a class="dropbtn"><i class="material-icons md-18 blue">settings_applications</i> Settings</a>
     <div class="dropdown-content">
@@ -437,8 +437,9 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 
 		    <input type="submit"  name="add_user" value="Add user">
+</div>
 </form>
-		</div>
+		
 		<form action="add_user.php" method="POST">
 <div id="userRadio">
     <label for="fname">Username</label>
@@ -462,7 +463,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     <input type="text"  name ="jobtitle" placeholder="Your company job title.." value=""required>
 
     <input type="submit"  name="add_user" value="Add user">
-  </form></div>
+ </div> </form>
 </div>
 
 

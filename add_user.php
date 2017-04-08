@@ -12,33 +12,28 @@ function adduser(){
 try{
     $username=$_POST['username'];
       $password=$_POST['password'];
-  /*    if($username==null|| $passoword==null)
+      if($username==null|| $passoword==null)
       {
           echo "<script>alert('Error No data entered(Username or password field cannot be empty)'); window.location = './adminpage.html';</script>";
           exit();
-      }*/
-      $a_status=$_POST['member'];
-
-        if($a_status=='user')
-      {
-          $admin_status='N';
-
-        }
-        else {
-          $admin_status='Y';
-
-        }
-        $company=$_POST['company'];
-        $url=$_POST['url'];
-        $jobtitle=$_POST['jobtitle'];
-
+      }
       $fname = $_POST['fname'];
      $lname=$_POST['lname'];
      $email = $_POST['email'];
       $phone = $_POST['phone'];
+      $company=$_POST['company'];
+      $url=$_POST['url'];
+      $jobtitle=$_POST['jobtitle'];
+      $admin_status='N';
 
-
-
+      $a_status=$_POST['member'];
+      if($a_status!=null)
+      {
+        if($a_status=='admin')
+        {
+          $admin_status='Y';
+        }
+      }
       $sql = "INSERT INTO user_details(username,firstname,lastname,email,phone,companysite,jobtitle,company,password,admin_status)
        VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', '$password', '$admin_status')";
     if ($conn->query($sql) === TRUE) {
@@ -51,7 +46,7 @@ try{
 }
 catch(Exception $e)
 {
-  echo "<script>alert('Error $e'); window.location = './adminpage.html';</script>";
+  echo $e;
 }}
 
 

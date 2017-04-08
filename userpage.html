@@ -147,7 +147,7 @@ if (xmlHttp==null)
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
- xmlHttp.onreadystatechange=stateChangedforProfie;
+  xmlHttp.onreadystatechange=stateChangedforProfie;
  xmlHttp.send(params);
 }
 }
@@ -180,7 +180,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
     <li class="tablinks" onclick="openCity(event, 'modifyProfile')"><i class="material-icons md-18 blue">edit</i> Modify Profile</li>
     <li><i class="material-icons md-18 blue"> help</i> Help</li>
-<li> <i class="material-icons md-18 blue">power_settings_new</i><a href="login.html" style="text-decoration: none;  color: black; "> Log Out</a></li>
+<li> <i class="material-icons md-18 blue">power_settings_new</i><a href="login.html" style="text-decoration: none;  color: black; " onclick="logOut()"> Log Out</a></li>
     <li class="dropdown">
     <a class="dropbtn"><i class="material-icons md-18 blue">settings_applications</i> Settings</a>
     <div class="dropdown-content">

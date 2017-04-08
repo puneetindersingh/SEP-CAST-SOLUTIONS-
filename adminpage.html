@@ -17,7 +17,7 @@ $(document).ready(function(){
  if($(this).attr('value') == 'user'){
 $('#userRadio').show();
  }
- 
+
  if($(this).attr('value') == 'admin1'){
 	 $('#UserRadio1').hide();
 	 $('#UserRadio2').hide();
@@ -414,10 +414,8 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 <!-- new form -->
 <div class="col-14 divAddUser allform tabcontent" id="addNewUser">
   <form action="add_user.php" method="POST">
-    <input id="searchBar" type="text" placeholder="Search user">
-    <h4>User information</h4>
-
-	    	<label for="fname">Member Type</label> <br>
+  <h4>User information</h4>
+ 	<label for="fname">Member Type</label> <br>
     <input type="radio"  id= "admin" name="member" value="admin" checked> <label><b>Admin</b></label>
     <input type="radio"  id="user" name="member" value="user"><label><b>User</b></label><br><br>
 

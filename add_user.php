@@ -12,11 +12,7 @@ function adduser(){
 try{
     $username=$_POST['username'];
       $password=$_POST['password'];
-      if($username==null|| $passoword==null)
-      {
-          echo "<script>alert('Error No data entered(Username or password field cannot be empty)'); window.location = './adminpage.html';</script>";
-          exit();
-      }
+    
       $fname = $_POST['fname'];
      $lname=$_POST['lname'];
      $email = $_POST['email'];

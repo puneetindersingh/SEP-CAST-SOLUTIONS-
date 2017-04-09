@@ -82,6 +82,11 @@ text-align: center;
 margin-bottom: 10px;
 }
 
+/*for help question mark*/
+#resetHelp {
+  cursor: pointer;
+}
+
 /*.input-group input[type="submit"]{
 
 }*/

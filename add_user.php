@@ -17,7 +17,6 @@ try{
      $lname=$_POST['lname'];
      $email = $_POST['email'];
       $phone = $_POST['phone'];
-<<<<<<< HEAD
 
 
         $ac_status='Y';
@@ -27,25 +26,11 @@ try{
       $jobtitle="";
       if($a_status!=null)
       {
-=======
-      $company="";
-      $url="";
-      $jobtitle="";
-      $admin_status='N';
-      $ac_status='Y';
-      if(isset($_POST['member'])){
-            $a_status=$_POST['member'];
-
->>>>>>> origin/Web-pages
         if($a_status=='admin')
         {
           $admin_status='Y';
 
         }
-      }else{
-        $company=$_POST['company'];
-        $url=$_POST['url'];
-        $jobtitle=$_POST['jobtitle'];
       }
       else {
         $admin_status='N';
@@ -57,11 +42,7 @@ try{
        VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', '$password', '$admin_status','$ac_status')";
     if ($conn->query($sql) === TRUE) {
 
-<<<<<<< HEAD
     echo "<script>alert('New user added '); window.location = './adminpage.html';</script>";
-=======
-    echo "<script>alert('New user added'); window.location = './adminpage.html';</script>";
->>>>>>> origin/Web-pages
 } else {
   echo "<script>alert('Error $sql $conn->error'); window.location = './adminpage.html';</script>";
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -69,6 +50,7 @@ try{
 }
 catch(Exception $e)
 {
+  echo $e;
 }}
 
 

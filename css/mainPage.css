@@ -205,7 +205,6 @@ box-shadow: none;
   padding: 0 8px;
 }
 
-
 .teamCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -253,21 +252,6 @@ box-shadow: none;
   background-color: #555;
 }
 
-/*help page*/
-.columnHelp {
-  float: left;
-  width: 60%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
-
-.helpCard {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.helpCard img{
-   width: 50%;
-}
 /*down side part*/
 /*.aside {
     padding: 8px;
@@ -387,8 +371,10 @@ display: inline-block;
    padding: 5px;
    font-size: 16px;
    line-height: 1;
+   border: 0;
    border-radius: 0;
    height: 34px;
+   -webkit-appearance: none;
    }
 
 

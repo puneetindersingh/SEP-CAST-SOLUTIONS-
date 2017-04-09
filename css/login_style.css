@@ -82,6 +82,10 @@ text-align: center;
 margin-bottom: 10px;
 }
 
+/*.input-group input[type="submit"]{
+
+}*/
+
 input {
 text-align: center;
 background-color: #ECF0F1;
@@ -142,6 +146,17 @@ box-shadow: none;
 
   .col-12 {width: 100%;}
 }
+
+/*for icon */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-20 { font-size: 20px; }
+.material-icons.md-24 { font-size: 24px; } /* Default */
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.blue { color: #24427b; }
+.white {color: white; }
+.white:hover { color: #24427b; }
 
 
 header{

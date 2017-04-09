@@ -194,7 +194,7 @@ function InfobyRow(r){
 	   arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
 	  }
 	}else{
-		for(var m=0 ; m<5;m++){
+		for(var m=0 ; m<6;m++){
 	   arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
 	  }
 	}
@@ -256,12 +256,14 @@ if (xmlHttp==null)
  if(user.checked){
 	 params += "editU=1&username="+array[0]+"&firstname="+array[1]
 	 +"&lastname="+array[2]+"&email="+array[3]
-	 +"&phone="+phone+"&companyname="+array[5]
-	 +"&companysite="+array[6]+"&jobtitle="+array[7]+"&admin_status=N";
+	 +"&phone="+phone+"&company="+array[5]
+	 +"&password="+array[6]+"&account_status="+array[7]+"&admin_status=N";
+
  }else{
 	 params += "editU=1&username="+array[0]+"&firstname="+array[1]
 	 +"&lastname="+array[2]+"&email="+array[3]
-	 +"&phone="+phone+"&admin_status=Y";
+	 +"&phone="+phone+"&admin_status=Y"+"&password="+array[5];
+
  }
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
@@ -499,7 +501,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 <div class="col-14 divAddUser allform tabcontent" id="addCompany">
   <form action="add_company.php" method="POST">
-    
+
     <h4>Company information</h4>
 
 

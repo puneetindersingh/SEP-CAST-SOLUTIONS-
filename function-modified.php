@@ -31,15 +31,12 @@ function login(){
     $password = $_POST['password'];
 $sql = "SELECT * FROM user_details WHERE username='$username' AND password='$password' ";
 $result = $conn->query($sql);
+
 if($row=$result->fetch_assoc()){
   if($row['account_status'] == 'N'){
     echo "not active";
     exit();
   }
-
-
-}
-if($row=$result->fetch_assoc()){
     if($row['admin_status'] == 'Y'){
       echo "admin";
     }else{
@@ -134,10 +131,10 @@ else{
 
 function getCompany(){
   include 'connect.php';
-  $sql = "SELECT DISTINCT Company FROM customer order by Company";
+  $sql = "SELECT DISTINCT name FROM company order by name";
   $result = mysqli_query($conn,$sql);
   while($row = $result -> fetch_assoc()){
-      echo $row['Company'].",";
+      echo $row['name'].",";
   }
 }
 
@@ -156,6 +153,8 @@ function displayU(){
          <th>Last Name</th>
          <th>Email address</th>
          <th>Phone</th>
+         <th>Password</th>
+
          <th></th>
          <th></th>
          </tr>";
@@ -166,6 +165,7 @@ function displayU(){
            echo "<td contentEditable='true'>" . $row['lastname'] . "</td>";
            echo "<td contentEditable='true'>" . $row['email'] . "</td>";
            echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
+            echo "<td contentEditable='true'>" . $row['password'] . "</td>";
            echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> edit</i></td>";
            echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
            echo "</tr>";
@@ -173,7 +173,7 @@ function displayU(){
            echo "</table>";
   }else{
 
-      $sql = "SELECT * from customer WHERE Company='$companyN'";
+      $sql = "SELECT * from user_details WHERE company='$companyN'";
       $result = mysqli_query($conn,$sql);
       echo "
 
@@ -185,21 +185,21 @@ function displayU(){
          <th>Email address</th>
          <th>Phone</th>
          <th>Company</th>
-         <th>Company Site Name</th>
-         <th>Company Job Title</th>
+         <th>Password</th>
+         <th>Account Status(Y or N only)</th>
          <th></th>
          <th></th>
        </tr>";
        while($row=$result->fetch_assoc()){
          echo "<tr>";
-         echo "<td contentEditable='true'>" . $row['Username'] . "</td>";
-         echo "<td contentEditable='true'>" . $row['Firstname'] . "</td>";
-         echo "<td contentEditable='true'>" . $row['Lastname'] . "</td>";
-         echo "<td contentEditable='true'>" . $row['Email'] . "</td>";
-         echo "<td contentEditable='true'>" . $row['Phone_Number'] . "</td>";
-         echo "<td contentEditable='true'>" . $row['Company'] . "</td>";
-         echo "<td contentEditable='true'>" . $row['Address_1'] . "</td>";
-         echo "<td contentEditable='true'>" . $row['Address_2'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['username'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['firstname'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['lastname'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['email'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['company'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['password'] . "</td>";
+         echo "<td contentEditable='true'>" . $row['account_status'] . "</td>";
          echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> edit</i></td>";
          echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
          echo "</tr>";
@@ -264,8 +264,9 @@ function editUser(){
     $lastN = $_POST['lastname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $pass=$_POST['password'];
 
-    $sql = "UPDATE user_details SET firstname='$firstN', lastname='$lastN', email='$email', phone='$phone'  WHERE username='$username'";
+    $sql = "UPDATE user_details SET password='$pass',firstname='$firstN', lastname='$lastN', email='$email', phone='$phone'  WHERE username='$username'";
     $result = mysqli_query($conn,$sql);
     if($result){
       echo "Admin Modified!!";
@@ -278,11 +279,11 @@ function editUser(){
     $lastN = $_POST['lastname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $companyN = $_POST['companyname'];
-    $companyS = $_POST['companysite'];
-    $jobtitle = $_POST['jobtitle'];
+    $companyN = $_POST['company'];
+    $pass = $_POST['password'];
+    $ac_status = $_POST['account_status'];
 
-    $sql = "UPDATE customer SET Firstname='$firstN' ,Lastname='$lastN' ,Email='$email' ,Phone_Number='$phone' ,Company='$companyN' ,Address_1='$companyS' ,Address_2='$jobtitle' where username='$username'";
+    $sql = "UPDATE user_details SET firstname='$firstN' ,lastname='$lastN' ,email='$email' ,phone='$phone' ,company='$companyN' ,password='$pass' ,account_status='$ac_status' where username='$username'";
     $result = mysqli_query($conn,$sql);
     if($result){
       echo "User Modified!!";

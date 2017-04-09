@@ -12,7 +12,7 @@ function adduser(){
 try{
     $username=$_POST['username'];
       $password=$_POST['password'];
-    
+
       $fname = $_POST['fname'];
      $lname=$_POST['lname'];
      $email = $_POST['email'];
@@ -21,17 +21,18 @@ try{
       $url=$_POST['url'];
       $jobtitle=$_POST['jobtitle'];
       $admin_status='N';
-
+        $ac_status='Y';
       $a_status=$_POST['member'];
       if($a_status!=null)
       {
         if($a_status=='admin')
         {
           $admin_status='Y';
+          
         }
       }
-      $sql = "INSERT INTO user_details(username,firstname,lastname,email,phone,companysite,jobtitle,company,password,admin_status)
-       VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', '$password', '$admin_status')";
+      $sql = "INSERT INTO user_details(username,firstname,lastname,email,phone,companysite,jobtitle,company,password,admin_status,account_status)
+       VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', '$password', '$admin_status','$ac_status')";
     if ($conn->query($sql) === TRUE) {
 
     echo "<script>alert('New user added $result'); window.location = './adminpage.html';</script>";

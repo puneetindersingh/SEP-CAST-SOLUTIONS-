@@ -30,7 +30,7 @@
 				<div class="input-group">
 				<input type="text" class="login-field" name="username" placeholder="username" id="login-name" required><br><br>
 				<input type="password" class="login-field" name="password" placeholder="password" id="login-pass" required><br><br>
-                <p id="test"></p>
+                <div class="test" id="test"></div>
 				 <input class="btn"  type="submit" value="Login" name="login" onclick="showHint()"/>
 				</div>
 
@@ -153,7 +153,7 @@ function stateChanged(){
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   if(xmlHttp.responseText=="no"){
     document.cookie = "loginstatus=no; "+expires;
-    document.getElementById('test').innerHTML="Username or Password is Wrong,Please try again!";
+    document.getElementById('test').innerHTML="<i class='material-icons md-18 red'>warning</i>Username or Password is Wrong,Please try again!";
     document.getElementById('login-pass').value="";
   }else if(xmlHttp.responseText=="admin"){
     document.cookie = "loginstatus=yes; "+expires;
@@ -162,7 +162,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     document.cookie = "loginstatus=yes; "+expires;
     window.location = "./userpage.html";
   }else if (xmlHttp.responseText=="not active") {
-    document.getElementById('test').innerHTML="Your account is currently suspended please contact support !";
+    document.getElementById('test').innerHTML="<i class='material-icons md-18 red'>warning</i>Your account is currently suspended please contact support !";
       document.getElementById('login-pass').value="";
   }
  }

@@ -17,25 +17,32 @@ try{
      $lname=$_POST['lname'];
      $email = $_POST['email'];
       $phone = $_POST['phone'];
-      $company=$_POST['company'];
-      $url=$_POST['url'];
-      $jobtitle=$_POST['jobtitle'];
-      $admin_status='N';
+
+
         $ac_status='Y';
       $a_status=$_POST['member'];
+      $company="";
+      $url="";
+      $jobtitle="";
       if($a_status!=null)
       {
         if($a_status=='admin')
         {
           $admin_status='Y';
-          
+
         }
+      }
+      else {
+        $admin_status='N';
+        $company=$_POST['company'];
+        $url=$_POST['url'];
+        $jobtitle=$_POST['jobtitle'];
       }
       $sql = "INSERT INTO user_details(username,firstname,lastname,email,phone,companysite,jobtitle,company,password,admin_status,account_status)
        VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', '$password', '$admin_status','$ac_status')";
     if ($conn->query($sql) === TRUE) {
 
-    echo "<script>alert('New user added $result'); window.location = './adminpage.html';</script>";
+    echo "<script>alert('New user added '); window.location = './adminpage.html';</script>";
 } else {
   echo "<script>alert('Error $sql $conn->error'); window.location = './adminpage.html';</script>";
     echo "Error: " . $sql . "<br>" . $conn->error;

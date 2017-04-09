@@ -129,6 +129,7 @@ else{
 
 }
 
+
 function getCompany(){
   include 'connect.php';
   $sql = "SELECT DISTINCT name FROM company order by name";

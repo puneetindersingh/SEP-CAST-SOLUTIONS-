@@ -402,7 +402,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     <li class="tablinks" onclick="openCity(event, 'modifyUser')"><i class="material-icons md-18 blue">supervisor_account</i> Modify user</li>
     <li class="tablinks" onclick="openCity(event, 'addCompany')"><i class="material-icons md-18 blue">note_add</i> Add Company</li>
     <li class="tablinks" onclick="openCity(event, 'modifyCompany')"><i class="material-icons md-18 blue">assignment</i> Modify Company</li>
-    <li><i class="material-icons md-18 blue">help</i> Help</li>
+    <li class="tablinks" onclick="openCity(event, 'help')"><i class="material-icons md-18 blue">help</i> Help</li>
 <li> <i class="material-icons md-18 blue">power_settings_new</i><a href="login.html" style="text-decoration: none;  color: black; " onclick="logOut()"> Log Out</a></li>
     <li class="dropdown">
     <a class="dropbtn"><i class="material-icons md-18 blue">settings_applications</i> Settings</a>
@@ -538,6 +538,29 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     <input type="password" pattern=".{6,}" title="Six or more characters"placeholder="Your new password"required>
     <input type="submit" value="Submit">
   </form>
+</div>
+	
+	
+	
+<!-- 	help page -->
+<div class="col-14 divAddUser allform tabcontent" id="help">
+
+
+  <h1>Add new user</h1>
+  <p>Choose Member type first.</p>
+  <p>User have more filed than Admin that you need to enter. (Company Name,Company Website and Company Job Title)</p>
+  <hr>
+  <h1>Change Password</h1>
+  <p>Click setting and it will show Rest Password link</p>
+  <p>Old Password: Your current password</p>
+  <p>New Password: password you wanna use in the future</p>
+  <h1>Reset Password</h1>
+  <p>Click forget password link on login page</p>
+  <p>Enter your username and corresponding email</p>
+  <p>You will receive a random new password in your email you entered</p>
+
+
+
 </div>
 
  <!-- contact form -->

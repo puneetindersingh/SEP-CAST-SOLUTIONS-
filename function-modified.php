@@ -32,14 +32,24 @@ function login(){
 $sql = "SELECT * FROM user_details WHERE username='$username' AND password='$password' ";
 $result = $conn->query($sql);
 if($row=$result->fetch_assoc()){
+  if($row['account_status'] == 'N'){
+    echo "not active";
+    exit();
+  }
+
+
+}
+if($row=$result->fetch_assoc()){
     if($row['admin_status'] == 'Y'){
       echo "admin";
     }else{
       echo "user";
     }
+
 }else{
   echo "no";
 }
+
 }
 
 

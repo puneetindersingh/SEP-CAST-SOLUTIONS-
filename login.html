@@ -158,6 +158,9 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   }else if (xmlHttp.responseText=="user") {
     document.cookie = "loginstatus=yes; "+expires;
     window.location = "./userpage.html";
+  }else if (xmlHttp.responseText=="not active") {
+    document.getElementById('test').innerHTML="Your account is currently suspended please contact support !";
+      document.getElementById('login-pass').value="";
   }
  }
 }

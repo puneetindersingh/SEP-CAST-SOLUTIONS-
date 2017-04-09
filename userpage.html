@@ -179,7 +179,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   <ul>
 
     <li class="tablinks" onclick="openCity(event, 'modifyProfile')"><i class="material-icons md-18 blue">edit</i> Modify Profile</li>
-    <li><i class="material-icons md-18 blue"> help</i> Help</li>
+    <li class="tablinks" onclick="openCity(event, 'helpPage')"><i class="material-icons md-18 blue"> help</i> Help</li>
 <li> <i class="material-icons md-18 blue">power_settings_new</i><a href="login.html" style="text-decoration: none;  color: black; " onclick="logOut()"> Log Out</a></li>
     <li class="dropdown">
     <a class="dropbtn"><i class="material-icons md-18 blue">settings_applications</i> Settings</a>
@@ -373,6 +373,34 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 </div>
 </div>
 
+<!-- new help page -->
+<div class="col-14 divAddUser allform tabcontent" id="helpPage">
+    <h4>How to reset password?</h4>
+<div class="rowTeam">
+  <div class="columnHelp">
+    <div class="helpCard">
+      <img src="img/changePassword1.png" alt="First step">
+      <div class="teamContainer">
+        <h3>Change Password</h3>
+        <p class="teamTitle">Step 1</p>
+        <p>Click setting and it will show Rest Password link.</p>
+        <p>Please input your old Password and the new password your want to change.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="columnHelp">
+    <div class="helpCard">
+      <img src="img/changePassword2.png" alt="Second step">
+      <div class="teamContainer">
+        <h3>Change Password</h3>
+        <p class="teamTitle">Step 2</p>
+        <p>Click submit button to change password.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
 <!-- <div class="col-12 right">
   <div class="aside">

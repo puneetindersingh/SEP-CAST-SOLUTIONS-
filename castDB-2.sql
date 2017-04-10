@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2017 at 08:52 AM
+-- Generation Time: Apr 10, 2017 at 03:04 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.15
 
@@ -19,6 +19,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `castsolution`
 --
+CREATE DATABASE IF NOT EXISTS `castsolution` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `castsolution`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `company`
+--
+
+CREATE TABLE `company` (
+  `name` varchar(30) NOT NULL,
+  `address` varchar(30) NOT NULL,
+  `phone` varchar(30) NOT NULL,
+  `site` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`name`, `address`, `phone`, `site`) VALUES
+('ABC', 'na street', '01234565', 'abc.com'),
+('ABC2', 'na street', '0124567', 'abc2.com');
 
 -- --------------------------------------------------------
 
@@ -53,6 +76,12 @@ INSERT INTO `user_details` (`firstname`, `lastname`, `email`, `phone`, `companys
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`name`);
 
 --
 -- Indexes for table `user_details`

@@ -49,9 +49,10 @@ function getCookie(cname){
 function checkCookie(){
  var user=getCookie("username");
   var status=getCookie("loginstatus");
+    var name =getCookie("full_name");
   if(status!="" && status =="yes"){
      if (user!=""){
-       document.getElementById('user').innerHTML = user;
+       document.getElementById('user').innerHTML = name.replace(/\+/g,' ').toUpperCase();
      }
      else {
         alert('no exist Cookie!');
@@ -59,7 +60,7 @@ function checkCookie(){
     }else{
       window.location = "./login.html";
     }
-}
+} 
 
 var d = new Date();
 var exdays = 30;

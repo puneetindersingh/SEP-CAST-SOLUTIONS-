@@ -106,9 +106,10 @@ function getCookie(cname){
 function checkCookie(){
 	var user=getCookie("username");
   var status=getCookie("loginstatus");
+    var name=getCookie("full_name");
   if(status!="" && status =="yes"){
     	if (user!=""){
-    		document.getElementById('admin').innerHTML = user.toUpperCase();
+    		document.getElementById('admin').innerHTML = name.replace(/\+/g, ' ').toUpperCase();
     	}
     	else {
         alert('no exist Cookie!');

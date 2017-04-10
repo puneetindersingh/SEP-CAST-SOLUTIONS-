@@ -33,6 +33,10 @@ $sql = "SELECT * FROM user_details WHERE username='$username' AND password='$pas
 $result = $conn->query($sql);
 
 if($row=$result->fetch_assoc()){
+    
+    $firstName = $row['firstname'];
+    $lastName = $row ['lastname'];
+    $fullName = $firstName." ".$lastName;  setcookie('full_name',$fullName);
   if($row['account_status'] == 'N'){
     echo "not active";
     exit();

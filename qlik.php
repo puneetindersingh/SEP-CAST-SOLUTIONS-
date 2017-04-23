@@ -426,6 +426,18 @@ if($row = $result-> fetch_assoc()){
 <div style="float: left;  	padding-top:10px; ">
   <iframe src=<?php echo $iframe4 ?> style='border:none; 'width="555" height="500"></iframe>
 </div>
+ 
+ 
+ 
+ <div style="padding-left:13.66%">
+<iframe style="border:none;height:500px;width:40%;padding-top:50px" src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=kfBJpR&opt=nointeraction&select=clearall'></iframe>
+
+  <iframe style="border:none;height:500px;width:40%;padding-top:50px"  src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=MafxD&select=clearall' ></iframe>
+
+  <iframe  style="border:none;height:500px;width:40%;padding-top:50px" src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=MafxD&select=clearall' ></iframe>
+
+   <iframe  style="border:none;height:500px;width:40%;padding-top:50px" src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=MafxD&select=clearall' ></iframe>
+</div>
 
 
 <!-- <div class="col-12 right">

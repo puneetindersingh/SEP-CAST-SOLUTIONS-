@@ -403,23 +403,28 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 </div>
 <?php
 include 'connect.php';
-
-
-$sql = "SELECT ";
+$username = $_COOKIE['username'];
+$sql = "SELECT * FROM user_iframe WHERE username='$username'";
 $result = $conn->query($sql);
+if($row = $result-> fetch_assoc()){
+  $iframe1 = $row['iframe1'];
+  $iframe2 = $row['iframe2'];
+  $iframe3 = $row['iframe3'];
+  $iframe4 = $row['iframe4'];
+}
 
     ?>
 <div style="float: right;  	padding-top:10px;">
-<iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=wJyUhj&select=clearall' style='border:none; 'width="555" height="500"></iframe>
+<iframe src=<?php echo $iframe1?> style='border:none; 'width="555" height="500"></iframe>
 </div>
 <div style="float: left;  	padding-top:10px; ">
-  <iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=HJGkTFA&select=clearall' style='border:none; 'width="555" height="500"></iframe>
+  <iframe src=<?php echo $iframe2 ?> style='border:none; 'width="555" height="500"></iframe>
 </div>
 <div style="float: left;  	padding-top:10px; ">
-  <iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=HJGkTFA&select=clearall' style='border:none; 'width="555" height="500"></iframe>
+  <iframe src=<?php echo $iframe3 ?> style='border:none; 'width="555" height="500"></iframe>
 </div>
 <div style="float: left;  	padding-top:10px; ">
-  <iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=HJGkTFA&select=clearall' style='border:none; 'width="555" height="500"></iframe>
+  <iframe src=<?php echo $iframe4 ?> style='border:none; 'width="555" height="500"></iframe>
 </div>
 
 

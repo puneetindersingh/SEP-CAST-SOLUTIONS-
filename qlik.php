@@ -169,12 +169,11 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
   <a id="logoleftTop"><img id="logo" src="img/LOGO-01.png"/></a>
   <a href="#User"><i class="material-icons md-18 blue">face</i> <text id="user">USER</text></a>
-  <a href="qlik.php"> Qlik</a>
+  <a class="tablinks" onclick="location.href = 'QLIK.php';">QLIK SENSE</a>
   <a class="tablinks" onclick="openCity(event, 'contact')"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
   <a class="tablinks" onclick="openCity(event, 'aboutform')"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="topnav()">&#9776;</a>
 </div>
-
 <!-- side bar -->
 <div class="col-2 menu">
   <ul>
@@ -402,12 +401,27 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   </div>
 </div>
 </div>
+<?php
+include 'connect.php';
+
+
+$sql = "SELECT ";
+$result = $conn->query($sql);
+
+    ?>
 <div style="float: right;  	padding-top:10px;">
-<iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=kfBJpR&opt=nointeraction&select=clearall' style='border:none; 'width="555" height="500"></iframe>
+<iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=wJyUhj&select=clearall' style='border:none; 'width="555" height="500"></iframe>
 </div>
 <div style="float: left;  	padding-top:10px; ">
-  <iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=MafxD&select=clearall' style='border:none; 'width="555" height="500"></iframe>
+  <iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=HJGkTFA&select=clearall' style='border:none; 'width="555" height="500"></iframe>
 </div>
+<div style="float: left;  	padding-top:10px; ">
+  <iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=HJGkTFA&select=clearall' style='border:none; 'width="555" height="500"></iframe>
+</div>
+<div style="float: left;  	padding-top:10px; ">
+  <iframe src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=HJGkTFA&select=clearall' style='border:none; 'width="555" height="500"></iframe>
+</div>
+
 
 <!-- <div class="col-12 right">
   <div class="aside">

@@ -60,7 +60,7 @@ function checkCookie(){
     }else{
       window.location = "./login.html";
     }
-} 
+}
 
 var d = new Date();
 var exdays = 30;
@@ -144,7 +144,7 @@ if (xmlHttp==null)
  +"&lastname="+document.getElementById('lastN').value+"&email="+document.getElementById('emailAddress').value
  +"&phone="+phone+"&companyname="+document.getElementById('companyN').value
  +"&companysite="+document.getElementById('companySite').value+"&jobtitle="+document.getElementById('jobTitle').value;
- 
+
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -169,7 +169,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
   <a id="logoleftTop"><img id="logo" src="img/LOGO-01.png"/></a>
   <a href="#User"><i class="material-icons md-18 blue">face</i> <text id="user">USER</text></a>
-  <a href="#Qlik"> Qlik</a>
+  <a class="tablinks" onclick="location.href = 'QLIK.php';">QLIK SENSE</a>
   <a class="tablinks" onclick="openCity(event, 'contact')"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
   <a class="tablinks" onclick="openCity(event, 'aboutform')"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="topnav()">&#9776;</a>

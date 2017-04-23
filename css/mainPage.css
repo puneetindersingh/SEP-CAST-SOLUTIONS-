@@ -12,10 +12,15 @@ html {
 }
 
 body {
-  font-family: Phenomena，Brandon Grotesque;
+  font-family: 'Open Sans', sans-serif;
   background: #ffffff;
   margin: 0 0 0 0;
 }
+
+li,input {
+  font-family: 'Open Sans', sans-serif;
+}
+
 /*
 input {
 text-align: center;
@@ -42,6 +47,7 @@ box-shadow: none;
 }
 
 .topnav a {
+  font-family: 'Fira Sans', sans-serif;
   float: left;
   display: block;
   color: black;

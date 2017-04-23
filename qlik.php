@@ -412,31 +412,17 @@ if($row = $result-> fetch_assoc()){
   $iframe3 = $row['iframe3'];
   $iframe4 = $row['iframe4'];
 }
-
-    ?>
-<div style="float: right;  	padding-top:10px;">
-<iframe src=<?php echo $iframe1?> style='border:none; 'width="555" height="500"></iframe>
-</div>
-<div style="float: left;  	padding-top:10px; ">
-  <iframe src=<?php echo $iframe2 ?> style='border:none; 'width="555" height="500"></iframe>
-</div>
-<div style="float: left;  	padding-top:10px; ">
-  <iframe src=<?php echo $iframe3 ?> style='border:none; 'width="555" height="500"></iframe>
-</div>
-<div style="float: left;  	padding-top:10px; ">
-  <iframe src=<?php echo $iframe4 ?> style='border:none; 'width="555" height="500"></iframe>
-</div>
+  ?>
 
 
+ <div class ="topnav" style="padding-left:13.66%">
+<iframe style="border:none;height:500px;width:40%;padding-top:50px" src='<?php echo $iframe1?>' ></iframe>
 
- <div style="padding-left:13.66%">
-<iframe style="border:none;height:500px;width:40%;padding-top:50px" src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=kfBJpR&opt=nointeraction&select=clearall'></iframe>
+  <iframe style="border:none;height:500px;width:40%;padding-top:50px"  src='<?php echo $iframe2?>' ></iframe>
 
-  <iframe style="border:none;height:500px;width:40%;padding-top:50px"  src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=MafxD&select=clearall' ></iframe>
+  <iframe  style="border:none;height:500px;width:40%;padding-top:50px" src='<?php echo $iframe3?>'></iframe>
 
-  <iframe  style="border:none;height:500px;width:40%;padding-top:50px" src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=MafxD&select=clearall' ></iframe>
-
-   <iframe  style="border:none;height:500px;width:40%;padding-top:50px" src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=MafxD&select=clearall' ></iframe>
+   <iframe  style="border:none;height:500px;width:40%;padding-top:50px" src='<?php echo $iframe4?>' ></iframe>
 </div>
 
 

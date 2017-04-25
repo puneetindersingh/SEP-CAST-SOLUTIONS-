@@ -32,6 +32,9 @@ function openCity(evt, cityName) {
     if(cityName == "modifyProfile"){
       showProfile();
     }
+    if(cityName == "qlikPage"){
+      showQlik();
+    }
 }
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
@@ -81,7 +84,7 @@ if (xmlHttp==null)
  }
  var url='function-modified.php';
  var params = "";
- params += "profile=1&username="+document.getElementById('user').innerHTML;
+ params += "profile=1&username="+getCookie('username');
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -159,6 +162,39 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
  }
 }
 
+function showQlik(){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "qlik=1&username="+getCookie('username');
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforQlik;
+ xmlHttp.send(params);
+}
+
+function stateChangedforQlik(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  var str=xmlHttp.responseText;
+  var obj = eval('(' + str + ')');
+  var arr = obj.iframe1.split(",");
+  var mess="<h4>Qlik Sense</h4><div class='rowTeam'>";
+  for(var a=0;a<arr.length;a++){
+    if(arr[a] != ""){
+      mess += "<div class='columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;padding-top:50px' src='"+arr[a]+"' ></iframe></div></div>";
+    }
+  }
+  mess +="</div>";
+  document.getElementById('qlikPage').innerHTML = mess;
+ }
+}
+// <div class='columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;padding-top:50px' src='"+arr[0]+"' ></iframe></div></div>
 </script>
 <body onload="checkCookie()">
 <div class="row">
@@ -402,7 +438,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 <!-- Qlik sense page -->
 <div class="col-14 divAddUser allform tabcontent" id="qlikPage">
-    <h4>Qlik Sense</h4>
+    <!-- <h4>Qlik Sense</h4>
 <div class="rowTeam">
   <div class="columnQlik">
     <div class="helpCard">
@@ -440,7 +476,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     </div>
   </div>
 
-</div>
+</div> -->
 </div>
 
 <!-- <div class="col-12 right">

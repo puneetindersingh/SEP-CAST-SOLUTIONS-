@@ -23,6 +23,8 @@ if(isset($_POST['login'])){
     editCompany();
 }else if(isset($_POST['displayC'])){
     displayC();
+}else if(isset($_POST['qlik'])){
+    qlik();
 }
 
 function login(){
@@ -33,7 +35,7 @@ $sql = "SELECT * FROM user_details WHERE username='$username' AND password='$pas
 $result = $conn->query($sql);
 
 if($row=$result->fetch_assoc()){
-    
+
     $firstName = $row['firstname'];
     $lastName = $row ['lastname'];
     $fullName = $firstName." ".$lastName;  setcookie('full_name',$fullName);
@@ -159,7 +161,6 @@ function displayU(){
          <th>Email address</th>
          <th>Phone</th>
          <th>Password</th>
-
          <th></th>
          <th></th>
          </tr>";
@@ -170,7 +171,7 @@ function displayU(){
            echo "<td contentEditable='true'>" . $row['lastname'] . "</td>";
            echo "<td contentEditable='true'>" . $row['email'] . "</td>";
            echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
-            echo "<td contentEditable='true'>" . $row['password'] . "</td>";
+           echo "<td contentEditable='true'>" . $row['password'] . "</td>";
            echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> edit</i></td>";
            echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
            echo "</tr>";
@@ -361,5 +362,16 @@ function displayC(){
    }
     echo "</table>";
     mysqli_close($conn);
+}
+
+function qlik(){
+  include 'connect.php';
+  $username = $_POST['username'];
+
+  $sql = "SELECT * from user_iframe where username='$username'";
+  $result = mysqli_query($conn,$sql);
+  $row = $result->fetch_assoc();
+  echo json_encode($row);
+  mysqli_close($conn);
 }
 ?>

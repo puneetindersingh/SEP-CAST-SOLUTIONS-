@@ -164,12 +164,10 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 <div class="row">
 
 <!-- top nav -->
-
 <div class="col-12 topnav" id="myTopnav">
-
   <a id="logoleftTop"><img id="logo" src="img/LOGO-01.png"/></a>
   <a href="#User"><i class="material-icons md-18 blue">face</i> <text id="user">USER</text></a>
-  <a class="tablinks" onclick="location.href = 'QLIK.php';">QLIK SENSE</a>
+  <a class="tablinks" onclick="openCity(event, 'qlikPage')">QLIK SENSE</a>
   <a class="tablinks" onclick="openCity(event, 'contact')"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
   <a class="tablinks" onclick="openCity(event, 'aboutform')"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="topnav()">&#9776;</a>
@@ -178,7 +176,6 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 <!-- side bar -->
 <div class="col-2 menu">
   <ul>
-
     <li class="tablinks" onclick="openCity(event, 'modifyProfile')"><i class="material-icons md-18 blue">edit</i> Modify Profile</li>
     <li class="tablinks" onclick="openCity(event, 'helpPage')"><i class="material-icons md-18 blue"> help</i> Help</li>
 <li> <i class="material-icons md-18 blue">power_settings_new</i><a href="login.html" style="text-decoration: none;  color: black; " onclick="logOut()"> Log Out</a></li>
@@ -400,6 +397,49 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
       </div>
     </div>
   </div>
+</div>
+</div>
+
+<!-- Qlik sense page -->
+<div class="col-14 divAddUser allform tabcontent" id="qlikPage">
+    <h4>Qlik Sense</h4>
+<div class="rowTeam">
+  <div class="columnQlik">
+    <div class="helpCard">
+      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe1?>' ></iframe>
+    </div>
+  </div>
+
+  <div class="columnQlik">
+    <div class="helpCard">
+      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe2?>' ></iframe>
+    </div>
+  </div>
+
+    <div class="columnQlik">
+    <div class="helpCard">
+      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe3?>' ></iframe>
+    </div>
+  </div>
+
+    <div class="columnQlik">
+    <div class="helpCard">
+      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe4?>' ></iframe>
+    </div>
+  </div>
+
+    <div class="columnQlik">
+    <div class="helpCard">
+      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe5?>' ></iframe>
+    </div>
+  </div>
+
+      <div class="columnQlik">
+    <div class="helpCard">
+      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe6?>' ></iframe>
+    </div>
+  </div>
+
 </div>
 </div>
 

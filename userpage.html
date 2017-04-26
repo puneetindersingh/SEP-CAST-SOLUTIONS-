@@ -183,7 +183,7 @@ function stateChangedforQlik(){
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   var str=xmlHttp.responseText;
   var obj = eval('(' + str + ')');
-  var arr = obj.iframe1.split(",");
+  var arr = new Array(obj.iframe1,obj.iframe2,obj.iframe3,obj.iframe4,obj.iframe5,obj.iframe6);
   var mess="<h4>Qlik Sense</h4><div class='rowTeam'>";
   for(var a=0;a<arr.length;a++){
     if(arr[a] != ""){

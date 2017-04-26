@@ -187,14 +187,14 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   var mess="<h4>Qlik Sense</h4><div class='rowTeam'>";
   for(var a=0;a<arr.length;a++){
     if(arr[a] != ""){
-      mess += "<div class='columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;padding-top:50px' src='"+arr[a]+"' ></iframe></div></div>";
+      mess += "<div class='col-6 columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;' src='"+arr[a]+"' ></iframe></div></div>";
     }
   }
   mess +="</div>";
   document.getElementById('qlikPage').innerHTML = mess;
  }
 }
-// <div class='columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;padding-top:50px' src='"+arr[0]+"' ></iframe></div></div>
+// <div class='col-6 columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;' src='"+arr[0]+"' ></iframe></div></div>
 </script>
 <body onload="checkCookie()">
 <div class="row">
@@ -440,37 +440,37 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 <div class="col-14 divAddUser allform tabcontent" id="qlikPage">
     <!-- <h4>Qlik Sense</h4>
 <div class="rowTeam">
-  <div class="columnQlik">
+  <div class="col-6 columnQlik">
     <div class="helpCard">
       <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe1?>' ></iframe>
     </div>
   </div>
 
-  <div class="columnQlik">
+  <div class="col-6 columnQlik">
     <div class="helpCard">
       <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe2?>' ></iframe>
     </div>
   </div>
 
-    <div class="columnQlik">
+    <div class="col-6 columnQlik">
     <div class="helpCard">
       <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe3?>' ></iframe>
     </div>
   </div>
 
-    <div class="columnQlik">
+    <div class="col-6 columnQlik">
     <div class="helpCard">
       <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe4?>' ></iframe>
     </div>
   </div>
 
-    <div class="columnQlik">
+    <div class="col-6 columnQlik">
     <div class="helpCard">
       <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe5?>' ></iframe>
     </div>
   </div>
 
-      <div class="columnQlik">
+      <div class="col-6 columnQlik">
     <div class="helpCard">
       <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe6?>' ></iframe>
     </div>

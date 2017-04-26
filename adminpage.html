@@ -5,7 +5,6 @@
  <title>Admin | Cast Solution</title>
  <link rel="stylesheet" href="css/mainPage.css">
  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Fira+Sans:400,500" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -65,7 +64,16 @@ function openCity(evt, cityName) {
 		if(cityName == "modifyCompany"){
 			showTableforC();
 		}
+    if(cityName == "qlikPage"){
+      showQlikUser();
+      document.getElementById("iframe").src = "https://analytics.castsolutions.com.au";
+      var i = document.getElementsByClassName('iframe');
+      for(var b=0;b<i.length;b++){
+        i[b].value = "";
+      }
+    }
 }
+
 var company = new Array();
 function selectOp(array){
     var s = document.getElementById("companyselect");
@@ -81,7 +89,6 @@ function selectOp(array){
 	        op.appendChild(document.createTextNode(array[a-1]));
 	        s.appendChild(op);
 				}
-
   }
 }
 
@@ -378,6 +385,119 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   document.getElementById('modifyCompany').innerHTML=xmlHttp.responseText;
  }
 }
+
+function changesrc(value){
+  if(value == "Dev-hub"){
+    document.getElementById("iframe").src = "https://analytics.castsolutions.com.au/dev-hub/single-configurator";
+  }
+  else if(value == "Myhub"){
+    document.getElementById("iframe").src = "https://analytics.castsolutions.com.au";
+  }
+
+}
+
+function showQlikUser(){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url="function-modified.php";
+ var params = "";
+ params += "qlikU=1";
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforshowQlikU;
+ xmlHttp.send(params);
+}
+
+function stateChangedforshowQlikU(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  qlikUser = xmlHttp.responseText.split(",");
+  selectQlikU(qlikUser);
+ }
+}
+
+var qlikUser = new Array();
+function selectQlikU(array){
+    var s1 = document.getElementById("qlikUser");
+		s1.options.length=0;
+    for(var a=0; a<array.length;a++){
+        var op = document.createElement("option");
+				if(a==0){
+					op.setAttribute("value",0);
+			    op.appendChild(document.createTextNode("Please Select a UserName..."));
+			    s1.appendChild(op);
+				}else{
+					op.setAttribute("value",array[a-1]);
+	        op.appendChild(document.createTextNode(array[a-1]));
+	        s1.appendChild(op);
+				}
+  }
+}
+
+function showQlikUserIframes(){
+  var username = document.getElementById('qlikUser').value;
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ if(username !="" && username !=0){
+   var url='function-modified.php';
+   var params = "";
+   params += "qlik=1&username="+username;
+   // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+   xmlHttp.open("POST",url,true);
+   xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+   xmlHttp.onreadystatechange=stateChangedforQlikIframes;
+   xmlHttp.send(params);
+ }
+}
+
+function stateChangedforQlikIframes(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+  var str=xmlHttp.responseText;
+  var obj1 = eval('(' + str + ')');
+  var array = new Array(obj1.iframe1,obj1.iframe2,obj1.iframe3,obj1.iframe4,obj1.iframe5,obj1.iframe6);
+  document.getElementById('userInfo').innerHTML=obj1.username+" belongs to "+obj1.company+". JobTitle is:"+obj1.jobtitle;
+  document.getElementById('iframe1').value = array[0];
+  document.getElementById('iframe2').value = array[1];
+  document.getElementById('iframe3').value = array[2];
+  document.getElementById('iframe4').value = array[3];
+  document.getElementById('iframe5').value = array[4];
+  document.getElementById('iframe6').value = array[5];
+ }
+}
+
+function addIframes(){
+  var username = document.getElementById('qlikUser').value;
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='function-modified.php';
+ var params = "";
+ params += "iframes=1&username="+username+"&iframe1="+document.getElementById('iframe1').value.replace(/\&/g,"*")
+ +"&iframe2="+document.getElementById('iframe2').value.replace(/\&/g,"*")+"&iframe3="+document.getElementById('iframe3').value.replace(/\&/g,"*")
+ +"&iframe4="+document.getElementById('iframe4').value.replace(/\&/g,"*")+"&iframe5="+document.getElementById('iframe5').value.replace(/\&/g,"*")
+ +"&iframe6="+document.getElementById('iframe6').value.replace(/\&/g,"*");
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforEditIframes;
+ xmlHttp.send(params);
+}
+
+function stateChangedforEditIframes(){
+if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+    alert(xmlHttp.responseText);
+ }
+}
 </script>
 
 </head>
@@ -391,7 +511,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
   <a id="logoleftTop"><img id="logo" src="img/LOGO-01.png"/></a>
   <a href="#Admin"><i class="material-icons md-18 blue">account_box</i><text id="admin"> ADMIN</text></a>
-  <a href="#Qlik">Qlik</a>
+  <a class="tablinks" onclick="openCity(event, 'qlikPage')">QLIK SENSE</a>
   <a class="tablinks" onclick="openCity(event, 'contact')"><i class="material-icons md-18 blue">contact_phone</i> CONTACT</a>
   <a class="tablinks" onclick="openCity(event, 'aboutform')"><i class="material-icons md-18 blue">lightbulb_outline</i> ABOUT</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="topnav()">&#9776;</a>
@@ -541,9 +661,9 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     <input type="submit" value="Submit">
   </form>
 </div>
-	
-	
-	
+
+
+
 <!-- 	help page -->
 <!-- <div class="col-14 divAddUser allform tabcontent" id="help">
 
@@ -740,6 +860,41 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 </div>
 </div>
 
+<!--Qlik sense Page  -->
+<div class="col-14 divAddUser allform tabcontent" id="qlikPage">
+  <h4>Qlik Sense</h4>
+<div class="rowTeam">
+  <input type="button" value="Dev-hub" onclick=changesrc(this.value)>
+  <input type="button" value="Myhub" onclick=changesrc(this.value)>
+<div class="columnQlik">
+  <div class="helpCard">
+    <iframe id="iframe" style="border:none;height:800px;width:100%;padding-top:50px" src='' ></iframe>
+  </div>
+</div>
+
+<div class="columnQlik">
+  <div class="helpCard">
+    <label for="fname">Username</label>
+    <select id="qlikUser" style="width:100%" onclick="showQlikUserIframes()"></select>
+    <div id="userInfo" ></div>
+    <label for="fname">iframe1</label>
+    <input id="iframe1" type="text" class="iframe" placeholder="iframe1.." >
+    <label for="fname">iframe2</label>
+    <input id="iframe2" type="text" class="iframe" placeholder="iframe2.." >
+    <label for="lname">iframe3</label>
+    <input id="iframe3" type="text" class="iframe" placeholder="iframe3.." >
+    <label for="lname">iframe4</label>
+    <input id="iframe4" type="text" class="iframe" placeholder="iframe4.." >
+    <label for="lname">iframe5</label>
+    <input id="iframe5" type="text" class="iframe" placeholder="iframe5.." >
+    <label for="lname">iframe6</label>
+    <input id="iframe6" type="text" class="iframe" placeholder="iframe6.." >
+
+    <input type="submit"  name="add_iframes" value="Add" onclick=addIframes()>
+  </div>
+</div>
+</div>
+</div>
 <!-- <div class="col-12 right">
   <div class="aside">
     <h2>Space 1</h2>

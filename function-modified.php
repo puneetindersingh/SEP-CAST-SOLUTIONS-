@@ -25,6 +25,10 @@ if(isset($_POST['login'])){
     displayC();
 }else if(isset($_POST['qlik'])){
     qlik();
+}else if(isset($_POST['qlikU'])){
+    qlikU();
+}else if(isset($_POST['iframes'])){
+    editIframes();
 }
 
 function login(){
@@ -52,7 +56,7 @@ if($row=$result->fetch_assoc()){
 }else{
   echo "no";
 }
-
+mysqli_close($conn);
 }
 
 
@@ -64,6 +68,7 @@ $email = $_POST['email'];
 $sql = "INSERT INTO user_details(username,password,email) VALUES('$username','$password','$email')";
 $result = $conn->query($sql);
     echo "record inserted";
+    mysqli_close($conn);
 }
 
 
@@ -132,7 +137,7 @@ if($check==1){
 else{
   echo "<script>alert('Record Not Found'); window.location = './login.html';</script>";
 }
-
+mysqli_close($conn);
 }
 
 
@@ -143,6 +148,7 @@ function getCompany(){
   while($row = $result -> fetch_assoc()){
       echo $row['name'].",";
   }
+  mysqli_close($conn);
 }
 
 function displayU(){
@@ -368,10 +374,43 @@ function qlik(){
   include 'connect.php';
   $username = $_POST['username'];
 
-  $sql = "SELECT * from user_iframe where username='$username'";
+  $sql = "SELECT * from user_details where username='$username'";
+  $sql1 = "SELECT * FROM user_iframe where username='$username'";
   $result = mysqli_query($conn,$sql);
+  $result1 = mysqli_query($conn,$sql1);
   $row = $result->fetch_assoc();
+  $row += $result1->fetch_assoc();
   echo json_encode($row);
+  mysqli_close($conn);
+}
+
+function qlikU(){
+  include 'connect.php';
+  $sql = "SELECT username FROM user_details WHERE admin_status='N'AND account_status='Y' ORDER BY username";
+  $result = mysqli_query($conn,$sql);
+  while($row = $result -> fetch_assoc()){
+      echo $row['username'].",";
+  }
+  mysqli_close($conn);
+}
+
+function editIframes(){
+  include 'connect.php';
+  $username = $_POST['username'];
+  $i1 = strtr($_POST['iframe1'],"*","&");
+  $i2 = strtr($_POST['iframe2'],"*","&");
+  $i3 = strtr($_POST['iframe3'],"*","&");
+  $i4 = strtr($_POST['iframe4'],"*","&");
+  $i5 = strtr($_POST['iframe5'],"*","&");
+  $i6 = strtr($_POST['iframe6'],"*","&");
+
+  $sql = "UPDATE user_iframe SET iframe1='$i1' ,iframe2='$i2' ,iframe3='$i3' ,iframe4='$i4' ,iframe5='$i5' ,iframe6='$i6' where username='$username'";
+  $result = mysqli_query($conn,$sql);
+  if($result){
+    echo "Visualization Updated!!";
+  }else{
+    echo "Failed to Update Visualization!!";
+  }
   mysqli_close($conn);
 }
 ?>

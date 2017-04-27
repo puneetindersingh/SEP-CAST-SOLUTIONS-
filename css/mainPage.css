@@ -199,18 +199,15 @@ box-shadow: none;
 /*About page*/
 .columnTeam {
   float: left;
-  width: 20%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
 
 .columnTeamMain {
   float: left;
-  width: 50%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
-
 
 .teamCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -262,7 +259,6 @@ box-shadow: none;
 /*help page*/
 .columnHelp {
   float: left;
-  width: 60%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
@@ -272,7 +268,7 @@ box-shadow: none;
 }
 
 .helpCard img{
-   width: 50%;
+   width: 100%;
 }
 
 /*Qlik Sense Page*/
@@ -356,11 +352,6 @@ box-shadow: none;
     float: none;
     display: block;
     text-align: left;
-  }
-  /*for team contact deatil in about page*/
-  .columnTeam .columnTeamMain {
-    width: 100%;
-    display: block;
   }
 
 }

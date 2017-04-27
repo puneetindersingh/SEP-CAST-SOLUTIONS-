@@ -99,6 +99,7 @@ d.setTime(d.getTime()+(exdays*24*60*60*1000));
 var expires = "expires="+d.toGMTString();
 
 function logOut(){
+  window.location = "./login.html";
   document.cookie = "loginstatus=no; "+expires;
 }
 // Get the element with id="defaultOpen" and click on it
@@ -526,7 +527,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     <li class="tablinks" onclick="openCity(event, 'addCompany')"><i class="material-icons md-18 blue">note_add</i> Add Company</li>
     <li class="tablinks" onclick="openCity(event, 'modifyCompany')"><i class="material-icons md-18 blue">assignment</i> Modify Company</li>
     <li class="tablinks" onclick="openCity(event, 'helpPage')"><i class="material-icons md-18 blue">help</i> Help</li>
-<li> <i class="material-icons md-18 blue">power_settings_new</i><a href="login.html" style="text-decoration: none;  color: black; " onclick="logOut()"> Log Out</a></li>
+    <li class="tablinks" onclick="logOut()"> <i class="material-icons md-18 blue">power_settings_new</i> Log Out</li>
     <li class="dropdown">
     <a class="dropbtn"><i class="material-icons md-18 blue">settings_applications</i> Settings</a>
     <div class="dropdown-content">

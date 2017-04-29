@@ -55,6 +55,10 @@ try{
       }
       $sql = "INSERT INTO user_details(username,firstname,lastname,email,phone,companysite,jobtitle,company,password,admin_status,account_status)
        VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', '$password', '$admin_status','$ac_status')";
+       if($admin_status == 'N'){
+         $sql1 = "INSERT INTO user_iframe(username,iframe1,iframe2,iframe3,iframe4,iframe5,iframe6) VALUES('$username','','','','','','')";
+         $result = mysqli_query($conn,$sql1);
+       }
     if ($conn->query($sql) === TRUE) {
 
 

@@ -1,5 +1,5 @@
 <?php
- 
+
 /**
  *  SAML Handler
  */

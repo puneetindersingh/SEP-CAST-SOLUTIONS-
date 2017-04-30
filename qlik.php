@@ -418,11 +418,7 @@ if($row = $result-> fetch_assoc()){
  <div class ="topnav" style="padding-left:13.66%">
 <iframe style="border:none;height:500px;width:40%;padding-top:50px" src='<?php echo $iframe1?>' ></iframe>
 
-  <iframe style="border:none;height:500px;width:40%;padding-top:50px"  src='<?php echo $iframe2?>' ></iframe>
 
-  <iframe  style="border:none;height:500px;width:40%;padding-top:50px" src='<?php echo $iframe3?>'></iframe>
-
-   <iframe  style="border:none;height:500px;width:40%;padding-top:50px" src='<?php echo $iframe4?>' ></iframe>
 </div>
 
 

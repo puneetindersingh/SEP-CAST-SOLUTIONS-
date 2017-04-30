@@ -187,7 +187,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   var obj = eval('(' + str + ')');
   var arr = new Array(obj.iframe1,obj.iframe2,obj.iframe3,obj.iframe4,obj.iframe5,obj.iframe6);
   var mess="<h4>Qlik Sense</h4><div class='rowTeam'>";
-  mess += "<div class='helpCard'><iframe style='border:none;width:100%;' src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=DTpyBG&opt=nointeraction&select=clearall' ></iframe></div></br></br>";
+  mess += "<div class='col-12 columnQlik'><div class='helpCard'><iframe style='border:none;height:140px;width:100%;' src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=DTpyBG&opt=nointeraction&select=clearall' ></iframe></div></div>";
   for(var a=0;a<arr.length;a++){
     if(arr[a] != ""){
       mess += "<div class='col-6 columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;' src='"+arr[a]+"' ></iframe></div></div>";

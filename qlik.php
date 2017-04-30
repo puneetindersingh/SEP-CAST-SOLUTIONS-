@@ -416,7 +416,7 @@ if($row = $result-> fetch_assoc()){
 
 
  <div class ="topnav" style="padding-left:13.66%">
-<iframe style="border:none;height:500px;width:40%;padding-top:50px" src='<?php echo $iframe1?>' ></iframe>
+<iframe style="border:none;height:500px;width:40%;padding-top:50px" src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=DTpyBG&opt=nointeraction&select=clearall' ></iframe>
 
 
 </div>

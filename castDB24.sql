@@ -84,7 +84,9 @@ CREATE TABLE `user_iframe` (
   `iframe1` varchar(500) NOT NULL,
   `iframe2` varchar(500) NOT NULL,
   `iframe3` varchar(500) NOT NULL,
-  `iframe4` varchar(500) NOT NULL
+  `iframe4` varchar(500) NOT NULL,
+  `iframe5` varchar(500) NOT NULL,
+  `iframe6` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

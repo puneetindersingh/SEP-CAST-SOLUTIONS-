@@ -386,7 +386,8 @@ function qlik(){
 
 function qlikU(){
   include 'connect.php';
-  $sql = "SELECT username FROM user_details WHERE admin_status='N'AND account_status='Y' ORDER BY username";
+  $companyForQlik = $_POST['companyForQlik'];
+  $sql = "SELECT username FROM user_details WHERE admin_status='N'AND account_status='Y' AND company='$companyForQlik' ORDER BY username";
   $result = mysqli_query($conn,$sql);
   while($row = $result -> fetch_assoc()){
       echo $row['username'].",";

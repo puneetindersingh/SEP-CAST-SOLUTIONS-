@@ -66,7 +66,7 @@ function openCity(evt, cityName) {
 			showTableforC();
 		}
     if(cityName == "qlikPage"){
-      showQlikUser();
+      getcompany();
       document.getElementById("iframe").src = "https://analytics.castsolutions.com.au";
       var i = document.getElementsByClassName('iframe');
       for(var b=0;b<i.length;b++){
@@ -78,17 +78,21 @@ function openCity(evt, cityName) {
 var company = new Array();
 function selectOp(array){
     var s = document.getElementById("companyselect");
+    var s1 = document.getElementById("Company");
 		s.options.length=0;
+    s1.options.length=0;
     for(var a=0; a<array.length;a++){
         var op = document.createElement("option");
 				if(a==0){
 					op.setAttribute("value",0);
 			    op.appendChild(document.createTextNode("Please Select a company..."));
 			    s.appendChild(op);
+          s1.appendChild(op);
 				}else{
 					op.setAttribute("value",array[a-1]);
 	        op.appendChild(document.createTextNode(array[a-1]));
 	        s.appendChild(op);
+          s1.appendChild(op);
 				}
   }
 }
@@ -398,7 +402,7 @@ function changesrc(value){
 
 }
 
-function showQlikUser(){
+function showQlikUser(CompanyN){
   xmlHttp = GetXmlHttpObject();
 if (xmlHttp==null)
  {
@@ -407,7 +411,7 @@ if (xmlHttp==null)
  }
  var url="function-modified.php";
  var params = "";
- params += "qlikU=1";
+ params += "qlikU=1&companyForQlik="+CompanyN;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforshowQlikU;
@@ -439,8 +443,7 @@ function selectQlikU(array){
   }
 }
 
-function showQlikUserIframes(){
-  var username = document.getElementById('qlikUser').value;
+function showQlikUserIframes(username){
   xmlHttp = GetXmlHttpObject();
 if (xmlHttp==null)
  {
@@ -464,7 +467,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   var str=xmlHttp.responseText;
   var obj1 = eval('(' + str + ')');
   var array = new Array(obj1.iframe1,obj1.iframe2,obj1.iframe3,obj1.iframe4,obj1.iframe5,obj1.iframe6);
-  document.getElementById('userInfo').innerHTML=obj1.username+" belongs to "+obj1.company+". JobTitle is:"+obj1.jobtitle;
+  document.getElementById('userInfo').innerHTML="JobTitle:"+obj1.jobtitle;
   document.getElementById('iframe1').value = array[0];
   document.getElementById('iframe2').value = array[1];
   document.getElementById('iframe3').value = array[2];
@@ -499,6 +502,29 @@ function stateChangedforEditIframes(){
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     alert(xmlHttp.responseText);
  }
+}
+
+function previewIframes(type){
+  var modal = document.getElementById('myModal');
+  if(type=="preview_iframes"){
+    modal.style.display="block";
+    var iframe = document.getElementsByClassName('iframe');
+    var arr =new Array();
+    for(var b=0;b<iframe.length;b++){
+      arr[b]=iframe[b].value;
+    }
+    var mess="<h4>Qlik Sense</h4><div class='rowTeam'>";
+    mess += "<div class='col-12 columnQlik'><div class='helpCard'><iframe style='border:none;height:140px;width:100%;' src='https://analytics.castsolutions.com.au/single/?appid=223c0fbe-8420-4344-bbd9-f4227eb2a3a3&obj=DTpyBG&opt=nointeraction&select=clearall' ></iframe></div></div>";
+    for(var a=0;a<arr.length;a++){
+      if(arr[a] != ""){
+        mess += "<div class='col-6 columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;' src='"+arr[a]+"' ></iframe></div></div>";
+      }
+    }
+    mess +="</div><div style='text-align:right;'><input type='submit' name='close' value='Back' onclick='previewIframes(this.name)'></div>";
+    document.getElementById('previewContent').innerHTML = mess;
+  }else if(type == "close"){
+    modal.style.display="none";
+  }
 }
 </script>
 
@@ -857,8 +883,10 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 
 <div class="columnQlik">
   <div class="helpCard">
+    <label for="fname">Company</label>
+    <select id="Company" style="width:100%" onclick="showQlikUser(this.value)"></select>
     <label for="fname">Username</label>
-    <select id="qlikUser" style="width:100%" onclick="showQlikUserIframes()"></select>
+    <select id="qlikUser" style="width:100%" onclick="showQlikUserIframes(this.value)"></select>
     <div id="userInfo" ></div></br>
     <label for="fname">iframe1</label>
     <input id="iframe1" type="text" class="iframe" placeholder="iframe1.." >
@@ -872,8 +900,18 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     <input id="iframe5" type="text" class="iframe" placeholder="iframe5.." >
     <label for="lname">iframe6</label>
     <input id="iframe6" type="text" class="iframe" placeholder="iframe6.." >
+    <label for="lname">iframe7</label>
+    <input id="iframe7" type="text" class="iframe" placeholder="iframe7.." >
+    <label for="lname">iframe8</label>
+    <input id="iframe8" type="text" class="iframe" placeholder="iframe8.." >
+    <label for="lname">iframe9</label>
+    <input id="iframe9" type="text" class="iframe" placeholder="iframe9.." >
+    <label for="lname">iframe10</label>
+    <input id="iframe10" type="text" class="iframe" placeholder="iframe10.." >
 
     <input type="submit"  name="add_iframes" value="Add" onclick=addIframes()>
+    <input type="submit" name="preview_iframes" value="Preview" onclick="previewIframes(this.name)">
+    <div id="myModal" class="modal"><div class="modal-content" id="previewContent" ></div></div>
   </div>
 </div>
 </div>

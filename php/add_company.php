@@ -1,9 +1,9 @@
 <?php
 if(isset($_POST['add_company'])){
-add();
+addCompany();
 }
 
-  function add()
+  function addCompany()
   {
       include 'connect.php';
       $name = $_POST['name'];

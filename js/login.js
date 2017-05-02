@@ -59,7 +59,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url='php/function-modified.php';
+ var url='php/login.php';
  var params = "";
  params += "login=1&username="+document.getElementById('login-name').value;
  params += "&password="+document.getElementById('login-pass').value

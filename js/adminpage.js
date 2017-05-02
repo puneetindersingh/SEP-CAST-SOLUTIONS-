@@ -136,7 +136,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url="php/function-modified.php";
+ var url="php/adminpage.php";
  var params = "";
  params += "getCompany=1";
  xmlHttp.open("POST",url,true);
@@ -158,7 +158,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url="php/function-modified.php";
+ var url="php/adminpage.php";
  var params = "";
  params += "displayU=1&companyN="+companyN;
  xmlHttp.open("POST",url,true);
@@ -238,7 +238,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url='php/function-modified.php';
+ var url='php/adminpage.php';
  var params = "";
  params += "deleteU=1&username="+username;
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
@@ -262,7 +262,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url='php/function-modified.php';
+ var url='php/adminpage.php';
  var params = "";
  var phone = array[4];
  phone = phone.replace(/\+/g, "%2B");
@@ -324,7 +324,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url='php/function-modified.php';
+ var url='php/adminpage.php';
  var params = "";
  params += "deleteC=1&companyName="+companyN;
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
@@ -347,7 +347,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url='php/function-modified.php';
+ var url='php/adminpage.php';
  var params = "";
  var phone = array[2];
  phone = phone.replace(/\+/g, "%2B");
@@ -373,7 +373,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url="php/function-modified.php";
+ var url="php/adminpage.php";
  var params = "";
  params += "displayC=1";
  xmlHttp.open("POST",url,true);
@@ -404,7 +404,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url="php/function-modified.php";
+ var url="php/adminpage.php";
  var params = "";
  params += "qlikU=1&companyForQlik="+CompanyN;
  xmlHttp.open("POST",url,true);
@@ -446,7 +446,7 @@ if (xmlHttp==null)
  return 0;
  }
  if(username !="" && username !=0){
-   var url='php/function-modified.php';
+   var url='php/main.php';
    var params = "";
    params += "qlik=1&username="+username;
    // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
@@ -480,7 +480,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url='php/function-modified.php';
+ var url='php/adminpage.php';
  var params = "";
  params += "iframes=1&username="+username+"&iframe1="+document.getElementById('iframe1').value.replace(/\&/g,"*")
  +"&iframe2="+document.getElementById('iframe2').value.replace(/\&/g,"*")+"&iframe3="+document.getElementById('iframe3').value.replace(/\&/g,"*")

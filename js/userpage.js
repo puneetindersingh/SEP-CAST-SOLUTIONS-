@@ -74,7 +74,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url='php/function-modified.php';
+ var url='php/userpage.php';
  var params = "";
  params += "profile=1&username="+getCookie('username');
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
@@ -131,7 +131,7 @@ if (xmlHttp==null)
  }else if(!myreg1.test(document.getElementById('phoneNo').value)){
    alert("Please enter the Phone Number with '+61' at the front and 9 following numbers!");
  }else{
- var url='php/function-modified.php';
+ var url='php/userpage.php';
  var params = "";
  var phone = document.getElementById('phoneNo').value;
  phone = phone.replace(/\+/g, "%2B");
@@ -161,7 +161,7 @@ if (xmlHttp==null)
  alert ("Browser does not support HTTP Request");
  return 0;
  }
- var url='php/function-modified.php';
+ var url='php/main.php';
  var params = "";
  params += "qlik=1&username="+getCookie('username');
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;

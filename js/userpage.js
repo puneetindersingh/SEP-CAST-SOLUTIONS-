@@ -135,7 +135,7 @@ if (xmlHttp==null)
  var params = "";
  var phone = document.getElementById('phoneNo').value;
  phone = phone.replace(/\+/g, "%2B");
- params += "updateprofile=1&username="+document.getElementById('user').innerHTML+"&firstname="+document.getElementById('firstN').value
+ params += "updateprofile=1&username="+getCookie('username')+"&firstname="+document.getElementById('firstN').value
  +"&lastname="+document.getElementById('lastN').value+"&email="+document.getElementById('emailAddress').value
  +"&phone="+phone+"&companyname="+document.getElementById('companyN').value
  +"&companysite="+document.getElementById('companySite').value+"&jobtitle="+document.getElementById('jobTitle').value;

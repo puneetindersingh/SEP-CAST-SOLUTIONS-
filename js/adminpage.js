@@ -303,8 +303,8 @@ function delCompany(r){
   row = getRow(r);
   var array = new Array();
   array = companyInfobyRow(row);
-  if(confirm("Are you sure to delete this user?")){
-    document.getElementById('editable').deleteRow(row);
+  if(confirm("Are you sure to delete this company?")){
+    document.getElementById('tableForC').deleteRow(row);
     deleteCompany(array[0]);
   }
 }

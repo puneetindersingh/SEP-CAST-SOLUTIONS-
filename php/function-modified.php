@@ -42,7 +42,7 @@ if($row=$result->fetch_assoc()){
 
     $firstName = $row['firstname'];
     $lastName = $row ['lastname'];
-    $fullName = $firstName." ".$lastName;  setcookie('full_name',$fullName);
+    $fullName = $firstName." ".$lastName;  setcookie('full_name',$fullName,time()+36000,'/SEP-CAST-SOLUTIONS-/');
   if($row['account_status'] == 'N'){
     echo "not active";
     exit();
@@ -77,7 +77,7 @@ function forget(){
     $username = $_POST['username'];
     $email = $_POST['email'];
 
-    $sql = "SELECT username,email FROM customer WHERE email= '$email' AND username = '$username'";
+    $sql = "SELECT username,email FROM user_details WHERE email= '$email' AND username = '$username'";
 
 $result = mysqli_query($conn,$sql);
 $check = mysqli_num_rows($result);
@@ -243,7 +243,7 @@ function updateprofile(){
   $companyS = $_POST['companysite'];
   $jobtitle = $_POST['jobtitle'];
 
-  $sql = "UPDATE user_details SET firstname='$firstN' ,lastname='$lastN' ,Email='$email' ,phone='$phone' ,company='$companyN' ,companysite='$companyS' ,jobtitle='$jobtitle' where username='$username'";
+  $sql = "UPDATE user_details SET firstname='$firstN' ,lastname='$lastN' ,email='$email' ,phone='$phone' ,company='$companyN' ,companysite='$companyS' ,jobtitle='$jobtitle' where username='$username'";
   $result = mysqli_query($conn,$sql);
   if($result){
     echo "Profile Updated!!";
@@ -257,7 +257,7 @@ function deleteUser(){
   include 'connect.php';
   $username = $_POST['username'];
 
-  $sql = "DELETE from customer WHERE Username='$username' ";
+  $sql = "DELETE from user_details WHERE Username='$username' ";
   $result = mysqli_query($conn,$sql);
   if($result){
     echo "Delete Successfully!!";

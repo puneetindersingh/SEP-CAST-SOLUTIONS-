@@ -33,7 +33,6 @@ function user_enquiry()
       $result = $conn->query($sql1);
       echo "<script>alert(' Enquiry Submitted'); window.location = '../userpage.html';</script>";
 
-      }
-
-
+  
+    }
     ?>

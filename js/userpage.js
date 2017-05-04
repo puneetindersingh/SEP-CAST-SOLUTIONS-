@@ -189,4 +189,19 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
 }
 // <div class='col-6 columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;' src='"+arr[0]+"' ></iframe></div></div>
 
+//function validateForm() {
+//    var x = document.forms["myForm"]["name"].value;
+//    var y = document.forms["myForm"]["subject"].value;
+//    var z = document.forms["myForm"]["message"].value;
+//    if (x =="") {
+//        alert("Name must be filled out");}
+//     else if(y ==""){
+//            alert("Subject Must not Empty");
+//        }
+//        else if(z==""){
+//            alert("Message must be filled out");
+//        }
+//        return false;
+//    }
+
 

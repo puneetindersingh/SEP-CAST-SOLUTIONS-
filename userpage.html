@@ -75,7 +75,7 @@
 
  <!-- contact form -->
 <div class="col-14 divAddUser allform tabcontent" id="contact">
-  <form action="php/contact.php" method="post">
+  <form action="php/contact.php" method="post" name="myForm">
     <h4>Contact Us</h4>
     <label for="fname">Name</label>
     <input type="text" name="name" placeholder="Your name"required>
@@ -85,7 +85,7 @@
     <input type="text" name="subject" placeholder="Subject"required>
     <label for="msg">Message</label>
     <textarea rows="10" type="text" name="message" placeholder="..."required></textarea>
-    <input type="submit" value="Submit" name="user_enquiry">
+    <input type="submit" value="Submit" name="user_enquiry" onclick="validateForm()">
   </form>
 </div>
 
@@ -252,47 +252,7 @@
 </div>
 
 <!-- Qlik sense page -->
-<div class="col-14 divAddUser allform tabcontent" id="qlikPage">
-    <!-- <h4>Qlik Sense</h4>
-<div class="rowTeam">
-  <div class="col-6 columnQlik">
-    <div class="helpCard">
-      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe1?>' ></iframe>
-    </div>
-  </div>
-
-  <div class="col-6 columnQlik">
-    <div class="helpCard">
-      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe2?>' ></iframe>
-    </div>
-  </div>
-
-    <div class="col-6 columnQlik">
-    <div class="helpCard">
-      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe3?>' ></iframe>
-    </div>
-  </div>
-
-    <div class="col-6 columnQlik">
-    <div class="helpCard">
-      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe4?>' ></iframe>
-    </div>
-  </div>
-
-    <div class="col-6 columnQlik">
-    <div class="helpCard">
-      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe5?>' ></iframe>
-    </div>
-  </div>
-
-      <div class="col-6 columnQlik">
-    <div class="helpCard">
-      <iframe style="border:none;height:500px;width:100%;padding-top:50px" src='<?php echo $iframe6?>' ></iframe>
-    </div>
-  </div>
-
-</div> -->
-</div>
+<div class="col-14 divAddUser allform tabcontent" id="qlikPage"></div>
 
 <!-- <div class="col-12 right">
   <div class="aside">

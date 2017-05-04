@@ -35,8 +35,5 @@ function user_enquiry()
 
       }
 
-      
-
-  // testing   echo "<script>alert('$name'); window.location = './userpage.html';</script>";
 
     ?>

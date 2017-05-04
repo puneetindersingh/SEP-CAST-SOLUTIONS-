@@ -188,3 +188,5 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
  }
 }
 // <div class='col-6 columnQlik'><div class='helpCard'><iframe style='border:none;height:500px;width:100%;' src='"+arr[0]+"' ></iframe></div></div>
+
+

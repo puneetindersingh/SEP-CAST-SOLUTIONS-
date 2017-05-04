@@ -57,7 +57,7 @@
 		    <label for="fname">Username</label>
 		    <input type="text" name="username" placeholder="User name.." required>
 		    <label for="fname">Password</label>
-		    <input type="text" name="password" placeholder="Password.." required>
+		    <input type="password" name="password" placeholder="Password.." required>
 		    <label for="fname">First Name</label>
 		    <input type="text" name="fname" placeholder="Your name.." required>
 		    <label for="lname">Last Name</label>
@@ -202,17 +202,17 @@
 
  <!-- contact form -->
 <div class="col-14 divAddUser allform tabcontent" id="contact">
-  <form action="php/action-page.php" value="contact">
+  <form action="php/contact.php"  method="post" value="contact">
     <h4>Contact Us</h4>
-    <label for="fname">Name</label>
-    <input type="text" placeholder="Your name"required>
-    <label for="fname">Email</label>
-    <input type="email" placeholder="Your email"required>
-    <label for="fname">Subject</label>
-    <input type="text" placeholder="Subject"required>
-    <label for="fname">Message</label>
-    <textarea rows="10" type="text" placeholder="..."required></textarea>
-    <input type="submit" value="Submit">
+    <label for="name">Name</label>
+    <input type="text" name="name" placeholder="Your name"required>
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="Your email"required>
+    <label for="subj">Subject</label>
+    <input type="text"  name="subject" placeholder="Subject"required>
+    <label for="msg">Message</label>
+    <textarea rows="10" type="text" name="message" placeholder="..."required></textarea>
+    <input type="submit" value="Submit" name = "admin_enquiry">
   </form>
 </div>
 

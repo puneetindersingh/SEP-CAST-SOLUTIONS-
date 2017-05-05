@@ -40,6 +40,7 @@ function topnav() {
 
 var selectName;
 function openCity(evt, cityName) {
+		selectName = cityName;
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -53,19 +54,26 @@ function openCity(evt, cityName) {
     evt.currentTarget.className += " active";
     if(cityName == "modifyUser"){
       getcompany();
-      selectName = cityName;
     }
 		if(cityName == "modifyCompany"){
 			showTableforC();
 		}
     if(cityName == "qlikPage"){
       getcompany();
-      selectName = cityName;
       document.getElementById("iframe").src = "https://analytics.castsolutions.com.au";
       var i = document.getElementsByClassName('iframe');
       for(var b=0;b<i.length;b++){
         i[b].value = "";
       }
+    }
+		if(cityName == 'inbox'){
+      inbox();
+    }
+    if(cityName == 'sentmail'){
+      sentMail();
+    }
+    if(cityName == 'draft'){
+      draft();
     }
 }
 
@@ -521,5 +529,3 @@ function previewIframes(type){
     modal.style.display="none";
   }
 }
-
-

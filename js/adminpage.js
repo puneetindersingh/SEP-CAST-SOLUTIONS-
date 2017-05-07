@@ -474,7 +474,7 @@ function stateChangedforQlikIframes(){
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   var str=xmlHttp.responseText;
   var obj1 = eval('(' + str + ')');
-  var array = new Array(obj1.iframe1,obj1.iframe2,obj1.iframe3,obj1.iframe4,obj1.iframe5,obj1.iframe6);
+  var array = new Array(obj1.iframe1,obj1.iframe2,obj1.iframe3,obj1.iframe4,obj1.iframe5,obj1.iframe6,obj1.iframe7,obj1.iframe8,obj1.iframe9,obj1.iframe10);
   document.getElementById('userInfo').innerHTML="JobTitle:"+obj1.jobtitle;
   document.getElementById('iframe1').value = array[0];
   document.getElementById('iframe2').value = array[1];
@@ -482,6 +482,10 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   document.getElementById('iframe4').value = array[3];
   document.getElementById('iframe5').value = array[4];
   document.getElementById('iframe6').value = array[5];
+  document.getElementById('iframe7').value = array[6];
+  document.getElementById('iframe8').value = array[7];
+  document.getElementById('iframe9').value = array[8];
+  document.getElementById('iframe10').value = array[9];
  }
 }
 
@@ -498,7 +502,9 @@ if (xmlHttp==null)
  params += "iframes=1&username="+username+"&iframe1="+document.getElementById('iframe1').value.replace(/\&/g,"*")
  +"&iframe2="+document.getElementById('iframe2').value.replace(/\&/g,"*")+"&iframe3="+document.getElementById('iframe3').value.replace(/\&/g,"*")
  +"&iframe4="+document.getElementById('iframe4').value.replace(/\&/g,"*")+"&iframe5="+document.getElementById('iframe5').value.replace(/\&/g,"*")
- +"&iframe6="+document.getElementById('iframe6').value.replace(/\&/g,"*");
+ +"&iframe6="+document.getElementById('iframe6').value.replace(/\&/g,"*")+"&iframe7="+document.getElementById('iframe7').value.replace(/\&/g,"*")
+ +"&iframe8="+document.getElementById('iframe8').value.replace(/\&/g,"*")+"&iframe9="+document.getElementById('iframe9').value.replace(/\&/g,"*")
+ +"&iframe10="+document.getElementById('iframe10').value.replace(/\&/g,"*");
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

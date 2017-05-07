@@ -251,13 +251,20 @@ function editIframes(){
   $i4 = strtr($_POST['iframe4'],"*","&");
   $i5 = strtr($_POST['iframe5'],"*","&");
   $i6 = strtr($_POST['iframe6'],"*","&");
+  $i7 = strtr($_POST['iframe7'],"*","&");
+  $i8 = strtr($_POST['iframe8'],"*","&");
+  $i9 = strtr($_POST['iframe9'],"*","&");
+  $i10 = strtr($_POST['iframe10'],"*","&");
+  
 
-  $sql = "UPDATE user_iframe SET iframe1='$i1' ,iframe2='$i2' ,iframe3='$i3' ,iframe4='$i4' ,iframe5='$i5' ,iframe6='$i6' where username='$username'";
-  $result = mysqli_query($conn,$sql);
+  $sql = "UPDATE user_iframe SET iframe1='$i1' ,iframe2='$i2' ,iframe3='$i3' ,iframe4='$i4' ,iframe5='$i5' ,iframe6='$i6' ,iframe7='$i7' ,iframe8='$i8' ,iframe9='$i9' ,iframe10='$i10' where username='$username'";
+  $result = mysqli_query($conn,$sql) ;
   if($result){
     echo "Visualization Updated!";
   }else{
-    echo "Error occured:Failed to Update Visualization!";
+    // echo "Error occured:Failed to Update Visualization!";
+   
+    echo "Error: " . $sql . "<br>" . $conn->error;
   }
   mysqli_close($conn);
 }

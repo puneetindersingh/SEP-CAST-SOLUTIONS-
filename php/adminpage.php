@@ -55,7 +55,7 @@ function displayC(){
      echo "<td contentEditable='true'>" . $row['address'] . "</td>";
      echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
      echo "<td contentEditable='true'>" . $row['site'] . "</td>";
-     echo "<td onclick='updateCompany(this)'><i class='material-icons md-18 blue'> edit</i></td>";
+     echo "<td onclick='updateCompany(this)'><i class='material-icons md-18 blue'>save</i></td>";
      echo "<td onclick='delCompany(this)'><i class='material-icons md-18 blue'> delete</i></td>";
      echo "</tr>";
    }
@@ -121,7 +121,7 @@ function displayU(){
            echo "<td contentEditable='true'>" . $row['email'] . "</td>";
            echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
            echo "<td contentEditable='true'>" . $row['password'] . "</td>";
-           echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> edit</i></td>";
+           echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> save</i></td>";
            echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
            echo "</tr>";
          }
@@ -155,7 +155,7 @@ function displayU(){
          echo "<td contentEditable='true'>" . $row['company'] . "</td>";
          echo "<td contentEditable='true'>" . $row['password'] . "</td>";
          echo "<td contentEditable='true'>" . $row['account_status'] . "</td>";
-         echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> edit</i></td>";
+         echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> save</i></td>";
          echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
          echo "</tr>";
        }

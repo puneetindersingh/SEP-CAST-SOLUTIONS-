@@ -51,7 +51,7 @@ function displayC(){
    </tr>";
    while($row=$result->fetch_assoc()){
      echo "<tr>";
-     echo "<td contentEditable='true'>" . $row['name'] . "</td>";
+     echo "<td >" . $row['name'] . "</td>";
      echo "<td contentEditable='true'>" . $row['address'] . "</td>";
      echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
      echo "<td contentEditable='true'>" . $row['site'] . "</td>";
@@ -102,7 +102,7 @@ function displayU(){
       $result = mysqli_query($conn,$sql);
       echo"
 
-      <table id='editable'>
+      <table id='editableForA'>
        <tr>
          <th>Username</th>
          <th>First Name</th>
@@ -115,7 +115,7 @@ function displayU(){
          </tr>";
          while($row = $result -> fetch_assoc()){
            echo "<tr>";
-           echo "<td contentEditable='true'>" . $row['username'] . "</td>";
+           echo "<td >" . $row['username'] . "</td>";
            echo "<td contentEditable='true'>" . $row['firstname'] . "</td>";
            echo "<td contentEditable='true'>" . $row['lastname'] . "</td>";
            echo "<td contentEditable='true'>" . $row['email'] . "</td>";
@@ -132,7 +132,7 @@ function displayU(){
       $result = mysqli_query($conn,$sql);
       echo "
 
-      <table id='editable'>
+      <table id='editableForU'>
        <tr>
          <th>Username</th>
          <th>First Name</th>
@@ -147,7 +147,7 @@ function displayU(){
        </tr>";
        while($row=$result->fetch_assoc()){
          echo "<tr>";
-         echo "<td contentEditable='true'>" . $row['username'] . "</td>";
+         echo "<td >" . $row['username'] . "</td>";
          echo "<td contentEditable='true'>" . $row['firstname'] . "</td>";
          echo "<td contentEditable='true'>" . $row['lastname'] . "</td>";
          echo "<td contentEditable='true'>" . $row['email'] . "</td>";
@@ -168,12 +168,12 @@ function deleteUser(){
   include 'connect.php';
   $username = $_POST['username'];
 
-  $sql = "DELETE from user_details WHERE Username='$username' ";
+  $sql = "DELETE from user_details WHERE username='$username' ";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Delete Successfully!!";
+    echo "Deleted Successfully!!";
   }else{
-    echo "Delete Failed, Please check your database setting!";
+    echo "Error Occured, Please verify your database setting!";
   }
   mysqli_close($conn);
 }

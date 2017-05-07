@@ -212,11 +212,11 @@ function InfobyRow(r){
 	var user=document.getElementById('user1');
 	if(user.checked){
 		for(var m=0 ; m<8;m++){
-	   arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
+	   arr[m] = document.getElementById('editableForU').rows[r].cells[m].innerText;
 	  }
 	}else{
 		for(var m=0 ; m<6;m++){
-	   arr[m] = document.getElementById('editable').rows[row].cells[m].innerText;
+	   arr[m] = document.getElementById('editableForA').rows[r].cells[m].innerText;
 	  }
 	}
  return arr ;
@@ -224,10 +224,15 @@ function InfobyRow(r){
 
 function delRow(r){
   row = getRow(r);
+  var user=document.getElementById('user1');
   var arr = new Array();
   arr = InfobyRow(row);
   if(confirm("Are you sure to delete this user?")){
-    document.getElementById('editable').deleteRow(row);
+  if(user.checked){
+  	document.getElementById('editableForU').deleteRow(row);
+  }else{
+  	document.getElementById('editableForA').deleteRow(row);
+  }
     deleteUser(arr[0]);
   }
 }

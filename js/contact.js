@@ -16,13 +16,7 @@ if (xmlHttp==null)
  xmlHttp.send(params);
 }
 
-var row = 0;
-function getRow(r){
-  var i = r.parentNode.rowIndex;
-  return i;
-}
-
-function InfobyRow(r){
+function InfobyRow1(r){
   var arr = new Array();
   if(selectName == "inbox"){
     for(var m=0 ; m<4;m++){
@@ -66,15 +60,15 @@ function reply(r){
   var mailInfo = new Array();
   var sender,msg,receiver,time = "";
   for(var i=0;i<mails.length;i++){
-    if(mails[i].inbox.times.split(".")[0] == InfobyRow(row)[3]){
+    if(mails[i].inbox.times.split(".")[0] == InfobyRow1(row)[3]){
       sender = mails[i].inbox.sender;
       msg = mails[i].inbox.message;
       receiver = mails[i].inbox.receiver;
       time = mails[i].inbox.times;
     }
   }
-  var replyText = "\n\n-------------------------\nReplyTo:"+sender+"\nFrom: "+receiver+"\nTime: "+InfobyRow(row)[2]+"\nContent: "+msg;
-  var content = "<input type='submit' value='Back' name='back' onclick='cancelReply()'><h1>"+InfobyRow(row)[1]+"</h1>From: "+sender+"</br>To: "+receiver+"</br>Time: "+InfobyRow(row)[3]+"</br>Content: <h5>"+msg+"</h5>";
+  var replyText = "\n\n-------------------------\nReplyTo:"+sender+"\nFrom: "+receiver+"\nTime: "+InfobyRow1(row)[2]+"\nContent: "+msg;
+  var content = "<input type='submit' value='Back' name='back' onclick='cancelReply()'><h1>"+InfobyRow1(row)[1]+"</h1>From: "+sender+"</br>To: "+receiver+"</br>Time: "+InfobyRow1(row)[3]+"</br>Content: <h5>"+msg+"</h5>";
   content +="<div><form action='php/contact.php' method='post'><input type='hidden' name='receiver' value='"+sender+"'><input type='hidden' value='ReplyTo: "+msg+"' name='subject'>"
   +"<textarea rows='10' type='text' name='message' id='replyText'>"+replyText+"</textarea>"
   +"<input type='submit' value='Send' name='sendMail'></form></div>"
@@ -111,7 +105,7 @@ function cancelReply(){
 function deleteMail(r){
   row = getRow(r);
   var arr = new Array();
-  arr = InfobyRow(row);
+  arr = InfobyRow1(row);
   if(confirm("Are you sure to delete this email?")){
     if(selectName == "inbox"){
       document.getElementById('tableForInbox').deleteRow(row);
@@ -210,13 +204,13 @@ function view(r){
   var mailInfo = new Array();
   var sender,msg,receiver = "";
   for(var i=0;i<mails.length;i++){
-    if(mails[i].sent.times.split(".")[0] == InfobyRow(row)[2]){
+    if(mails[i].sent.times.split(".")[0] == InfobyRow1(row)[2]){
       sender = mails[i].sent.sender;
       msg = mails[i].sent.message;
       receiver = mails[i].sent.receiver;
     }
   }
-  var content = "<input type='submit' value='Back' name='back' onclick='cancelReply()'><h1>"+InfobyRow(row)[1]+"</h1>From: "+sender+"</br>To: "+receiver+"</br>Time: "+InfobyRow(row)[2]+"</br>Content: <h5>"+msg+"</h5>";
+  var content = "<input type='submit' value='Back' name='back' onclick='cancelReply()'><h1>"+InfobyRow1(row)[1]+"</h1>From: "+sender+"</br>To: "+receiver+"</br>Time: "+InfobyRow1(row)[2]+"</br>Content: <h5>"+msg+"</h5>";
   content += "<input type='submit' value='Send Another Mail' onclick='sendMore()'>";
   recID = receiver;
   var viewBox = document.getElementById('replyMail');
@@ -269,14 +263,14 @@ function rewrite(r){
   var mailInfo = new Array();
   var sender,msg,receiver,time = "";
   for(var i=0;i<mails.length;i++){
-    if(mails[i].draft.times.split(".")[0] == InfobyRow(row)[2]){
+    if(mails[i].draft.times.split(".")[0] == InfobyRow1(row)[2]){
       sender = mails[i].draft.sender;
       msg = mails[i].draft.message;
       receiver = mails[i].draft.receiver;
       time = mails[i].draft.times;
     }
   }
-  var content ="<div><input type='submit' value='Back' name='back' onclick='cancelReply()'><form action='php/contact.php' method='post'><label for='recID'>To</label><input type='text' name='receiver' value='"+receiver+"'><label for='subj'>Subject</label><input type='text' value='"+InfobyRow(row)[1]+"' name='subject'>"
+  var content ="<div><input type='submit' value='Back' name='back' onclick='cancelReply()'><form action='php/contact.php' method='post'><label for='recID'>To</label><input type='text' name='receiver' value='"+receiver+"'><label for='subj'>Subject</label><input type='text' value='"+InfobyRow1(row)[1]+"' name='subject'>"
   +"<input type='hidden' name='times' value='"+time+"'>"
   +"<label for='msg'>Message</label><textarea rows='10' type='text' name='message'>"+msg+"</textarea>"
   +"<input type='submit' value='Send' name='sendMail' onclick='validateForm()'><input type='submit' value='Save' name='updateDraft' ></form></div>";

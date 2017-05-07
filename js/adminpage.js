@@ -190,13 +190,8 @@ catch (e){
 return xmlHttp;
 }
 
-var row = 0 ;
 var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 var myreg1 = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
-function getRow(r){
-  var i = r.parentNode.rowIndex;
-  return i;
-}
 
 function InfobyRow(r){
   var arr = new Array();

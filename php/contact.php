@@ -1,8 +1,7 @@
 <?php
-if(isset($_POST['sendMail'])){
+if(isset($_POST['sendMail']) || isset($_POST['sendDraft'])){
 sendMail();
-}
-else if(isset($_POST['saveDraft'])){
+}else if(isset($_POST['saveDraft'])){
 saveDraft();
 }else if(isset($_POST['inbox'])){
 inbox();
@@ -25,13 +24,22 @@ function sendMail(){
      $receiver=$_POST['receiver'];
      $subject = $_POST['subject'];
       $message = $_POST['message'];
-
       $sql = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$sender','$sender','$receiver','$subject','$message','0')";
       $sql1 = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$receiver','$sender','$receiver','$subject','$message','0')";
-      if($result = $conn->query($sql) && $result1 = $conn->query($sql1)){
-        echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location = '../userpage.html';</script>";
+      if(isset($_POST['sendDraft'])){
+        $times = $_POST['times'];
+        $sql2 = "DELETE FROM mailbox WHERE username = '$sender' AND times = '$times' AND status = '2'";
+        if($result = $conn->query($sql) && $result1 = $conn->query($sql1) && $result2 = $conn->query($sql2)){
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location = '../userpage.html';</script>";
+        }else{
+          echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
+        }
       }else{
-        echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
+        if($result = $conn->query($sql) && $result1 = $conn->query($sql1)){
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location = '../userpage.html';</script>";
+        }else{
+          echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
+        }
       }
 }
 
@@ -74,7 +82,7 @@ function inbox(){
 function sentmail(){
   include 'connect.php';
   $sender = $_COOKIE['username'];
-  $sql = "SELECT * FROM mailbox WHERE sender = '$sender' AND username = '$sender' ORDER BY times DESC";
+  $sql = "SELECT * FROM mailbox WHERE sender = '$sender' AND username = '$sender' AND status='0' ORDER BY times DESC";
   $result = mysqli_query($conn,$sql);
   $json = array();
   while($row = $result->fetch_assoc()){
@@ -119,7 +127,7 @@ function changeStatus(){
   $sen = $_POST['sender'];
   $rec = $_POST['receiver'];
   $time = $_POST['times'];
-  $sql="UPDATE mailbox SET status='1' WHERE username='$username' AND sender='$sen' AND receiver='$rec' AND times='$time'";
+  $sql="UPDATE mailbox SET status='1' WHERE username='$rec' AND sender='$sen' AND receiver='$rec' AND times='$time'";
   $result = mysqli_query($conn,$sql);
   // if($result){
   //   echo "Change Successfully!!";

@@ -14,12 +14,6 @@ function openContact(evt, cityName) {
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
-    if(cityName == "modifyProfile"){
-      showProfile();
-    }
-    if(cityName == "qlikPage"){
-      showQlik();
-    }
     if(cityName == 'inbox'){
       inbox();
     }
@@ -46,6 +40,12 @@ if (xmlHttp==null)
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforInbox;
  xmlHttp.send(params);
+}
+
+var row = 0 ;
+function getRow(r){
+  var i = r.parentNode.rowIndex;
+  return i;
 }
 
 function InfobyRow1(r){
@@ -101,7 +101,7 @@ function reply(r){
   }
   var replyText = "\n\n-------------------------\nReplyTo:"+sender+"\nFrom: "+receiver+"\nTime: "+InfobyRow1(row)[2]+"\nContent: "+msg;
   var content = "<input type='submit' value='Back' name='back' onclick='cancelReply()'><h1>"+InfobyRow1(row)[1]+"</h1>From: "+sender+"</br>To: "+receiver+"</br>Time: "+InfobyRow1(row)[3]+"</br>Content: <h5>"+msg+"</h5>";
-  content +="<div><form action='php/contact.php' method='post'><input type='hidden' name='receiver' value='"+sender+"'><input type='hidden' value='ReplyTo: "+msg+"' name='subject'>"
+  content +="<div><form action='php/contact.php' method='post' name='myForm'><input type='hidden' name='receiver' value='"+sender+"'><input type='hidden' value='ReplyTo: "+msg+"' name='subject'>"
   +"<textarea rows='10' type='text' name='message' id='replyText'>"+replyText+"</textarea>"
   +"<input type='submit' value='Send' name='sendMail'></form></div>"
   var replybox = document.getElementById('replyMail');
@@ -231,6 +231,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   }
 }
 
+var recID;
 function view(r){
   row = getRow(r);
   var mailInfo = new Array();
@@ -250,10 +251,12 @@ function view(r){
   document.getElementById('replyContent').innerHTML = content;
 }
 
-function sendMore(){
-  var viewBox = document.getElementById('replyMail');
-  viewBox.style.display = "none";
-  openCity("tablinks","compose");
+function sendMore(rec){
+  var content ="<div><input type='submit' value='Cancel' name='back' onclick='cancelReply()'><form action='php/contact.php' method='post' name='myForm'><label for='recID'>To</label><input type='text' name='receiver' value='"+recID+"'><label for='subj'>Subject</label><input type='text' value='' name='subject'>"
+  +"<input type='hidden' name='times' value=''>"
+  +"<label for='msg'>Message</label><textarea rows='10' type='text' name='message'></textarea>"
+  +"<input type='submit' value='Send' name='sendMail' onclick='validateForm(this.form)'><input type='submit' value='Save' name='updateDraft' ></form></div>";
+  document.getElementById('replyContent').innerHTML = content;
 }
 
 function draft(){
@@ -302,19 +305,19 @@ function rewrite(r){
       time = mails[i].draft.times;
     }
   }
-  var content ="<div><input type='submit' value='Back' name='back' onclick='cancelReply()'><form action='php/contact.php' method='post'><label for='recID'>To</label><input type='text' name='receiver' value='"+receiver+"'><label for='subj'>Subject</label><input type='text' value='"+InfobyRow1(row)[1]+"' name='subject'>"
+  var content ="<div><input type='submit' value='Back' name='back' onclick='cancelReply()'><form action='php/contact.php' method='post' name='myForm'><label for='recID'>To</label><input type='text' name='receiver' value='"+receiver+"'><label for='subj'>Subject</label><input type='text' value='"+InfobyRow1(row)[1]+"' name='subject'>"
   +"<input type='hidden' name='times' value='"+time+"'>"
   +"<label for='msg'>Message</label><textarea rows='10' type='text' name='message'>"+msg+"</textarea>"
-  +"<input type='submit' value='Send' name='sendMail' onclick='validateForm()'><input type='submit' value='Save' name='updateDraft' ></form></div>";
+  +"<input type='submit' value='Send' name='sendDraft' onclick='validateForm(this.form)'><input type='submit' value='Save' name='updateDraft' ></form></div>";
   var replybox = document.getElementById('replyMail');
   replybox.style.display = "block";
   document.getElementById('replyContent').innerHTML = content;
 }
 
-function validateForm() {
-   var x = document.forms["myForm"]["receiver"].value;
-   var y = document.forms["myForm"]["subject"].value;
-   var z = document.forms["myForm"]["message"].value;
+function validateForm(form) {
+   var x = form.receiver.value;
+   var y = form.subject.value;
+   var z = form.message.value;
    if (x =="") {
        alert("Receiver Account must be filled out");}
     else if(y ==""){

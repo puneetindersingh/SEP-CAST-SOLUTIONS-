@@ -202,16 +202,16 @@
 </div>
 
  <!-- contact form -->
- <div class="col-14 divAddUser allform " id="contact">
+ <div class="col-14 divAddUser allform tabcontent" id="contact">
    <div class="col-1 menu" id="contactTab">
    <ul>
-     <li class="tablinks" onclick="openCity(event, 'compose')">Compose</li>
-     <li class="tablinks" onclick="openCity(event, 'inbox')">Inbox</li>
-     <li class="tablinks" onclick="openCity(event, 'sentmail')">Sent Mail</li>
-     <li class="tablinks" onclick="openCity(event, 'draft')">Draft</li>
+     <li class="tablinks" onclick="openContact(event, 'compose')">Compose</li>
+     <li class="tablinks" onclick="openContact(event, 'inbox')">Inbox</li>
+     <li class="tablinks" onclick="openContact(event, 'sentmail')">Sent Mail</li>
+     <li class="tablinks" onclick="openContact(event, 'draft')">Draft</li>
    </ul>
  </div>
- <div class="col-14 divAddUser allform tabcontent" id="compose">
+ <div class="col-14 divAddUser allform tabMail" id="compose">
    <form action="php/contact.php" method="post" name="myForm">
      <label for="recID">To</label>
      <input type="text" name="receiver" id="recID" placeholder="Receiver ID">
@@ -223,9 +223,9 @@
      <input type="submit" value="Save" name="saveDraft" >
    </form>
  </div>
- <div class="col-14 divAddUser allform tabcontent" id="inbox"></div>
- <div class="col-14 divAddUser allform tabcontent" id="sentmail"></div>
- <div class="col-14 divAddUser allform tabcontent" id="draft"></div>
+ <div class="col-14 divAddUser allform tabMail" id="inbox"></div>
+ <div class="col-14 divAddUser allform tabMail" id="sentmail"></div>
+ <div class="col-14 divAddUser allform tabMail" id="draft"></div>
  <div id="replyMail" class="modal"><div class="modal-content" id="replyContent" ></div></div>
  </div>
 
@@ -410,17 +410,6 @@
 </div>
 </div>
 </div>
-<!-- <div class="col-12 right">
-  <div class="aside">
-    <h2>Space 1</h2>
-    <p>These space for something use future</p>
-    <h2>Space 2</h2>
-    <p>These space for something use future</p>
-    <h2>Space 3</h2>
-    <p>These space for something use future</p>
-  </div>
-</div> -->
-
 </div>
 
 </body>

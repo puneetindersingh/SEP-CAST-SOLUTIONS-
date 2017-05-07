@@ -132,6 +132,7 @@ INSERT INTO `user_iframe` (`username`, `iframe1`, `iframe2`, `iframe3`, `iframe4
 --
 CREATE TABLE `mailbox` (
   `emailId` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `sender` varchar(50) NOT NULL,
   `receiver` varchar(50) NOT NULL,
   `times` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
@@ -140,17 +141,6 @@ CREATE TABLE `mailbox` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `mailbox`
---
-
-INSERT INTO `mailbox` (`emailId`, `sender`, `receiver`, `times`, `subject`, `message`, `status`) VALUES
-(4, 'aman', 'harry', '2017-05-04 17:14:20.280375', 'hello', 'hello,harry!', 0),
-(6, 'aman', 'aman', '2017-05-05 02:16:17.046432', 'test', 'test1', 1),
-(7, 'aman', 'aman', '2017-05-05 02:16:29.358088', 'test2', 'test2', 0),
-(11, 'aman', 'honey', '2017-05-05 16:12:02.020134', 'hello', 'hello honey!', 2),
-(13, 'cast_admin', 'aman', '2017-05-05 17:09:51.664909', 'test from admin', 'test from admin', 0),
-(14, 'aman', 'admin', '2017-05-05 17:18:26.066798', 'test admin', 'hello admin!', 0);
 
 --
 -- Indexes for dumped tables
@@ -163,11 +153,6 @@ ALTER TABLE `mailbox`
   ADD PRIMARY KEY (`emailId`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
---
-
---
--- 使用表AUTO_INCREMENT `mailbox`
 --
 ALTER TABLE `mailbox`
   MODIFY `emailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;

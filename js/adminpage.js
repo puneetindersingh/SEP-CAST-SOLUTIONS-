@@ -66,15 +66,6 @@ function openCity(evt, cityName) {
         i[b].value = "";
       }
     }
-		if(cityName == 'inbox'){
-      inbox();
-    }
-    if(cityName == 'sentmail'){
-      sentMail();
-    }
-    if(cityName == 'draft'){
-      draft();
-    }
 }
 
 var company = new Array();

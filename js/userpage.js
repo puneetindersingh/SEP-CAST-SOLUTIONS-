@@ -28,46 +28,6 @@ function openCity(evt, cityName) {
     if(cityName == "qlikPage"){
       showQlik();
     }
-    if(cityName == 'inbox'){
-      inbox();
-    }
-    if(cityName == 'sentmail'){
-      sentMail();
-    }
-    if(cityName == 'draft'){
-      draft();
-    }
-}
-
-// for contact page
-function openContact(evt, cityName) {
-    selectName=cityName;
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabMail");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-    if(cityName == "modifyProfile"){
-      showProfile();
-    }
-    if(cityName == "qlikPage"){
-      showQlik();
-    }
-    if(cityName == 'inbox'){
-      inbox();
-    }
-    if(cityName == 'sentmail'){
-      sentMail();
-    }
-    if(cityName == 'draft'){
-      draft();
-    }
 }
 
 // Get the element with id="defaultOpen" and click on it

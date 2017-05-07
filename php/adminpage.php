@@ -70,9 +70,9 @@ function deleteCompany(){
   $sql = "DELETE from company WHERE name='$companyName' ";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Delete Successfully!!";
+    echo "Record Deleted!";
   }else{
-    echo "Delete Failed, Please check your database setting!";
+    echo "Error Occured: Record Update failed!";
   }
   mysqli_close($conn);
 }
@@ -87,9 +87,9 @@ function editCompany(){
   $sql = "UPDATE company SET address='$companyAddress' ,phone='$companyPhone' ,site='$companySite' where name='$companyName'";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Company Modified!!";
+    echo "Record Modified!";
   }else{
-    echo "Failed to modify Company!!";
+    echo "Error Occured: Record Update failed!";
   }
   mysqli_close($conn);
 }
@@ -171,9 +171,9 @@ function deleteUser(){
   $sql = "DELETE from user_details WHERE username='$username' ";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Deleted Successfully!!";
+    echo "Record Deleted!";
   }else{
-    echo "Error Occured, Please verify your database setting!";
+    echo "Error Occured: Record Update failed!";
   }
   mysqli_close($conn);
 }
@@ -192,9 +192,9 @@ function editUser(){
     $sql = "UPDATE user_details SET password='$pass',firstname='$firstN', lastname='$lastN', email='$email', phone='$phone'  WHERE username='$username'";
     $result = mysqli_query($conn,$sql);
     if($result){
-      echo "Admin Modified!!";
+      echo "Admin Modified!";
     }else{
-      echo "Failed to modify Admin!!";
+      echo "Error occured:Failed to modify Admin!";
     }
   }else{
     $username = $_POST['username'];
@@ -211,7 +211,7 @@ function editUser(){
     if($result){
       echo "User Modified!!";
     }else{
-      echo "Failed to modify User!!";
+      echo "Error occured:Failed to modify User!";
     }
   }
   mysqli_close($conn);
@@ -255,9 +255,9 @@ function editIframes(){
   $sql = "UPDATE user_iframe SET iframe1='$i1' ,iframe2='$i2' ,iframe3='$i3' ,iframe4='$i4' ,iframe5='$i5' ,iframe6='$i6' where username='$username'";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Visualization Updated!!";
+    echo "Visualization Updated!";
   }else{
-    echo "Failed to Update Visualization!!";
+    echo "Error occured:Failed to Update Visualization!";
   }
   mysqli_close($conn);
 }

@@ -81,12 +81,12 @@ if($check==1){
          echo 'Message could not be sent.';
         //  echo 'Mailer Error: ' . $mail->ErrorInfo;
        } else {
-          echo "<script>alert('Record Updated And Please check your email to get the password'); window.location = './login.html';</script>";
+          echo "<script>alert('Password Reset Successfully. Please Check your Email for new password. '); window.location = './login.html';</script>";
        }
 }
 }
 else{
-  echo "<script>alert('Record Not Found'); window.location = './login.html';</script>";
+  echo "<script>alert('Error Occured: Verify your details.'); window.location = './login.html';</script>";
 }
 mysqli_close($conn);
 }

@@ -83,7 +83,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     document.cookie = "loginstatus=yes; "+expires;
     window.location = "./userpage.html";
   }else if (xmlHttp.responseText=="not active") {
-    document.getElementById('test').innerHTML="<i class='material-icons md-18 red'>warning</i>Your account is currently suspended please contact support !";
+    document.getElementById('test').innerHTML="<i class='material-icons md-18 blue'>warning</i>Your account is currently suspended please contact support !";
       document.getElementById('login-pass').value="";
   }
  }

@@ -77,9 +77,9 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     }
     for(var c = 0;c<obj.length;c++){
       if(obj[c].inbox.status == 0){
-        mess+="<tr><td><i class='material-icons md-18 blue'>fiber_new</i></td><td>"+obj[c].inbox.sender+"</td><td>"+obj[c].inbox.subject+"</td><td>"+obj[c].inbox.times.split(".")[0]+"</td><td onclick='reply(this)'><i class='material-icons md-18 blue'>reply</i></td><td onclick='deleteMail(this)'><i class='material-icons md-18 blue'>delete</i></td></tr>";
+        mess+="<tr><td><i class='material-icons md-18 blue'>fiber_new</i></td><td>"+obj[c].inbox.sender+"</td><td>"+obj[c].inbox.subject+"</td><td>"+obj[c].inbox.times.split(".")[0]+"</td><td onclick='reply(this)'><i style='cursor:pointer' class='material-icons md-18 blue'>reply</i></td><td onclick='deleteMail(this)'><i style='cursor:pointer' class='material-icons md-18 blue'>delete</i></td></tr>";
       }else if(obj[c].inbox.status == 1){
-        mess+="<tr><td></td><td>"+obj[c].inbox.sender+"</td><td>"+obj[c].inbox.subject+"</td><td>"+obj[c].inbox.times.split(".")[0]+"</td><td onclick='reply(this)'><i class='material-icons md-18 blue'>reply</i></td><td onclick='deleteMail(this)'><i class='material-icons md-18 blue'>delete</i></td></tr>";
+        mess+="<tr><td></td><td>"+obj[c].inbox.sender+"</td><td>"+obj[c].inbox.subject+"</td><td>"+obj[c].inbox.times.split(".")[0]+"</td><td onclick='reply(this)'><i style='cursor:pointer' class='material-icons md-18 blue'>reply</i></td><td onclick='deleteMail(this)'><i style='cursor:pointer' class='material-icons md-18 blue'>delete</i></td></tr>";
       }
     }
     mess += "</table>";
@@ -224,7 +224,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     mess+="<tr><td>No Sent Mails</td></tr>";
   }
   for(var c = 0;c<obj.length;c++){
-      mess+="<tr><td>To:"+obj[c].sent.receiver+"</td><td>"+obj[c].sent.subject+"</td><td>"+obj[c].sent.times.split(".")[0]+"</td><td onclick='view(this)'><i class='material-icons md-18 blue'>zoom_in</i></td><td onclick='deleteMail(this)'><i class='material-icons md-18 blue'>delete</i></td></tr>";
+      mess+="<tr><td>To:"+obj[c].sent.receiver+"</td><td>"+obj[c].sent.subject+"</td><td>"+obj[c].sent.times.split(".")[0]+"</td><td onclick='view(this)'><i style='cursor:pointer' class='material-icons md-18 blue'>zoom_in</i></td><td onclick='deleteMail(this)'><i style='cursor:pointer' class='material-icons md-18 blue'>delete</i></td></tr>";
   }
   mess += "</table>";
     document.getElementById('sentmail').innerHTML = mess;
@@ -286,7 +286,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     mess+="<tr><td>No Drafts</td></tr>";
   }
   for(var c = 0;c<obj.length;c++){
-      mess+="<tr><td>To:"+obj[c].draft.receiver+"</td><td>"+obj[c].draft.subject+"</td><td>"+obj[c].draft.times.split(".")[0]+"</td><td onclick='rewrite(this)'><i class='material-icons md-18 blue'>refresh</i></td><td onclick='deleteMail(this)'><i class='material-icons md-18 blue'>delete</i></td></tr>";
+      mess+="<tr><td>To:"+obj[c].draft.receiver+"</td><td>"+obj[c].draft.subject+"</td><td>"+obj[c].draft.times.split(".")[0]+"</td><td onclick='rewrite(this)'><i style='cursor:pointer' class='material-icons md-18 blue'>refresh</i></td><td onclick='deleteMail(this)'><i style='cursor:pointer' class='material-icons md-18 blue'>delete</i></td></tr>";
   }
   mess += "</table>";
     document.getElementById('draft').innerHTML = mess;

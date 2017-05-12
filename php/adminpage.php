@@ -55,8 +55,8 @@ function displayC(){
      echo "<td contentEditable='true'>" . $row['address'] . "</td>";
      echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
      echo "<td contentEditable='true'>" . $row['site'] . "</td>";
-     echo "<td onclick='updateCompany(this)'><i class='material-icons md-18 blue'>save</i></td>";
-     echo "<td onclick='delCompany(this)'><i class='material-icons md-18 blue'> delete</i></td>";
+     echo "<td onclick='updateCompany(this)'><i style='cursor:pointer' class='material-icons md-18 blue'>save</i></td>";
+     echo "<td onclick='delCompany(this)'><i style='cursor:pointer' class='material-icons md-18 blue'> delete</i></td>";
      echo "</tr>";
    }
     echo "</table>";
@@ -66,7 +66,7 @@ function displayC(){
 function deleteCompany(){
   include 'connect.php';
   $companyName = $_POST['companyName'];
-
+
   $sql = "DELETE from company WHERE name='$companyName' ";
   $result = mysqli_query($conn,$sql);
   if($result){
@@ -121,8 +121,8 @@ function displayU(){
            echo "<td contentEditable='true'>" . $row['email'] . "</td>";
            echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
            echo "<td contentEditable='true'>" . $row['password'] . "</td>";
-           echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> save</i></td>";
-           echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
+           echo "<td onclick='updateRow(this)'><i style='cursor:pointer' class='material-icons md-18 blue'> save</i></td>";
+           echo "<td onclick='delRow(this)'><i style='cursor:pointer' class='material-icons md-18 blue'> delete</i></td>";
            echo "</tr>";
          }
            echo "</table>";
@@ -155,8 +155,8 @@ function displayU(){
          echo "<td contentEditable='true'>" . $row['company'] . "</td>";
          echo "<td contentEditable='true'>" . $row['password'] . "</td>";
          echo "<td contentEditable='true'>" . $row['account_status'] . "</td>";
-         echo "<td onclick='updateRow(this)'><i class='material-icons md-18 blue'> save</i></td>";
-         echo "<td onclick='delRow(this)'><i class='material-icons md-18 blue'> delete</i></td>";
+         echo "<td onclick='updateRow(this)'><i style='cursor:pointer' class='material-icons md-18 blue'> save</i></td>";
+         echo "<td onclick='delRow(this)'><i style='cursor:pointer' class='material-icons md-18 blue'> delete</i></td>";
          echo "</tr>";
        }
         echo "</table>";
@@ -255,7 +255,7 @@ function editIframes(){
   $i8 = strtr($_POST['iframe8'],"*","&");
   $i9 = strtr($_POST['iframe9'],"*","&");
   $i10 = strtr($_POST['iframe10'],"*","&");
-  
+
 
   $sql = "UPDATE user_iframe SET iframe1='$i1' ,iframe2='$i2' ,iframe3='$i3' ,iframe4='$i4' ,iframe5='$i5' ,iframe6='$i6' ,iframe7='$i7' ,iframe8='$i8' ,iframe9='$i9' ,iframe10='$i10' where username='$username'";
   $result = mysqli_query($conn,$sql) ;
@@ -263,7 +263,7 @@ function editIframes(){
     echo "Visualization Updated!";
   }else{
     // echo "Error occured:Failed to Update Visualization!";
-   
+
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
   mysqli_close($conn);

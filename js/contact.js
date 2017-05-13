@@ -132,6 +132,7 @@ function stateChangedforChangeStatus(){
 function cancelReply(){
   var replybox = document.getElementById('replyMail');
   replybox.style.display = "none";
+  mailboxInitial();
 }
 
 function deleteMail(r){
@@ -312,6 +313,42 @@ function rewrite(r){
   var replybox = document.getElementById('replyMail');
   replybox.style.display = "block";
   document.getElementById('replyContent').innerHTML = content;
+}
+
+function mailboxInitial(){
+  xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url='php/contact.php';
+ var params = "";
+ params += "initial=1";
+ // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforInitial;
+ xmlHttp.send(params);
+}
+
+function stateChangedforInitial(){
+  if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+    var str=xmlHttp.responseText;
+    var obj = eval('(' + str + ')');
+    var inbox = obj[0]["inbox"]["COUNT(*)"];
+    var draft = obj[1]["draft"]["COUNT(*)"];
+    if(inbox != 0){
+      document.getElementById("inboxInitial").innerText = "("+inbox+")";
+    }else{
+      document.getElementById("inboxInitial").innerText = "";
+    }
+    if(draft != 0){
+      document.getElementById("draftInitial").innerText = "("+draft+")";
+    }else{
+      document.getElementById("draftInitial").innerText = "";
+    }
+  }
 }
 
 function validateForm(form) {

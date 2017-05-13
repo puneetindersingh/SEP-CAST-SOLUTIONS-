@@ -28,6 +28,9 @@ function openCity(evt, cityName) {
     if(cityName == "qlikPage"){
       showQlik();
     }
+    if(cityName == "contact"){
+			mailboxInitial();
+		}
 }
 
 // Get the element with id="defaultOpen" and click on it

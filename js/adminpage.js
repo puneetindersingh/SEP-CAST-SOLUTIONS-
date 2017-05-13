@@ -66,6 +66,9 @@ function openCity(evt, cityName) {
         i[b].value = "";
       }
     }
+		if(cityName == "contact"){
+			mailboxInitial();
+		}
 }
 
 var company = new Array();

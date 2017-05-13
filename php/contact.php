@@ -15,6 +15,8 @@ draft();
   changeStatus();
 }else if(isset($_POST['updateDraft'])){
   updateDraft();
+}else if(isset($_POST['initial'])){
+  initial();
 }
 
 // 0--unread,1--read,2--draft
@@ -26,7 +28,13 @@ function sendMail(){
       $message = $_POST['message'];
       $sql = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$sender','$sender','$receiver','$subject','$message','0')";
       $sql1 = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$receiver','$sender','$receiver','$subject','$message','0')";
-      if(isset($_POST['sendDraft'])){
+      if($sender == $receiver){
+        if($result = $conn->query($sql)){
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location = '../userpage.html';</script>";
+        }else{
+          echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
+        }
+      }else{if(isset($_POST['sendDraft'])){
         $times = $_POST['times'];
         $sql2 = "DELETE FROM mailbox WHERE username = '$sender' AND times = '$times' AND status = '2'";
         if($result = $conn->query($sql) && $result1 = $conn->query($sql1) && $result2 = $conn->query($sql2)){
@@ -41,6 +49,7 @@ function sendMail(){
           echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
         }
       }
+    }
 }
 
 function saveDraft(){
@@ -151,5 +160,27 @@ function updateDraft(){
   }else{
     echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
   }
+  mysqli_close($conn);
+}
+
+function initial(){
+  include 'connect.php';
+  $user = $_COOKIE['username'];
+  $sql = "SELECT COUNT(*) FROM mailbox WHERE username = '$user' AND receiver = '$user' AND status ='0'";
+  $sql1 = "SELECT COUNT(*) FROM mailbox WHERE sender = '$user' AND username = '$user' AND status = '2'";
+  $result = mysqli_query($conn,$sql);
+  $result1 = mysqli_query($conn,$sql1);
+  if($result && $result1){
+    $row = $result->fetch_assoc();
+    $row1 = $result1->fetch_assoc();
+    $json = array();
+    $json[] = array('inbox' => $row);
+    $json[] = array('draft' => $row1);
+    echo json_encode($json);
+  }else{
+    echo "Initial Failed!";
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+  mysqli_close($conn);
 }
 ?>

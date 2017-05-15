@@ -46,8 +46,7 @@ if($check==1){
 
     $character = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
     $random=substr(str_shuffle($character),0,8);
-    echo $random;
-     $sql1 = "UPDATE user SET password='$random' WHERE  username = '$username'";
+     $sql1 = "UPDATE user_details SET password='$random' WHERE  username = '$username'";
      if ($conn->query($sql1) === TRUE) {
        require 'class.smtp.php';
        require 'class.phpmailer.php';
@@ -81,12 +80,12 @@ if($check==1){
          echo 'Message could not be sent.';
         //  echo 'Mailer Error: ' . $mail->ErrorInfo;
        } else {
-          echo "<script>alert('Password Reset Successfully. Please Check your Email for new password. '); window.location = './login.html';</script>";
+          echo "<script>alert('Password Reset Successfully. Please Check your Email for new password. '); window.location = '../login.html';</script>";
        }
 }
 }
 else{
-  echo "<script>alert('Error Occured: Verify your details.'); window.location = './login.html';</script>";
+  echo "<script>alert('Error Occured: Verify your details.'); window.location = '../login.html';</script>";
 }
 mysqli_close($conn);
 }

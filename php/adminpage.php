@@ -66,7 +66,6 @@ function displayC(){
 function deleteCompany(){
   include 'connect.php';
   $companyName = $_POST['companyName'];
-
   $sql = "DELETE from company WHERE name='$companyName' ";
   $result = mysqli_query($conn,$sql);
   if($result){

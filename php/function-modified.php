@@ -246,7 +246,7 @@ function updateprofile(){
   $sql = "UPDATE user_details SET firstname='$firstN' ,lastname='$lastN' ,email='$email' ,phone='$phone' ,company='$companyN' ,companysite='$companyS' ,jobtitle='$jobtitle' where username='$username'";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Profile Updated!!";
+    echo "Profile Updated";
   }else{
     echo "Failed to Update Profile!!";
   }
@@ -260,9 +260,9 @@ function deleteUser(){
   $sql = "DELETE from user_details WHERE Username='$username' ";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Delete Successfully!!";
+    echo "Delete Successfully";
   }else{
-    echo "Delete Failed, Please check your database setting!";
+    echo "Error Occured: Delete operation Failed, Please check your database setting!";
   }
   mysqli_close($conn);
 }
@@ -281,9 +281,9 @@ function editUser(){
     $sql = "UPDATE user_details SET password='$pass',firstname='$firstN', lastname='$lastN', email='$email', phone='$phone'  WHERE username='$username'";
     $result = mysqli_query($conn,$sql);
     if($result){
-      echo "Admin Modified!!";
+      echo "Admin Modified";
     }else{
-      echo "Failed to modify Admin!!";
+      echo "Error Occured: Failed to modify Admin!";
     }
   }else{
     $username = $_POST['username'];
@@ -298,9 +298,9 @@ function editUser(){
     $sql = "UPDATE user_details SET firstname='$firstN' ,lastname='$lastN' ,email='$email' ,phone='$phone' ,company='$companyN' ,password='$pass' ,account_status='$ac_status' where username='$username'";
     $result = mysqli_query($conn,$sql);
     if($result){
-      echo "User Modified!!";
+      echo "User Modified";
     }else{
-      echo "Failed to modify User!!";
+      echo "Error Occured: Failed to modify User!";
     }
   }
 
@@ -315,9 +315,9 @@ function deleteCompany(){
   $sql = "DELETE from company WHERE name='$companyName' ";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Delete Successfully!!";
+    echo "Delete Successfully";
   }else{
-    echo "Delete Failed, Please check your database setting!";
+    echo "Error Occured: Delete Failed, Please check your database setting!";
   }
   mysqli_close($conn);
 }
@@ -332,9 +332,9 @@ function editCompany(){
   $sql = "UPDATE company SET address='$companyAddress' ,phone='$companyPhone' ,site='$companySite' where name='$companyName'";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Company Modified!!";
+    echo "Company Modified";
   }else{
-    echo "Failed to modify Company!!";
+    echo "Error Occured: Failed to modify Company";
   }
   mysqli_close($conn);
 
@@ -408,9 +408,9 @@ function editIframes(){
   $sql = "UPDATE user_iframe SET iframe1='$i1' ,iframe2='$i2' ,iframe3='$i3' ,iframe4='$i4' ,iframe5='$i5' ,iframe6='$i6' where username='$username'";
   $result = mysqli_query($conn,$sql);
   if($result){
-    echo "Visualization Updated!!";
+    echo "Visualization Updated";
   }else{
-    echo "Failed to Update Visualization!!";
+    echo "Error Occured: Failed to Update Visualization";
   }
   mysqli_close($conn);
 }

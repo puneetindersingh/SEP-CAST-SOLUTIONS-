@@ -18,7 +18,7 @@ draft();
 }else if(isset($_POST['initial'])){
   initial();
 }
-
+// ----INTERNAL EMAIL SYSTEM----- 
 // 0--unread,1--read,2--draft
 function sendMail(){
       include 'connect.php';

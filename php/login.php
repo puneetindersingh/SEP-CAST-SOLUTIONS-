@@ -4,7 +4,7 @@ if(isset($_POST['login'])){
 }else if (isset($_POST['forget'])){
     forget();
 }
-
+// check if account is active , check credentials and login
 function login(){
     include 'connect.php';
     $username = $_POST['username'];
@@ -31,7 +31,7 @@ function login(){
     }
     mysqli_close($conn);
 }
-
+// email random password to the user 
 function forget(){
     include 'connect.php';
     $username = $_POST['username'];

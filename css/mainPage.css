@@ -2,6 +2,7 @@ html {
     box-sizing: border-box;
 }
 
+/*div sizing style set*/
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -11,16 +12,19 @@ html {
     display: table;
 }
 
+/*set background color, margin and font for whole website.*/
 body {
   font-family: 'Open Sans', sans-serif;
   background: #ffffff;
   margin: 0 0 0 0;
 }
 
+/*set the font family for list and input attribute.*/
 li,input {
   font-family: 'Open Sans', sans-serif;
 }
 
+/*the style set for top navigation */
 .topnav {
   overflow: hidden;
   background-color: white;
@@ -48,6 +52,7 @@ li,input {
   display: none;
 }
 
+/*set the style of case solution logo*/
 #logoleftTop {
   padding: 3px 13px;
   background-color: white;
@@ -58,6 +63,7 @@ li,input {
   height:40px;
 }
 
+/*set style of sidebar */
 .menu {
    margin-top: 2px;
    cursor: pointer;
@@ -120,7 +126,7 @@ li,input {
     font-size: 30px;
 }
 
-/*search bar*/
+/*style of search bar*/
 #searchBar {
     width: 40%;
     box-sizing: border-box;
@@ -140,7 +146,7 @@ li,input {
     width: 100%;
 }
 
-/*new form*/
+/*set the input(text,password,email,submit) attribute style of form in each page*/
 .allform input[type=text],input[type=password],input[type=email],textarea, select, textarea {
     width: 100%;
     padding: 12px;
@@ -177,7 +183,7 @@ li,input {
   display: none;
 }
 
-/*About page*/
+/*set the style of About page*/
 .columnTeam {
   float: left;
   margin-bottom: 16px;
@@ -237,7 +243,7 @@ li,input {
   background-color: #555;
 }
 
-/*help page*/
+/*set the style of help page*/
 .columnHelp {
   float: left;
   margin-bottom: 16px;
@@ -260,18 +266,19 @@ li,input {
   padding: 0 8px;
 }
 
+/*set the style of box in help page*/
 .helpCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-
-/*for icon */
+/*for the size of icon */
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-20 { font-size: 20px; }
 .material-icons.md-24 { font-size: 24px; } /* Default */
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+/*for the color of icon */
 .blue { color: #24427b; }
 .white {color: white; }
 .white:hover { color: #24427b; }
@@ -282,6 +289,11 @@ li,input {
     width: 100%;
 }
 
+/* Media Queries
+ make page responsive by using media queries,
+ when window width bigger than 768px,
+ the default set of each column in different percentage in the page width.
+ */
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .col-1 {width: 8.33%;}
@@ -301,6 +313,11 @@ li,input {
     .col-b {width: 176px;}
 }
 
+/* Media Queries
+ make page responsive by using media queries,
+ when window width smaller than 600px,
+ change the style of top navigation suitable to all mobile and pad devices.
+ */
 @media screen and (max-width: 600px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
@@ -324,25 +341,26 @@ li,input {
 
 }
 
+/*set all table style in whole website*/
 table {
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
     width: 100%;
 }
-
 th, td {
     text-align: left;
     padding: 8px;
 }
-
-tr:nth-child(even){background-color: #f2f2f2}
-
+tr:nth-child(even){
+  background-color: #f2f2f2
+}
 th {
     background-color: #f5f5f5;
     color: black;
 }
 
+/*set the style of radio in input attribute*/
 input[type="radio"] + label{
     display:inline-block;
     width:19px;
@@ -354,6 +372,7 @@ input[type="radio"] + label{
 
 }
 
+/*set the style of company filter in user page and admin page*/
 .filterCompany {
 display: inline-block;
 
@@ -369,7 +388,6 @@ display: inline-block;
    height: 34px;
    }
 
-
 .filterCompany input[type=submit] {
     background-color: #24427b;
     color: white;
@@ -382,16 +400,11 @@ display: inline-block;
 
 
 select,option{
-
-width:50px;
-
+    width:50px;
 }
 
 .all{
-
-
  display:none;
-
 }
 
 /* The Modal (background) */
@@ -426,8 +439,7 @@ width:50px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;

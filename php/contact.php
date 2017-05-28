@@ -30,23 +30,23 @@ function sendMail(){
       $sql1 = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$receiver','$sender','$receiver','$subject','$message','0')";
       if($sender == $receiver){
         if($result = $conn->query($sql)){
-          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location = '../userpage.html';</script>";
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location.go(-1); </script>";
         }else{
-          echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
+          echo "<script>alert($conn->error); window.location.go(-1); </script>";
         }
       }else{if(isset($_POST['sendDraft'])){
         $times = $_POST['times'];
         $sql2 = "DELETE FROM mailbox WHERE username = '$sender' AND times = '$times' AND status = '2'";
         if($result = $conn->query($sql) && $result1 = $conn->query($sql1) && $result2 = $conn->query($sql2)){
-          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location = '../userpage.html';</script>";
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location.go(-1); </script>";
         }else{
-          echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
+          echo "<script>alert($conn->error); window.location.go(-1); </script>";
         }
       }else{
         if($result = $conn->query($sql) && $result1 = $conn->query($sql1)){
-          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location = '../userpage.html';</script>";
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); window.location.go(-1); </script>";
         }else{
-          echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
+          echo "<script>alert($conn->error); window.location.go(-1); </script>";
         }
       }
     }
@@ -61,9 +61,9 @@ function saveDraft(){
 
     $sql = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$sender','$sender','$receiver','$subject','$message','2')";
     if($result = $conn->query($sql)){
-      echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); window.location = '../userpage.html';</script>";
+      echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); window.location.go(-1); </script>";
     }else{
-      echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
+      echo "<script>alert($conn->error); window.location.go(-1); </script>";
     }
 }
 
@@ -156,9 +156,9 @@ function updateDraft(){
 
   $sql = "UPDATE mailbox SET receiver = '$receiver', subject = '$subject', message = '$message' WHERE username='$sender' AND sender='$sender' AND times = '$times' AND status = '2'";
   if($result = $conn->query($sql)){
-    echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); window.location = '../userpage.html';</script>";
+    echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); window.location.go(-1); </script>";
   }else{
-    echo "<script>alert($conn->error); window.location = '../userpage.html';</script>";
+    echo "<script>alert($conn->error); window.location.go(-1); </script>";
   }
   mysqli_close($conn);
 }

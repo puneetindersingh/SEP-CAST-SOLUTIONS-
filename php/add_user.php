@@ -6,7 +6,7 @@ adduser();
 {
 resetpassword();
 }
-
+// adds new user to the database
 function adduser(){
   include 'connect.php';
 try{
@@ -21,14 +21,7 @@ try{
       $company="";
       $url="";
       $jobtitle="";
-      // if($a_status!=null)
-      // {
-      //
-      // $company="";
-      // $url="";
-      // $jobtitle="";
-      // $admin_status='N';
-      // $ac_status='Y';}
+
       if(isset($_POST['member'])){
         $admin_status='Y';
       }else{
@@ -37,12 +30,7 @@ try{
         $url=$_POST['url'];
         $jobtitle=$_POST['jobtitle'];
       }
-      // else {
-      //
-      //   $company=$_POST['company'];
-      //   $url=$_POST['url'];
-      //   $jobtitle=$_POST['jobtitle'];
-      // }
+
       $sql = "INSERT INTO user_details(username,firstname,lastname,email,phone,companysite,jobtitle,company,password,admin_status,account_status)
        VALUES('$username', '$fname', ' $lname', '$email', '$phone', '  $url', '$jobtitle', '$company', '$password', '$admin_status','$ac_status')";
        if($admin_status == 'N'){
@@ -54,8 +42,6 @@ try{
 
     echo "<script>alert('New user added '); window.location = '../adminpage.html';</script>";
 
-    echo "<script>alert('New user added'); window.location = '../adminpage.html';</script>";
-
 } else {
   echo "<script>alert('Error $sql $conn->error'); window.location = '../adminpage.html';</script>";
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -65,7 +51,7 @@ catch(Exception $e)
 {
 }}
 
-
+//reset user password
 function resetpassword() {
 
 include 'connect.php';
@@ -95,21 +81,10 @@ if($row=$result->fetch_assoc()){
     }else{
     echo "<script>alert('Invalid passoword entered'); window.location = '../userpage.html';</script>";  }
 }else{
-//  echo "no";
-}
-
-
-/*
-if($row["password"]!=$oldpass)
-{
-$row = mysqli_fetch_assoc($chkpassword);
-
-
 
 }
 
 
 
-*/
   }
     ?>

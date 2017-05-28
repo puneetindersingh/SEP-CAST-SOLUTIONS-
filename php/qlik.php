@@ -16,7 +16,7 @@ function topnav() {
         x.className = "col-12 topnav";
     }
 }
-
+// opens links on main homepage
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -35,7 +35,7 @@ function openCity(evt, cityName) {
 }
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
-
+// get user name
 function getCookie(cname){
  var name = cname + "=";
  var ca = document.cookie.split(';');
@@ -45,7 +45,7 @@ function getCookie(cname){
  }
  return "";
 }
-
+// check if user is logged in otherwise send user to login page
 function checkCookie(){
  var user=getCookie("username");
   var status=getCookie("loginstatus");
@@ -421,17 +421,6 @@ if($row = $result-> fetch_assoc()){
 
 </div>
 
-
-<!-- <div class="col-12 right">
-  <div class="aside">
-    <h2>Space 1</h2>
-    <p>These space for something use future</p>
-    <h2>Space 2</h2>
-    <p>These space for something use future</p>
-    <h2>Space 3</h2>
-    <p>These space for something use future</p>
-  </div>
-</div> -->
 
 </div>
 

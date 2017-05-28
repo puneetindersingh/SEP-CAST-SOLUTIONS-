@@ -4,7 +4,7 @@ if(isset($_POST['qlik'])){
 }else if(isset($_POST['resetpassword'])){
     resetpassword();
 }
-
+// fetch user iframes
 function qlik(){
   include 'connect.php';
   $username = $_POST['username'];
@@ -18,7 +18,7 @@ function qlik(){
   echo json_encode($row);
   mysqli_close($conn);
 }
-
+//Change user passoword 
 function resetpassword() {
 include 'connect.php';
     $oldpass=$_POST['oldpassword'];

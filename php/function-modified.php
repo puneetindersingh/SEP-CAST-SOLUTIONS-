@@ -30,7 +30,7 @@ if(isset($_POST['login'])){
 }else if(isset($_POST['iframes'])){
     editIframes();
 }
-// user/admin login
+
 function login(){
     include 'connect.php';
     $username = $_POST['username'];
@@ -59,7 +59,7 @@ if($row=$result->fetch_assoc()){
 mysqli_close($conn);
 }
 
-// inset user reccord -NOT USING
+
 function signin(){
 include 'connect.php';
 $username = $_POST['username'];
@@ -71,7 +71,7 @@ $result = $conn->query($sql);
     mysqli_close($conn);
 }
 
-//setup random passowrd for user
+
 function forget(){
     include 'connect.php';
     $username = $_POST['username'];
@@ -140,7 +140,7 @@ else{
 mysqli_close($conn);
 }
 
-// get company details
+
 function getCompany(){
   include 'connect.php';
   $sql = "SELECT DISTINCT name FROM company order by name";
@@ -150,7 +150,7 @@ function getCompany(){
   }
   mysqli_close($conn);
 }
-// display user/admin details
+
 function displayU(){
   include 'connect.php';
   $companyN = $_POST['companyN'];
@@ -220,7 +220,7 @@ function displayU(){
   }
     mysqli_close($conn);
 }
-// get user details
+
 function profile(){
   include 'connect.php';
   $username = $_POST['username'];
@@ -252,7 +252,7 @@ function updateprofile(){
   }
   mysqli_close($conn);
 }
-//delete user
+
 function deleteUser(){
   include 'connect.php';
   $username = $_POST['username'];
@@ -266,7 +266,7 @@ function deleteUser(){
   }
   mysqli_close($conn);
 }
-//edit user details
+
 function editUser(){
   include 'connect.php';
   $status = $_POST['admin_status'];
@@ -307,7 +307,7 @@ function editUser(){
   mysqli_close($conn);
 
 }
-// delete company
+
 function deleteCompany(){
   include 'connect.php';
   $companyName = $_POST['companyName'];
@@ -321,7 +321,7 @@ function deleteCompany(){
   }
   mysqli_close($conn);
 }
-//Edit company details
+
 function editCompany(){
   include 'connect.php';
   $companyName = $_POST['companyName'];
@@ -339,7 +339,7 @@ function editCompany(){
   mysqli_close($conn);
 
 }
-//display company details
+
 function displayC(){
   include 'connect.php';
 
@@ -369,7 +369,7 @@ function displayC(){
     echo "</table>";
     mysqli_close($conn);
 }
-//get iframes from user_iframes table
+
 function qlik(){
   include 'connect.php';
   $username = $_POST['username'];
@@ -383,7 +383,7 @@ function qlik(){
   echo json_encode($row);
   mysqli_close($conn);
 }
-//get iframe links 
+
 function qlikU(){
   include 'connect.php';
   $companyForQlik = $_POST['companyForQlik'];

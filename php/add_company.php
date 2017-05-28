@@ -2,7 +2,7 @@
 if(isset($_POST['add_company'])){
 addCompany();
 }
-// adds company to the database 
+
   function addCompany()
   {
       include 'connect.php';

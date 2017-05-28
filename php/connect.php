@@ -1,5 +1,5 @@
 <?php
-// SQL connection class
+
 $host = 'localhost';
 $user = 'root';
 $pass = 'root';

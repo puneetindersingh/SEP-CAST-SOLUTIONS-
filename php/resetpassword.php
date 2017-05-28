@@ -6,8 +6,6 @@ if(isset($_POST['login'])){
 }else if (isset($_POST['forget'])){
     forget();
 }
-
-// send random passoword to user email 
 function login(){
     include 'connect.php';
     $username = $_POST['username'];

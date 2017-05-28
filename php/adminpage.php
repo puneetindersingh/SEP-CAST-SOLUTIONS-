@@ -22,7 +22,7 @@ if(isset($_POST['getCompany'])){
 }else if(isset($_POST['add_company'])){
     addCompany();
 }
-// gets deatils of companies in the database
+
 function getCompany(){
   include 'connect.php';
   $sql = "SELECT DISTINCT name FROM company order by name";
@@ -32,7 +32,7 @@ function getCompany(){
   }
   mysqli_close($conn);
 }
-// to display company information
+
 function displayC(){
   include 'connect.php';
 
@@ -62,7 +62,7 @@ function displayC(){
     echo "</table>";
     mysqli_close($conn);
 }
-// delete company from database
+
 function deleteCompany(){
   include 'connect.php';
   $companyName = $_POST['companyName'];
@@ -75,7 +75,7 @@ function deleteCompany(){
   }
   mysqli_close($conn);
 }
-// to edit company details in the database
+
 function editCompany(){
   include 'connect.php';
   $companyName = $_POST['companyName'];
@@ -92,7 +92,7 @@ function editCompany(){
   }
   mysqli_close($conn);
 }
-//display user information based on company selected
+
 function displayU(){
   include 'connect.php';
   $companyN = $_POST['companyN'];
@@ -162,7 +162,7 @@ function displayU(){
   }
     mysqli_close($conn);
 }
-// delete user
+
 function deleteUser(){
   include 'connect.php';
   $username = $_POST['username'];
@@ -176,7 +176,7 @@ function deleteUser(){
   }
   mysqli_close($conn);
 }
-// edit user/admin
+
 function editUser(){
   include 'connect.php';
   $status = $_POST['admin_status'];
@@ -226,7 +226,7 @@ function qlikU(){
   }
   mysqli_close($conn);
 }
-//get usernames/iframes from database
+
 function qlik(){
   include 'connect.php';
   $username = $_POST['username'];
@@ -240,7 +240,7 @@ function qlik(){
   echo json_encode($row);
   mysqli_close($conn);
 }
-//Edit iframes for user
+
 function editIframes(){
   include 'connect.php';
   $username = $_POST['username'];
@@ -267,7 +267,7 @@ function editIframes(){
   }
   mysqli_close($conn);
 }
-//add new user
+
 function adduser(){
   include 'connect.php';
 try{
@@ -311,7 +311,7 @@ try{
 catch(Exception $e)
 {
 }}
-// add new company
+
 function addCompany()
 {
     include 'connect.php';
@@ -337,7 +337,7 @@ function addCompany()
     }
 
     }
-// change password
+
 function resetpassword() {
 
 include 'connect.php';
@@ -367,9 +367,21 @@ if($row=$result->fetch_assoc()){
     }else{
     echo "<script>alert('Invalid passoword entered'); window.location = '../userpage.html';</script>";  }
 }else{
+//  echo "no";
+}
+
+
+/*
+if($row["password"]!=$oldpass)
+{
+$row = mysqli_fetch_assoc($chkpassword);
+
+
 
 }
 
 
+
+*/
   }
 ?>

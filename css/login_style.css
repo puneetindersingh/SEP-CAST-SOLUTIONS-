@@ -6,29 +6,36 @@ box-sizing: border-box;
 	outline: none;
 }
 
+/*set font of all website*/
+
 body {
 font-family: 'Open Sans', sans-serif;
 background-color: #ffffff;
 margin: 0 0 0 0;
 }
 
+/*set font family for input, paragraph and icon attribute */
+
 input,p,i {
   font-family: 'Open Sans', sans-serif;
 }
 
+/*set font family for h1-h3 attribute */
 h1,h2,h3 {
   font-family: 'Open Sans', sans-serif;;
   font-weight: bold;
 }
 
+/*the style of login interface*/
 .login {
   float: middle;
-
   margin: 0px auto;
   max-width: 500px;
   padding-top: 150px;
   display: block;
 }
+
+/*the style of reset password interface*/
 .reset {
   float: middle;
   margin: 0px auto;
@@ -37,13 +44,14 @@ h1,h2,h3 {
   display: none;
 }
 
+/*login and reset interface div style*/
 .login-screen {
   border-color: #ccc;
   -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
   -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
   box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 }
-
+/*login and reset interface div style*/
 .login-title {
 text-align: center;
 border-top: 1px solid transparent;
@@ -55,12 +63,13 @@ border-top: 1px solid transparent;
   border-color: #ddd;
 }
 
-
+/*for login icon image*/
 #loginImg {
   height: 50px;
   width: 50px;
 }
 
+/*for reset interface icon image*/
 #resetKey {
   height: 50px;
   width: 50px;
@@ -91,6 +100,7 @@ margin-bottom: 10px;
 
 }*/
 
+/*set the style when user inputting words*/
 input {
 text-align: center;
 background-color: #ECF0F1;
@@ -109,6 +119,7 @@ border: 2px solid #3498DB;
 box-shadow: none;
 }
 
+ /*style of button */
 .btn {
   border: 2px solid transparent;
   background: #24427b;
@@ -138,7 +149,11 @@ box-shadow: none;
 	margin-top: 18px;
 }
 
-/* Media Queries */
+/* Media Queries
+ make page responsive by using media queries,
+ when window width smaller than 480px,
+ change the width of login and reset interface to full screen. 
+ */
 @media screen and (max-width: 480px) {
 
   body {
@@ -152,19 +167,20 @@ box-shadow: none;
   .col-12 {width: 100%;}
 }
 
-/*for icon */
+/*for the size of icon */
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-20 { font-size: 20px; }
 .material-icons.md-24 { font-size: 24px; } /* Default */
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+/*for the color of icon */
 .blue { color: #24427b; }
 .red {color: 	#FF3333;}
 .white {color: white; }
 .white:hover { color: #24427b; }
 
-
+/*the style of header*/
 header{
     background-color: rgba(255, 255, 255, 0.8);
     float:left;
@@ -173,6 +189,7 @@ header{
     position:fixed;
   }
 
+/*the style of footer*/
  .footer {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
@@ -185,8 +202,8 @@ header{
     width: 100%;
 }
 
+/*the style of case solution logo*/
  #logo {
-
   width:202px;
   height:56px;
   object-fit: cover;
@@ -195,11 +212,12 @@ header{
 
 }
 
+/*copyright in footer*/
 #copy{
-
   padding-left: 5%;
 }
 
+/*alart words of reset password page*/
 .alartWords {
   font-size: 12px;
   text-align: center;

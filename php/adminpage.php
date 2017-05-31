@@ -1,4 +1,4 @@
-<?php
+ <?php
 if(isset($_POST['getCompany'])){
     getCompany();
 }else if(isset($_POST['displayC'])){

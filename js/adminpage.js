@@ -27,7 +27,7 @@ $('#userRadio').show();
     });
 });
 
-// window.onload=checkCookie();
+window.onload=checkCookie();
 
 function topnav() {
     var x = document.getElementById("myTopnav");

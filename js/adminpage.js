@@ -156,7 +156,7 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
  }
 }
 
-function showCompanyInfo(compnayN){
+function showCompanyInfo(companyN){
 	xmlHttp = GetXmlHttpObject();
 if (xmlHttp==null)
  {

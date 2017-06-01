@@ -132,8 +132,10 @@ if (xmlHttp==null)
  }
  var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
  var myreg1 = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
- if(!myreg.test(document.getElementById('emailAddress').value)){
-   alert("Please enter the correct email with '@' format!");
+ if(document.getElementById('firstN').value == "" || document.getElementById('lastN').value == ""){
+   alert("Name fields cannot be empty!");
+ }else if(!myreg.test(document.getElementById('emailAddress').value)){
+   alert("Please enter the correct email format!");
  }else if(!myreg1.test(document.getElementById('phoneNo').value)){
    alert("Please enter the Phone Number with '+61' at the front and 9 following numbers!");
  }else{

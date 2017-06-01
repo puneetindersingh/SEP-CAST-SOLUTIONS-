@@ -27,7 +27,7 @@ $('#userRadio').show();
     });
 });
 
-window.onload=checkCookie();
+// window.onload=checkCookie();
 
 function topnav() {
     var x = document.getElementById("myTopnav");
@@ -78,7 +78,9 @@ function selectOp(array){
     }
     else if(selectName === "qlikPage"){
       var s = document.getElementById("Company");
-    }
+    }else if(selectName == "addNewUser"){
+			var s = document.getElementById("addNewUserCompanySelect");
+		}
 		s.options.length=0;
     for(var a=0; a<array.length;a++){
         var op = document.createElement("option");
@@ -152,6 +154,31 @@ if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
     company = xmlHttp.responseText.split(",");
     selectOp(company);
  }
+}
+
+function showCompanyInfo(compnayN){
+	xmlHttp = GetXmlHttpObject();
+if (xmlHttp==null)
+ {
+ alert ("Browser does not support HTTP Request");
+ return 0;
+ }
+ var url="php/adminpage.php";
+ var params = "";
+ params += "companyInfo=1&companyN="+companyN;
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xmlHttp.onreadystatechange=stateChangedforshowU;
+ xmlHttp.send(params);
+}
+
+function stateChangedforCompanyInfo(){
+	if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+			var str=xmlHttp.responseText;
+	  	var obj = eval('(' + str + ')');
+			document.getElementById("addNewUserCompanyName").value = obj.name;
+			document.getElementById("addNewUserCompanySite").value = obj.site;
+	 }
 }
 
 function showTableforU(companyN){

@@ -21,6 +21,8 @@ if(isset($_POST['getCompany'])){
     adduser();
 }else if(isset($_POST['add_company'])){
     addCompany();
+}else if(isset($_POST['companyInfo'])){
+    companyInfo();
 }
 
 function getCompany(){
@@ -383,5 +385,15 @@ $row = mysqli_fetch_assoc($chkpassword);
 
 
 */
+  }
+
+  function companyInfo(){
+    include 'connect.php';
+    $companyN = $_POST['companyN'];
+    $sql = "SELECT * FROM company WHERE name = '$compnayN'";
+    $result = mysqli_query($conn,$sql);
+    $row = $result->fetch_assoc();
+    echo json_encode($row);
+    mysqli_close($conn);
   }
 ?>

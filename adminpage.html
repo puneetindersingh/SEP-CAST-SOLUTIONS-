@@ -64,9 +64,9 @@
 		    <label for="lname">Last Name</label>
 		    <input type="text" name="lname" placeholder="Your last name.." required>
 		    <label for="lname">Email address</label>
-		    <input type="email" name="email" placeholder="Your email address.." required>
-		    <label for="lname">Phone number (Enter 0 before 9 Digit Contact Number)</label>
-		    <input type="text" name="phone" placeholder="Your phone number.." pattern="[0][0-9]{9}" required>
+		    <input type="text" name="email" placeholder="Your email address.." required>
+		    <label for="lname">Phone number</label>
+		    <input type="text" name="phone" placeholder="Your phone number.." required>
 
 
 
@@ -84,20 +84,20 @@
     <input type="text" name="fname" placeholder="Your name.." required>
     <label for="lname">Last Name</label>
     <input type="text" name="lname" placeholder="Your last name.." required>
-    <label for="lname">Email Address</label>
-    <input type="email" name="email" placeholder="Your email address.." required>
-    <label for="lname">Phone Number (Enter 0 before 9 Digit Contact Number)</label>
-    <input type="text" name="phone" placeholder="Your phone number.." pattern="[0][0-9]{9}" required>
+    <label for="lname">Email address</label>
+    <input type="text" name="email" placeholder="Your email address.." required>
+    <label for="lname">Phone number</label>
+    <input type="text" name="phone" placeholder="Your phone number.." required>
 
     <label for="lname">Select A Company</label></br>
-    <select id = "addNewUserCompanySelect" style="width:100%" onclick="showCompanyInfo(this.value)">
-    </select></br>
+        <select id = "addNewUserCompanySelect" style="width:100%" onclick="showCompanyInfo(this.value)">
+        </select></br>
     <label for="lname">Company Name</label>
-    <input type="text" name="company" placeholder="Your company name.." id="addNewUserCompanyName" value="" readonly>
+    <input type="text" name="company" placeholder="Your company name.." id="addNewUserCompanyName" value="" required>
     <label for="lname">Company WebSite</label>
-    <input type="text" name="url" placeholder="Your company site name.." id="addNewUserCompanySite" value="" readonly>
+    <input type="text" name="url" placeholder="Your company site name.." id="addNewUserCompanySite" value=""required>
     <label for="lname">Company Job Title</label>
-    <input type="text"  name ="jobtitle" placeholder="Your company job title.." id="addNewUserCompanyTitle" value="" required>
+    <input type="text"  name ="jobtitle" placeholder="Your company job title.." id="addNewUserCompanyTitle" value=""required>
 
     <input type="submit"  name="add_user" value="Add user">
  </div> </form>

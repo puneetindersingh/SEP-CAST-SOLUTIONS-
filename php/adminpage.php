@@ -1,4 +1,4 @@
- <?php
+<?php
 if(isset($_POST['getCompany'])){
     getCompany();
 }else if(isset($_POST['displayC'])){
@@ -390,7 +390,7 @@ $row = mysqli_fetch_assoc($chkpassword);
   function companyInfo(){
     include 'connect.php';
     $companyN = $_POST['companyN'];
-    $sql = "SELECT * FROM company WHERE name = '$compnayN'";
+    $sql = "SELECT * FROM company WHERE name = '$companyN'";
     $result = mysqli_query($conn,$sql);
     $row = $result->fetch_assoc();
     echo json_encode($row);

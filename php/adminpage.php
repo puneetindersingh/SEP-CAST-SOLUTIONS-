@@ -284,6 +284,7 @@ try{
       $company="";
       $url="";
       $jobtitle="";
+      
       if(isset($_POST['member'])){
         $admin_status='Y';
       }else{
@@ -303,7 +304,7 @@ try{
 
     echo "<script>alert('New user added '); window.location = '../adminpage.html';</script>";
 
-    echo "<script>alert('New user added'); window.location = '../adminpage.html';</script>";
+
 
 } else {
   echo "<script>alert('Error $sql $conn->error'); window.location = '../adminpage.html';</script>";

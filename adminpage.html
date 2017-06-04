@@ -215,13 +215,13 @@
    </ul>
  </div>
  <div class="col-14 divAddUser allform tabMail" id="compose">
-   <form action="php/contact.php" method="post" name="myForm">
+   <form action="php/contact.php" method="post" name="myForm"  onsubmit=" this.reset();">
      <label for="recID">To</label>
      <input type="text" name="receiver" id="recID" placeholder="Receiver ID">
      <label for="subj">Subject</label>
      <input type="text" name="subject" placeholder="Subject">
      <label for="msg">Message</label>
-     <textarea rows="10" type="text" name="message" placeholder="..."></textarea>
+     <textarea rows="10" type="text" name="message" placeholder="Your message."></textarea>
      <input type="submit" value="Send" name="sendMail" onclick="validateForm(this.form)">
      <input type="submit" value="Save" name="saveDraft" >
    </form>

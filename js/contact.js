@@ -356,12 +356,13 @@ function validateForm(form) {
    var y = form.subject.value;
    var z = form.message.value;
    if (x =="") {
-       alert("Receiver Account must be filled out");}
+
+     }
     else if(y ==""){
-           alert("Subject Must not Empty");
+
        }
        else if(z==""){
-           alert("Message must be filled out");
+
        }
        return false;
    }

@@ -28,6 +28,11 @@ function sendMail(){
      $receiver=$_POST['receiver'];
      $subject = $_POST['subject'];
       $message = $_POST['message'];
+      if($subject==null||$receiver==null||$message==null)
+      {
+        echo "<script>alert('Field cannot be empty, please check !'); history.go(-1); </script>";
+        exit();
+      }
       $sql = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$sender','$sender','$receiver','$subject','$message','0')";
       $sql1 = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$receiver','$sender','$receiver','$subject','$message','0')";
       if($sender == $receiver){

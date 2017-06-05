@@ -176,7 +176,6 @@ function deleteMail(r){
     }
     }
     deleteEmail(sen,rec,time);
-    mailboxInitial();
   }
 }
 
@@ -200,6 +199,7 @@ if (xmlHttp==null)
 function stateChangedforDelMail(){
 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
   alert(xmlHttp.responseText);
+  mailboxInitial();
  }
 }
 

@@ -1,7 +1,6 @@
 <?php
 
 
-
 if(isset($_POST['sendMail']) || isset($_POST['sendDraft'])){
 sendMail();
 }else if(isset($_POST['saveDraft'])){
@@ -31,15 +30,13 @@ function sendMail(){
       $message = $_POST['message'];
       if($subject==null||$receiver==null||$message==null)
       {
-        echo "<script>alert('Field cannot be empty, please check !'); history.go(-1); </script>";
-
+        echo "<script>alert('Field cannot be empty, please check !'); history.go(-1);window.location.reload(); </script>";
       }
-      else{
       $sql = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$sender','$sender','$receiver','$subject','$message','0')";
       $sql1 = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$receiver','$sender','$receiver','$subject','$message','0')";
       if($sender == $receiver){
         if($result = $conn->query($sql)){
-          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); history.go(-1); </script>";
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!'); history.go(-1);window.location.reload(); </script>";
         }else{
           echo "<script>alert($conn->error); history.go(-1); </script>";
         }
@@ -48,24 +45,23 @@ function sendMail(){
         $sql2 = "DELETE FROM mailbox WHERE username = '$sender' AND times = '$times' AND status = '2'";
         if($result = $conn->query($sql) && $result1 = $conn->query($sql1) && $result2 = $conn->query($sql2)){
 
-          echo "<script>alert('Mail Send, Please check in your Sent Mail!');   history.go(-1); </script>";
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!');   history.go(-1);window.location.reload(); </script>";
 
         }else{
-          echo "<script>alert($conn->error); history.go(-1); </script>";
+          echo "<script>alert($conn->error); history.go(-1);window.location.reload(); </script>";
         }
       }else{
         if($result = $conn->query($sql) && $result1 = $conn->query($sql1)){
-          echo "<script>alert('Mail Send, Please check in your Sent Mail!');   history.go(-1); window.location.reload();</script>";
-
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!');   history.go(-1);window.location.reload();</script>";
 
 
         }else{
-          echo "<script>alert($conn->error); history.go(-1); </script>";
+          echo "<script>alert($conn->error); history.go(-1);window.location.reload(); </script>";
         }
 
 
       }
-    }}
+    }
 }
 
 function saveDraft(){
@@ -77,9 +73,9 @@ function saveDraft(){
 
     $sql = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$sender','$sender','$receiver','$subject','$message','2')";
     if($result = $conn->query($sql)){
-      echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); history.go(-1); </script>";
+      echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); history.go(-1);window.location.reload(); </script>";
     }else{
-      echo "<script>alert($conn->error); history.go(-1); </script>";
+      echo "<script>alert($conn->error); history.go(-1);window.location.reload(); </script>";
     }
 }
 
@@ -91,7 +87,7 @@ function inbox(){
   $preResult = mysqli_query($conn,$pre);
   $status = $preResult -> fetch_assoc();
   if($status['admin_status'] == 'Y'){
-    $sql = "SELECT * FROM mailbox WHERE receiver LIKE '%admin%' AND username LIKE '%admin%' ORDER BY times DESC";
+    $sql = "SELECT * FROM mailbox WHERE (receiver LIKE '%admin%' OR receiver LIKE '$receiver') AND (username LIKE '%admin%' OR username LIKE '$receiver') ORDER BY times DESC";
   }else{
     $sql = "SELECT * FROM mailbox WHERE receiver = '$receiver' AND username = '$receiver' ORDER BY times DESC";
   }
@@ -172,9 +168,9 @@ function updateDraft(){
 
   $sql = "UPDATE mailbox SET receiver = '$receiver', subject = '$subject', message = '$message' WHERE username='$sender' AND sender='$sender' AND times = '$times' AND status = '2'";
   if($result = $conn->query($sql)){
-    echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); history.go(-1); </script>";
+    echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); history.go(-1);window.location.reload(); </script>";
   }else{
-    echo "<script>alert($conn->error); history.go(-1); </script>";
+    echo "<script>alert($conn->error); history.go(-1);window.location.reload(); </script>";
   }
   mysqli_close($conn);
 }
@@ -182,7 +178,14 @@ function updateDraft(){
 function initial(){
   include 'connect.php';
   $user = $_COOKIE['username'];
+  $pre = "SELECT admin_status FROM user_details WHERE username='$user'";
+  $preResult = mysqli_query($conn,$pre);
+  $status = $preResult -> fetch_assoc();
+  if($status['admin_status'] == 'Y'){
+  $sql = "SELECT COUNT(*) FROM mailbox WHERE (username = '$user' OR username LIKE '%admin%') AND (receiver = '$user' OR receiver LIKE '%admin%') AND status ='0'";
+}else{
   $sql = "SELECT COUNT(*) FROM mailbox WHERE username = '$user' AND receiver = '$user' AND status ='0'";
+  }
   $sql1 = "SELECT COUNT(*) FROM mailbox WHERE sender = '$user' AND username = '$user' AND status = '2'";
   $result = mysqli_query($conn,$sql);
   $result1 = mysqli_query($conn,$sql1);

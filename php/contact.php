@@ -32,7 +32,7 @@ function sendMail(){
       if($subject==null||$receiver==null||$message==null)
       {
         echo "<script>alert('Field cannot be empty, please check !'); history.go(-1); </script>";
-        
+
       }
       else{
       $sql = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$sender','$sender','$receiver','$subject','$message','0')";
@@ -55,7 +55,7 @@ function sendMail(){
         }
       }else{
         if($result = $conn->query($sql) && $result1 = $conn->query($sql1)){
-          echo "<script>alert('Mail Send, Please check in your Sent Mail!');   history.go(-1);</script>";
+          echo "<script>alert('Mail Send, Please check in your Sent Mail!');   history.go(-1); window.location.reload();</script>";
 
 
 

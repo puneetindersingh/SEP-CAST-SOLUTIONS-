@@ -74,9 +74,9 @@ function saveDraft(){
 
     $sql = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$sender','$sender','$receiver','$subject','$message','2')";
     if($result = $conn->query($sql)){
-      echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); window.location.go(-1); </script>";
+      echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); history.go(-1); </script>";
     }else{
-      echo "<script>alert($conn->error); window.location.go(-1); </script>";
+      echo "<script>alert($conn->error); history.go(-1); </script>";
     }
 }
 
@@ -169,9 +169,9 @@ function updateDraft(){
 
   $sql = "UPDATE mailbox SET receiver = '$receiver', subject = '$subject', message = '$message' WHERE username='$sender' AND sender='$sender' AND times = '$times' AND status = '2'";
   if($result = $conn->query($sql)){
-    echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); window.location.go(-1); </script>";
+    echo "<script>alert('Your unsent mail have being saved,Please check in Draft!'); history.go(-1); </script>";
   }else{
-    echo "<script>alert($conn->error); window.location.go(-1); </script>";
+    echo "<script>alert($conn->error); history.go(-1); </script>";
   }
   mysqli_close($conn);
 }

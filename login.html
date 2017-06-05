@@ -31,11 +31,11 @@
 				<input type="text" class="login-field" name="username" placeholder="username" id="login-name" required><br><br>
 				<input type="password" class="login-field" name="password" placeholder="password" id="login-pass" required><br><br>
                 <p style="color:red" id="test"></p>
-				 <input class="btn"  type="submit" value="Login" name="login" onclick="showHint()"/>
+				 <input class="btn"  type="submit" value="Login" name="login" style='cursor:pointer' onclick="showHint()"/>
 				</div>
 
 				<!-- <a class="resetPassword-link" href="resetpassword.html">Forgot your password?</a> -->
-				<a id="forgotPass" onclick="myFunction1()" class="resetPassword-link">Forgot your password?</a>
+				<a id="forgotPass" onclick="myFunction1()" style='cursor:pointer' class="resetPassword-link">Forgot your password?</a>
 				<br>
         </div>
 		</div>
@@ -53,11 +53,11 @@
 				<div class="input-group">
 				<input type="email" class="reset-email" name="email"  placeholder="Email" id="email-name" required></p>
 				<input type="text" class="reset-user" name="username"  placeholder="Username" id="reset-username" required></p>
-				<input type="submit" class="btn" name="forget" value="Send Me New Password"/>
+				<input type="submit" class="btn" style='cursor:pointer' name="forget" value="Send Me New Password"/>
         </form>
         <form action="login.html" method="POST">
 
-        <input type="submit" class="btn" name="forget" value="Back"/><br>
+        <input type="submit" class="btn" style='cursor:pointer' name="forget" value="Back"/><br>
         <div class="popup" onclick="popUps()"><i id="resetHelp" title="" class="material-icons md-18 blue">help_outline</i>
           <span class="popuptext" id="myPopup">Reset Password</br>
           Step 1: Please input your email and username.</br>

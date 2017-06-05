@@ -69,8 +69,10 @@ function deleteCompany(){
   include 'connect.php';
   $companyName = $_POST['companyName'];
   $sql = "DELETE from company WHERE name='$companyName' ";
+  $sql1 = "DELETE from user_details WHERE company='$companyName'";
   $result = mysqli_query($conn,$sql);
-  if($result){
+  $result1 = mysqli_query($conn,$sql1);
+  if($result && $result1){
     echo "Record Deleted!";
   }else{
     echo "Error Occured: Record Update failed!";
@@ -284,7 +286,7 @@ try{
       $company="";
       $url="";
       $jobtitle="";
-      
+
       if(isset($_POST['member'])){
         $admin_status='Y';
       }else{

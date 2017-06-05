@@ -1,5 +1,6 @@
 var mails;
-
+var urlreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+var phonereg = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
 // for contact page
 function openContact(evt, cityName) {
     selectName=cityName;
@@ -14,6 +15,9 @@ function openContact(evt, cityName) {
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+    if(cityName == 'compose'){
+      resetForm();
+    }
     if(cityName == 'inbox'){
       inbox();
     }
@@ -172,6 +176,7 @@ function deleteMail(r){
     }
     }
     deleteEmail(sen,rec,time);
+    mailboxInitial();
   }
 }
 
@@ -351,18 +356,6 @@ function stateChangedforInitial(){
   }
 }
 
-function validateForm(form) {
-   var x = form.receiver.value;
-   var y = form.subject.value;
-   var z = form.message.value;
-   if (x =="") {
-
-     }
-    else if(y ==""){
-
-       }
-       else if(z==""){
-
-       }
-       return false;
-   }
+function resetForm(){
+  document.forms["myForm"].reset();
+}

@@ -230,8 +230,7 @@ catch (e){
 return xmlHttp;
 }
 
-var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-var myreg1 = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
+
 
 function InfobyRow(r){
   var arr = new Array();
@@ -308,7 +307,7 @@ if (xmlHttp==null)
  if(user.checked){
 	 params += "editU=1&username="+array[0]+"&firstname="+array[1]
 	 +"&lastname="+array[2]+"&email="+array[3]
-	 +"&phone="+phone+"&company="+array[5]
+	 +"&phone="+array[4]+"&company="+array[5]
 	 +"&password="+array[6]+"&account_status="+array[7]+"&admin_status=N";
 
  }else{
@@ -391,7 +390,7 @@ if (xmlHttp==null)
  var phone = array[2];
  phone = phone.replace(/\+/g, "%2B");
  params += "editC=1&companyName="+array[0]+"&companyAddress="+array[1]
- +"&companyPhone="+phone+"&companySite="+array[3];
+ +"&companyPhone="+array[2]+"&companySite="+array[3];
  // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

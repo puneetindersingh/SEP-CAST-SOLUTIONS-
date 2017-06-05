@@ -93,9 +93,9 @@
         <select id = "addNewUserCompanySelect" style="width:100%" onclick="showCompanyInfo(this.value)">
         </select></br>
     <label for="lname">Company Name</label>
-    <input type="text" name="company" placeholder="Your company name.." id="addNewUserCompanyName" value="" required>
+    <input type="text" name="company" placeholder="Your company name.." id="addNewUserCompanyName" value="" readonly>
     <label for="lname">Company WebSite</label>
-    <input type="text" name="url" placeholder="Your company site name.." id="addNewUserCompanySite" value=""required>
+    <input type="text" name="url" placeholder="Your company site name.." id="addNewUserCompanySite" value="" readonly>
     <label for="lname">Company Job Title</label>
     <input type="text"  name ="jobtitle" placeholder="Your company job title.." id="addNewUserCompanyTitle" value=""required>
 
@@ -215,14 +215,14 @@
    </ul>
  </div>
  <div class="col-14 divAddUser allform tabMail" id="compose">
-   <form action="php/contact.php" method="post" name="myForm"  onsubmit=" this.reset();">
+   <form action="php/contact.php" method="post" name="myForm">
      <label for="recID">To</label>
      <input type="text" name="receiver" id="recID" placeholder="Receiver ID">
      <label for="subj">Subject</label>
      <input type="text" name="subject" placeholder="Subject">
      <label for="msg">Message</label>
      <textarea rows="10" type="text" name="message" placeholder="Your message."></textarea>
-     <input type="submit" value="Send" name="sendMail" onclick="validateForm(this.form)">
+     <input type="submit" value="Send" name="sendMail">
      <input type="submit" value="Save" name="saveDraft" >
    </form>
  </div>

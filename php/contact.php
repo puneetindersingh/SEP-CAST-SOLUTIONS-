@@ -1,6 +1,7 @@
 <?php
 
 
+
 if(isset($_POST['sendMail']) || isset($_POST['sendDraft'])){
 sendMail();
 }else if(isset($_POST['saveDraft'])){
@@ -31,8 +32,9 @@ function sendMail(){
       if($subject==null||$receiver==null||$message==null)
       {
         echo "<script>alert('Field cannot be empty, please check !'); history.go(-1); </script>";
-        exit();
+        
       }
+      else{
       $sql = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$sender','$sender','$receiver','$subject','$message','0')";
       $sql1 = "INSERT INTO mailbox(username,sender,receiver,subject,message,status) VALUES('$receiver','$sender','$receiver','$subject','$message','0')";
       if($sender == $receiver){
@@ -56,13 +58,14 @@ function sendMail(){
           echo "<script>alert('Mail Send, Please check in your Sent Mail!');   history.go(-1);</script>";
 
 
+
         }else{
           echo "<script>alert($conn->error); history.go(-1); </script>";
         }
 
 
       }
-    }
+    }}
 }
 
 function saveDraft(){

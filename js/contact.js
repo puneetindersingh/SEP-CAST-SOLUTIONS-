@@ -39,7 +39,6 @@ if (xmlHttp==null)
  var url='php/contact.php';
  var params = "";
  params += "inbox=1";
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforInbox;
@@ -120,7 +119,6 @@ function reply(r){
  var url='php/contact.php';
  var params = "";
  params += "changeStatus=1&sender="+sender+"&receiver="+receiver+"&times="+time;
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforChangeStatus;
@@ -189,7 +187,6 @@ if (xmlHttp==null)
  var url='php/contact.php';
  var params = "";
  params += "deleteMail=1&sender="+sen+"&receiver="+rec+"&times="+time;
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforDelMail;
@@ -213,7 +210,6 @@ if (xmlHttp==null)
  var url='php/contact.php';
  var params = "";
  params += "sentmail=1";
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforSentMail;
@@ -275,7 +271,6 @@ if (xmlHttp==null)
  var url='php/contact.php';
  var params = "";
  params += "draft=1";
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforDraft;
@@ -330,7 +325,6 @@ if (xmlHttp==null)
  var url='php/contact.php';
  var params = "";
  params += "initial=1";
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforInitial;
@@ -359,3 +353,6 @@ function stateChangedforInitial(){
 function resetForm(){
   document.forms["myForm"].reset();
 }
+
+document.documentElement.onkeydown=resetTime();
+document.documentElement.onclick=resetTime();

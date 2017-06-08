@@ -49,7 +49,7 @@
 
 <!-- new form -->
 <div class="col-14 divAddUser allform tabcontent" id="addNewUser">
-  <form action="php/adminpage.php" method="POST">
+  <form action="php/adminpage.php" method="POST" onsubmit=" return validateAddForm(this);">
   <h4>User information</h4>
  	<label for="fname">Member Type</label> <br>
     <input type="radio"  id= "admin" name="member" value="admin" checked> <label><b>Admin</b></label>
@@ -70,11 +70,11 @@
 
 
 
-		    <input type="submit"  name="add_user" value="Add user" onclick="validateAddForm(this.form)">
+		    <input type="submit"  name="add_user" value="Add user">
 </div>
 </form>
 
-		<form action="php/adminpage.php" method="POST">
+		<form action="php/adminpage.php" method="POST" onsubmit=" return validateAddForm(this);">
 <div id="userRadio">
     <label for="fname">Username</label>
     <input type="text" name="username" placeholder="User name.." required>
@@ -99,7 +99,7 @@
     <label for="lname">Company Job Title</label>
     <input type="text"  name ="jobtitle" placeholder="Your company job title.." value=""required>
 
-    <input type="submit"  name="add_user" value="Add user" onclick="validateAddForm(this.form)">
+    <input type="submit"  name="add_user" value="Add user">
  </div> </form>
 </div>
 
@@ -135,7 +135,7 @@
 
 
 <div class="col-14 divAddUser allform tabcontent" id="addCompany">
-  <form action="php/adminpage.php" method="POST">
+  <form action="php/adminpage.php" method="POST" onsubmit="return validateAddCompay(this);">
 
     <h4>Company information</h4>
 

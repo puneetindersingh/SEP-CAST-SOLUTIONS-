@@ -309,8 +309,7 @@ try{
 
 
 } else {
-  echo "<script>alert('Error $sql $conn->error'); window.location = '../adminpage.html';</script>";
-    echo "Error: " . $sql . "<br>" . $conn->error;
+  echo "<script>alert('Record existed!'); window.location = '../adminpage.html';</script>";
 }
 }
 catch(Exception $e)

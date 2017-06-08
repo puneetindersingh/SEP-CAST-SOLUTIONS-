@@ -595,3 +595,58 @@ function previewIframes(type){
     modal.style.display="none";
   }
 }
+
+function validateAddForm(form){
+  var username = form.username.value;
+  var password = form.password.value;
+  var fname = form.fname.value;
+  var lname = form.lname.value;
+  var email = form.email.value;
+  var phone = form.phone.value;
+  if(username == ""){
+    alert("Username cannot be empty!");
+    return false;
+  }else if(password == ""){
+    alert("Please set up password!");
+    return false;
+  }else if(fname == "" || lname == ""){
+    alert("Name fields cannot be empty!");
+    return false;
+  }else if(!mailreg.test(email)){
+    alert("Please type correct email format with '@'!");
+    return false;
+  }else if(!phonereg.test(phone)){
+    alert("Phone number is invalid. Please type your phone number start with '+61' without '0'!");
+    return false;
+  }else if(document.getElementById("user").checked){
+		var company = form.company.value;
+		if(company == ""){
+			alert("Please select a company which user belongs to!");
+			return false;
+		}
+	}else{
+    return true;
+  }
+}
+
+function validateAddCompay(form){
+	var companyName = form.name.value;
+	var companyAddress = form.address.value;
+	var companyPhone = form.phone.value;
+	var companyUrl = form.phone.value;
+	if(companyName == ""){
+		alert("The company name cannot be empty!");
+		return false;
+	}else if(companyAddress == ""){
+		alert("The company address cannot be empty!");
+		return false;
+	}else if(companyPhone.length<10 || companyPhone.length> 12){
+		alert("The phone number is invalid, please double check!");
+		return false;
+	}else if(companyUrl == ""){
+		alert("The website name cannot be empty!");
+		return false;
+	}else{
+		return true;
+	}
+}

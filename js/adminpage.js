@@ -1,3 +1,5 @@
+var mailreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+var phonereg = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
 $(document).ready(function(){
 
 	$('#userRadio').hide();
@@ -305,22 +307,45 @@ if (xmlHttp==null)
  var phone = array[4];
  phone = phone.replace(/\+/g, "%2B");
  if(user.checked){
-	 params += "editU=1&username="+array[0]+"&firstname="+array[1]
-	 +"&lastname="+array[2]+"&email="+array[3]
-	 +"&phone="+array[4]+"&company="+array[5]
-	 +"&password="+array[6]+"&account_status="+array[7]+"&admin_status=N";
-
+	 if(array[1] == "" || array[2] == ""){
+		 alert("Name fields cannot be empty!");
+	 }else if(!mailreg.test(array[3])){
+		 alert("The email address is invalid, Please double check!");
+	 }else if(!phonereg.test(array[4])){
+		 alert("Phone number is invalid. Please type your phone number start with '+61' without '0'!");
+	 }else if(array[6] == ""){
+		 alert("Password cannot be empty!");
+	 }else if(array[7] == ""){
+		 alert("Account status cannot be empty!");
+	 }else{
+		 params += "editU=1&username="+array[0]+"&firstname="+array[1]
+		+"&lastname="+array[2]+"&email="+array[3]
+		+"&phone="+array[4]+"&company="+array[5]
+		+"&password="+array[6]+"&account_status="+array[7]+"&admin_status=N";
+		xmlHttp.open("POST",url,true);
+	  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	  xmlHttp.onreadystatechange=stateChangedforEditU;
+	  xmlHttp.send(params);
+	 }
  }else{
-	 params += "editU=1&username="+array[0]+"&firstname="+array[1]
-	 +"&lastname="+array[2]+"&email="+array[3]
-	 +"&phone="+phone+"&admin_status=Y"+"&password="+array[5];
-
+	 if(array[1] == "" || array[2] == ""){
+		 alert("Name fields cannot be empty!");
+	 }else if(!mailreg.test(array[3])){
+		 alert("The email address is invalid, Please double check!");
+	 }else if(!phonereg.test(array[4])){
+		 alert("Phone number is invalid. Please type your phone number start with '+61' without '0'!");
+	 }else if(array[5] == ""){
+		 alert("Password cannot be empty!");
+	 }else{
+		 params += "editU=1&username="+array[0]+"&firstname="+array[1]
+		+"&lastname="+array[2]+"&email="+array[3]
+		+"&phone="+phone+"&admin_status=Y"+"&password="+array[5];
+		xmlHttp.open("POST",url,true);
+		xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xmlHttp.onreadystatechange=stateChangedforEditU;
+		xmlHttp.send(params);
+	 }
  }
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
- xmlHttp.open("POST",url,true);
- xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
- xmlHttp.onreadystatechange=stateChangedforEditU;
- xmlHttp.send(params);
 }
 
 function stateChangedforEditU(){
@@ -387,15 +412,20 @@ if (xmlHttp==null)
  }
  var url='php/adminpage.php';
  var params = "";
- var phone = array[2];
- phone = phone.replace(/\+/g, "%2B");
+if(array[1] == ""){
+	alert("The address field cannot be empty!");
+}else if(array[2] == ""){
+	alert("The phone field cannot be empty!");
+}else if(array[3] == ""){
+	alert("The website field cannot be empty!");
+}else{
  params += "editC=1&companyName="+array[0]+"&companyAddress="+array[1]
  +"&companyPhone="+array[2]+"&companySite="+array[3];
- // var params = "username="+document.getElementById('reset-username').value+"&email="+document.getElementById('email-name').value;
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforEditC;
  xmlHttp.send(params);
+}
 }
 
 function stateChangedforEditC(){

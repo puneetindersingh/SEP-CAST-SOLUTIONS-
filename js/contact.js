@@ -1,5 +1,5 @@
 var mails;
-var urlreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+var mailreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 var phonereg = /^(\+61)[0-9]{1}[0-9]{4}[0-9]{4}$/;
 // for contact page
 function openContact(evt, cityName) {
@@ -261,7 +261,7 @@ function sendMore(rec){
   var content ="<div><input type='submit' value='Cancel' name='back' onclick='cancelReply()'><form action='php/contact.php' method='post' name='myForm'><label for='recID'>To</label><input type='text' name='receiver' value='"+recID+"'><label for='subj'>Subject</label><input type='text' value='' name='subject'>"
   +"<input type='hidden' name='times' value=''>"
   +"<label for='msg'>Message</label><textarea rows='10' type='text' name='message'></textarea>"
-  +"<input type='submit' value='Send' name='sendMail' onclick='validateForm(this.form)'><input type='submit' value='Save' name='updateDraft' ></form></div>";
+  +"<input type='submit' value='Send' name='sendMail'><input type='submit' value='Save' name='updateDraft' ></form></div>";
   document.getElementById('replyContent').innerHTML = content;
 }
 
@@ -314,7 +314,7 @@ function rewrite(r){
   var content ="<div><input type='submit' value='Back' name='back' onclick='cancelReply()'><form action='php/contact.php' method='post' name='myForm'><label for='recID'>To</label><input type='text' name='receiver' value='"+receiver+"'><label for='subj'>Subject</label><input type='text' value='"+InfobyRow1(row)[1]+"' name='subject'>"
   +"<input type='hidden' name='times' value='"+time+"'>"
   +"<label for='msg'>Message</label><textarea rows='10' type='text' name='message'>"+msg+"</textarea>"
-  +"<input type='submit' value='Send' name='sendDraft' onclick='validateForm(this.form)'><input type='submit' value='Save' name='updateDraft' ></form></div>";
+  +"<input type='submit' value='Send' name='sendDraft'><input type='submit' value='Save' name='updateDraft' ></form></div>";
   var replybox = document.getElementById('replyMail');
   replybox.style.display = "block";
   document.getElementById('replyContent').innerHTML = content;
@@ -358,4 +358,31 @@ function stateChangedforInitial(){
 
 function resetForm(){
   document.forms["myForm"].reset();
+}
+
+function validateAddForm(form){
+  var username = form.username.value;
+  var password = form.password.value;
+  var fname = form.fname.value;
+  var lname = form.lname.value;
+  var email = form.email.value;
+  var phone = form.phone.value;
+  if(username == ""){
+    alert("Username cannot be empty!");
+    return false;
+  }else if(password == ""){
+    alert("Please set up password!");
+    return false;
+  }else if(fname == "" || lname == ""){
+    alert("Name fields cannot be empty!");
+    return false;
+  }else if(!mailreg.test(email)){
+    alert("Please type correct email format with '@'!");
+    return false;
+  }else if(!phonereg.test(phone)){
+    alert("Phone number is invalid. Please type your phone number start with '+61' without '0'!");
+    return false;
+  }else{
+    return true;
+  }
 }

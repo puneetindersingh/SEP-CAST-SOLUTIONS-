@@ -70,7 +70,7 @@
 
 
 
-		    <input type="submit"  name="add_user" value="Add user">
+		    <input type="submit"  name="add_user" value="Add user" onclick="validateAddForm(this.form)">
 </div>
 </form>
 
@@ -97,9 +97,9 @@
     <label for="lname">Company WebSite</label>
     <input type="text" name="url" placeholder="Your company site name.." id="addNewUserCompanySite" value="" readonly>
     <label for="lname">Company Job Title</label>
-    <input type="text"  name ="jobtitle" placeholder="Your company job title.." id="addNewUserCompanyTitle" value=""required>
+    <input type="text"  name ="jobtitle" placeholder="Your company job title.." value=""required>
 
-    <input type="submit"  name="add_user" value="Add user">
+    <input type="submit"  name="add_user" value="Add user" onclick="validateAddForm(this.form)">
  </div> </form>
 </div>
 

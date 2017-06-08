@@ -155,7 +155,7 @@ function displayU(){
          echo "<td contentEditable='true'>" . $row['lastname'] . "</td>";
          echo "<td contentEditable='true'>" . $row['email'] . "</td>";
          echo "<td contentEditable='true'>" . $row['phone'] . "</td>";
-         echo "<td contentEditable='true'>" . $row['company'] . "</td>";
+         echo "<td contentEditable='false'>" . $row['company'] . "</td>";
          echo "<td contentEditable='true'>" . $row['password'] . "</td>";
          echo "<td contentEditable='true'>" . $row['account_status'] . "</td>";
          echo "<td onclick='updateRow(this)'><i style='cursor:pointer' class='material-icons md-18 blue'> save</i></td>";

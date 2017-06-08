@@ -132,7 +132,7 @@ if (xmlHttp==null)
  }
  if(document.getElementById('firstN').value == "" || document.getElementById('lastN').value == ""){
    alert("Name fields cannot be empty!");
- }else if(!urlreg.test(document.getElementById('emailAddress').value)){
+ }else if(!mailreg.test(document.getElementById('emailAddress').value)){
    alert("Please enter the correct email format!");
  }else if(!phonereg.test(document.getElementById('phoneNo').value)){
    alert("Please enter the Phone Number with '+61' at the front and 9 following numbers!");

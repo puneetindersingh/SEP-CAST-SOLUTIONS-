@@ -320,7 +320,7 @@ if (xmlHttp==null)
 	 }else{
 		 params += "editU=1&username="+array[0]+"&firstname="+array[1]
 		+"&lastname="+array[2]+"&email="+array[3]
-		+"&phone="+array[4]+"&company="+array[5]
+		+"&phone="+phone+"&company="+array[5]
 		+"&password="+array[6]+"&account_status="+array[7]+"&admin_status=N";
 		xmlHttp.open("POST",url,true);
 	  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -419,8 +419,10 @@ if(array[1] == ""){
 }else if(array[3] == ""){
 	alert("The website field cannot be empty!");
 }else{
+	var phone = array[2];
+	phone = phone.replace(/\+/g, "%2B");
  params += "editC=1&companyName="+array[0]+"&companyAddress="+array[1]
- +"&companyPhone="+array[2]+"&companySite="+array[3];
+ +"&companyPhone="+phone+"&companySite="+array[3];
  xmlHttp.open("POST",url,true);
  xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  xmlHttp.onreadystatechange=stateChangedforEditC;

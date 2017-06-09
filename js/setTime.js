@@ -1,10 +1,10 @@
 var myTime;
 function setTime(){
-  myTime = setTimeout('Timeout()', 10000);
+  myTime = setTimeout('Timeout()', 10000000);
 }
 function resetTime() {
     clearTimeout(myTime);
-    myTime = setTimeout('Timeout()', 10000);
+    myTime = setTimeout('Timeout()', 10000000);
 }
 function Timeout() {
     clearTimeout(myTime);
